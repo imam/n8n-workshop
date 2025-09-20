@@ -1,0 +1,27 @@
+{
+  "name": "n8n-tutorial-slides",
+  "version": "1.0.0",
+  "description": "N8N Tutorial Slides using Reveal.js",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o -c-1",
+    "build": "echo 'Static files ready for deployment'",
+    "dev": "npx live-server --port=8080 --open=/index.html --no-css-inject"
+  },
+  "dependencies": {
+    "reveal.js": "^4.6.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "n8n",
+    "tutorial",
+    "slides",
+    "reveal.js",
+    "presentation"
+  ],
+  "author": "",
+  "license": "MIT"
+}

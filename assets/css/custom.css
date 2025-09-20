@@ -1,0 +1,275 @@
+/* Custom CSS for N8N Tutorial Slides */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root Variables */
+:root {
+  --n8n-primary: #ff6b35;
+  --n8n-secondary: #007acc;
+  --n8n-dark: #2d3748;
+  --n8n-light: #f7fafc;
+  --n8n-success: #38a169;
+  --n8n-warning: #ed8936;
+  --n8n-error: #e53e3e;
+}
+
+/* Global Styles */
+.reveal {
+  font-family: 'Inter', sans-serif;
+  color: var(--n8n-dark);
+}
+
+/* Headings */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--n8n-dark);
+}
+
+.reveal h1 {
+  font-size: 2.5em;
+  color: var(--n8n-primary);
+  margin-bottom: 1em;
+}
+
+.reveal h2 {
+  font-size: 2em;
+  color: var(--n8n-secondary);
+  margin-bottom: 0.8em;
+}
+
+.reveal h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.6em;
+}
+
+/* Lists */
+.reveal ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reveal ul li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.reveal ul li:before {
+  content: "▶";
+  color: var(--n8n-primary);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Checkmark Lists */
+.reveal ul li:has-text("✅"):before {
+  content: "";
+}
+
+/* Code Styling */
+.reveal code {
+  background-color: var(--n8n-light);
+  color: var(--n8n-dark);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.reveal pre {
+  background-color: var(--n8n-dark);
+  color: white;
+  border-radius: 8px;
+  padding: 1em;
+  font-size: 0.8em;
+}
+
+/* Tables */
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.reveal table th {
+  background-color: var(--n8n-primary);
+  color: white;
+  padding: 0.8em;
+  font-weight: 600;
+}
+
+.reveal table td {
+  padding: 0.6em;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: var(--n8n-light);
+}
+
+/* Images */
+.reveal img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1em 0;
+}
+
+/* Placeholder Images Styling */
+.reveal img[src*="placeholder"],
+.reveal img[src*="/images/"] {
+  border: 2px dashed var(--n8n-primary);
+  background-color: var(--n8n-light);
+  padding: 2em;
+  text-align: center;
+  color: var(--n8n-primary);
+  font-style: italic;
+}
+
+/* Special Styling for Different Slide Types */
+
+/* Title Slide */
+.reveal .slides section:first-child {
+  background: linear-gradient(135deg, var(--n8n-primary), var(--n8n-secondary));
+  color: white;
+  text-align: center;
+}
+
+.reveal .slides section:first-child h1,
+.reveal .slides section:first-child h2 {
+  color: white;
+}
+
+/* Section Headers */
+.reveal .slides section[data-background-color] h1 {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Indicators */
+.status-success {
+  color: var(--n8n-success) !important;
+}
+
+.status-warning {
+  color: var(--n8n-warning) !important;
+}
+
+.status-error {
+  color: var(--n8n-error) !important;
+}
+
+/* Buttons and Interactive Elements */
+.reveal .button {
+  background-color: var(--n8n-primary);
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0.5em;
+  transition: background-color 0.3s;
+}
+
+.reveal .button:hover {
+  background-color: #e55a2b;
+}
+
+/* Callout Boxes */
+.callout {
+  padding: 1em;
+  margin: 1em 0;
+  border-left: 4px solid var(--n8n-primary);
+  background-color: var(--n8n-light);
+  border-radius: 0 6px 6px 0;
+}
+
+.callout.warning {
+  border-left-color: var(--n8n-warning);
+  background-color: #fffaf0;
+}
+
+.callout.error {
+  border-left-color: var(--n8n-error);
+  background-color: #fef5f5;
+}
+
+.callout.success {
+  border-left-color: var(--n8n-success);
+  background-color: #f0fff4;
+}
+
+/* Progress Indicators */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--n8n-light);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1em 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--n8n-primary);
+  transition: width 0.3s ease;
+}
+
+/* Slide Numbers */
+.reveal .slide-number {
+  font-size: 0.8em;
+  color: var(--n8n-secondary);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.3em 0.6em;
+  border-radius: 20px;
+}
+
+/* Speaker Notes Styling */
+.reveal .speaker-notes {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reveal h1 {
+    font-size: 2em;
+  }
+
+  .reveal h2 {
+    font-size: 1.5em;
+  }
+
+  .reveal table {
+    font-size: 0.8em;
+  }
+
+  .reveal img {
+    max-width: 95%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .reveal {
+    background: white;
+    color: black;
+  }
+
+  .reveal h1,
+  .reveal h2 {
+    color: black;
+  }
+
+  .reveal img {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
