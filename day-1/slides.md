@@ -14,9 +14,9 @@
 ![N8N Logo](day-1/images/n8n-logo.png)
 <!-- Placeholder: Logo N8N -->
 
-- **N8N** adalah platform automation workflow yang open-source<br>
-- Memungkinkan integrasi antar aplikasi tanpa coding<br>
-- Visual workflow builder<br>
+- **N8N** adalah platform automation workflow yang open-source
+- Memungkinkan integrasi antar aplikasi tanpa coding
+- Visual workflow builder
 - Self-hosted solution
 
 Note:
@@ -26,10 +26,10 @@ N8N memungkinkan kita untuk mengotomatisasi tugas-tugas repetitif dengan cara ya
 
 ## Mengapa N8N?
 
-- 🔧 **No-code/Low-code** approach<br>
-- 🔗 **300+ integrations** tersedia<br>
-- 🏠 **Self-hosted** - kontrol penuh atas data<br>
-- 💰 **Open source** - gratis untuk digunakan<br>
+- 🔧 **No-code/Low-code** approach
+- 🔗 **300+ integrations** tersedia
+- 🏠 **Self-hosted** - kontrol penuh atas data
+- 💰 **Open source** - gratis untuk digunakan
 - 🎨 **Visual interface** - mudah dipahami
 
 ![Use Cases](day-1/images/use-cases.png)
@@ -41,9 +41,8 @@ N8N memungkinkan kita untuk mengotomatisasi tugas-tugas repetitif dengan cara ya
 
 Setelah sesi ini, peserta dapat:
 
-- ✅ Memahami interface N8N<br>
-
-- ✅ Membuat workflow sederhana<br>
+- ✅ Memahami interface N8N
+- ✅ Membuat workflow sederhana
 
 - ✅ Menggunakan berbagai trigger
 
@@ -53,59 +52,49 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
-<!-- SECTION 2: User Interface -->
-# Berkenalan dengan User Interface
+<!-- SECTION 2: Demo Workflow -->
+# Demo: Workflow Pertama Anda
 
 ---
 
-## Dashboard Overview
+## Sample Workflow Demo
 
-![N8N Dashboard](day-1/images/ui-dashboard.png)
-<!-- Placeholder: Screenshot dashboard utama N8N -->
+![Sample Workflow](day-1/images/sample-workflow.png)
+<!-- Placeholder: Screenshot workflow sederhana yang sudah jadi -->
 
-- **Workflows** - Daftar semua workflow
-- **Executions** - Riwayat eksekusi
-- **Credentials** - Manajemen kredensial
-- **Settings** - Konfigurasi sistem
+### Contoh Real Application:
+**Webhook** → **Slack** → **Google Sheets** → **Email Notification**
 
----
-
-## Canvas Workspace
-
-![Canvas Workspace](day-1/images/ui-canvas.png)
-<!-- Placeholder: Screenshot canvas editor dengan workflow sample -->
-
-### Area Utama:
-- **Canvas** - Area untuk membangun workflow<br>
-- **Node Panel** - Panel node di sebelah kiri<br>
-- **Properties Panel** - Konfigurasi node di sebelah kanan<br>
-- **Toolbar** - Tools untuk mengelola workflow
+*Kredensial sudah disetup oleh pengajar*
 
 ---
 
-## Node Panel
+## Live Demo: Slack to Sheets
 
-![Node Panel](day-1/images/ui-node-panel.png)
-<!-- Placeholder: Screenshot node panel dengan kategori -->
+![Live Demo](day-1/images/live-demo.png)
+<!-- Placeholder: Screenshot live demo execution -->
 
-### Kategori Node:
-- **Triggers** - Memulai workflow<br>
-- **Regular Nodes** - Aksi dan transformasi<br>
-- **Core Nodes** - Fungsi dasar<br>
-- **App Nodes** - Integrasi aplikasi
+### Flow yang akan kita lihat:
+1. **Webhook** menerima data dari form
+2. **Slack** mengirim notifikasi ke channel
+3. **Google Sheets** menyimpan data
+4. **Email** konfirmasi ke user
+
+**Mari kita lihat workflow ini bekerja!**
 
 ---
 
-## Navigation Tips
+## Yang Akan Kita Pelajari
 
-- **Zoom**: Mouse wheel atau tombol zoom
-- **Pan**: Drag canvas dengan mouse
-- **Select**: Click node untuk memilih
-- **Connect**: Drag dari output ke input node
-- **Delete**: Select node lalu tekan Delete
+![Learning Path](day-1/images/learning-path.png)
+<!-- Placeholder: Visual learning path -->
 
-![Navigation Demo](day-1/images/ui-navigation.png)
-<!-- Placeholder: Screenshot menunjukkan cara navigasi -->
+### Setelah demo ini, kita akan explore:
+- Cara membuat workflow dari nol
+- Berbagai jenis trigger dan kapan menggunakannya
+- Setup kredensial untuk integrasi
+- Monitor dan debug workflow
+- Best practices untuk production
 
 ---
 
