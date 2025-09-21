@@ -54,30 +54,30 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
-## Sample Workflow Demo
+## Demo: Otomatisasi Customer Inquiry
 
-![Sample Workflow](day-1/images/sample-workflow.png)
-<!-- Placeholder: Screenshot workflow sederhana yang sudah jadi -->
+![Customer Inquiry Workflow](day-1/images/customer-inquiry-workflow.png)
+<!-- Placeholder: Screenshot workflow customer inquiry -->
 
-### Contoh Real Application:
-**Form Submission** → **Slack** → **Google Sheets** → **Email Notification**
+### Skenario Bisnis:
+**Customer Bertanya** → **Respon Otomatis** → **Simpan Lead** → **Notifikasi Tim**
 
-*Kredensial sudah disetup oleh pengajar*
+*Seperti punya asisten virtual 24/7 untuk bisnis Anda*
 
 ---
 
-## Live Demo: Slack to Sheets
+## Live Demo: Dari Pertanyaan ke Penjualan
 
-![Live Demo](day-1/images/live-demo.png)
-<!-- Placeholder: Screenshot live demo execution -->
+![Live Demo](day-1/images/live-demo-business.png)
+<!-- Placeholder: Screenshot demo bisnis real -->
 
-### Flow yang akan kita lihat:
-1. **Form Submission** menerima data dari website
-2. **Slack** mengirim notifikasi ke channel
-3. **Google Sheets** menyimpan data
-4. **Email** konfirmasi ke user
+### Yang Terjadi Otomatis:
+1. **Customer isi form kontak** di website Anda
+2. **Email welcome** langsung terkirim ke customer
+3. **Data tersimpan** di Google Sheets untuk follow-up
+4. **Tim sales dapat notifikasi** di Slack ada lead baru
 
-**Mari kita lihat workflow ini bekerja!**
+**Mari lihat magic-nya terjadi!**
 
 ---
 
@@ -248,80 +248,40 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 ---
 
 <!-- SECTION 5: Credentials -->
-# Menambahkan Kredensial dan Keamanan
+# Menghubungkan Aplikasi Favorit Anda
 
 ---
 
-## Mengapa Kredensial Penting?
+## Mengapa Perlu Koneksi?
 
-![Security Concept](day-1/images/security-concept.png)
-<!-- Placeholder: Icon keamanan dan API keys -->
+![App Connections](day-1/images/app-connections.png)
+<!-- Placeholder: Icon aplikasi-aplikasi populer -->
 
-- **API Keys** untuk mengakses layanan external
-- **OAuth tokens** untuk aplikasi modern
-- **Database credentials** untuk koneksi database
-- **Keamanan data** yang terjaga
+- **Gmail** untuk kirim/terima email otomatis
+- **Google Sheets** untuk simpan data
+- **Slack** untuk notifikasi tim
+- **Telegram** untuk komunikasi customer
 
----
-
-## Menambahkan Kredensial
-
-![Add Credentials](day-1/images/credentials-add.png)
-<!-- Placeholder: Screenshot form tambah kredensial -->
-
-### Langkah-langkah:
-1. Buka **Credentials** menu
-2. Klik **"Create New"**
-3. Pilih **tipe kredensial**
-4. Isi **informasi required**
-5. **Test connection**
-6. **Save** kredensial
+*Seperti login ke aplikasi, tapi untuk automation*
 
 ---
 
-## Jenis-jenis Kredensial
+## Cara Menghubungkan Aplikasi
 
-### 🔑 **API Key**
-![API Key](day-1/images/cred-api-key.png)
-<!-- Placeholder: Form API key credential -->
+![Connect Apps](day-1/images/connect-apps.png)
+<!-- Placeholder: Screenshot simple connection flow -->
 
-Simple key-based authentication
+### Langkah Mudah:
+1. Pilih **aplikasi** yang mau dihubungkan
+2. Klik **"Login & Connect"**
+3. Masukkan **username/password** seperti biasa
+4. **Izinkan akses** untuk N8N
+5. **Selesai!** Aplikasi sudah terhubung
 
-### 🔐 **OAuth2**
-![OAuth2](day-1/images/cred-oauth2.png)
-<!-- Placeholder: OAuth2 flow diagram -->
-
-Secure token-based authentication
-
----
-
-## Menggunakan Kredensial
-
-![Using Credentials](day-1/images/credentials-usage.png)
-<!-- Placeholder: Screenshot node configuration dengan credential -->
-
-- Pilih kredensial dari **dropdown**
-- Credentials di-**encrypt** secara otomatis
-- Dapat digunakan di **multiple workflows**
-- **Reusable** dan **secure**
-
----
-
-## Best Practices Keamanan
-
-### ✅ Secure Practices:
-- Gunakan OAuth2 jika tersedia
-- Rotate API keys secara berkala
-- Berikan akses minimal yang diperlukan
-- Monitor penggunaan credentials
-
-### ❌ Avoid:
-- Hardcode credentials di workflow
-- Share credentials antar tim tanpa kontrol
-- Gunakan admin account untuk automation
-
-![Security Best Practices](day-1/images/security-best-practices.png)
-<!-- Placeholder: Security checklist visual -->
+### 🔒 **Keamanan Terjamin:**
+- Login seperti biasa, tidak ada password khusus
+- Bisa dicabut kapan saja kalau tidak perlu
+- Data tetap aman di aplikasi masing-masing
 
 ---
 
@@ -358,134 +318,102 @@ Secure token-based authentication
 
 ---
 
-## Debugging Workflow
+## Apa yang Harus Dilakukan Kalau Ada Masalah?
 
-![Debug Workflow](day-1/images/debug-workflow.png)
-<!-- Placeholder: Screenshot detail eksekusi dengan error -->
+![Simple Troubleshooting](day-1/images/simple-troubleshooting.png)
+<!-- Placeholder: Simple troubleshooting steps -->
 
-### Informasi Debug:
-- **Error message** yang detail
-- **Stack trace** untuk troubleshooting
-- **Input/Output data** setiap node
-- **Execution time** per node
+### Langkah Mudah Troubleshooting:
+1. **Cek status** - Apakah berwarna merah (error)?
+2. **Cek koneksi** - Apakah semua aplikasi masih terkoneksi?
+3. **Coba jalankan ulang** - Klik execute sekali lagi
+4. **Minta bantuan** - Hubungi tim IT atau instruktur
 
----
-
-## Viewing Execution Details
-
-![Execution Details](day-1/images/execution-details.png)
-<!-- Placeholder: Screenshot detail eksekusi lengkap -->
-
-### Detail Information:
-- **Workflow snapshot** saat eksekusi
-- **Data flow** antar node
-- **Node-by-node** results
-- **JSON data** yang diproses
-
----
-
-## Monitoring Tips
-
-### 📊 **Monitoring Best Practices:**
-- Cek execution history secara berkala
-- Set up notification untuk failures
-- Monitor performance metrics
-- Archive old executions
-
-![Monitoring Dashboard](day-1/images/monitoring-tips.png)
-<!-- Placeholder: Screenshot monitoring dashboard -->
-
----
-
-## Common Error Patterns
-
-### 🔍 **Troubleshooting Guide:**
-
-| Error Type | Common Cause | Solution |
-|------------|--------------|----------|
-| Authentication | Invalid credentials | Update/refresh tokens |
-| Timeout | Long-running operations | Optimize or increase timeout |
-| Rate Limit | Too many requests | Add delays between calls |
-| Data Format | Unexpected JSON structure | Validate input data |
+### 💡 **Tips Monitoring Sederhana:**
+- Cek hasil automation setiap pagi
+- Pastikan data masuk ke tempat yang benar
+- Kalau ada yang aneh, langsung tanya
 
 ---
 
 <!-- SECTION 7: Hands-on Exercise -->
-# Latihan Praktik
+# Latihan: Buat Automation Pertama Anda
 
 ---
 
-## Exercise: Workflow Sederhana
+## Exercise: Automation Newsletter Signup
 
-![Exercise Overview](day-1/images/exercise-overview.png)
-<!-- Placeholder: Diagram workflow yang akan dibuat -->
+![Exercise Overview](day-1/images/business-exercise-overview.png)
+<!-- Placeholder: Diagram workflow newsletter signup -->
 
-### Target Workflow:
-**Manual Trigger** → **HTTP Request** → **Set Node** → **Webhook Response**
+### Target Automation:
+**Customer Daftar Newsletter** → **Kirim Welcome Email** → **Simpan ke Database** → **Notifikasi Tim**
 
-### Objective:
-Membuat workflow yang fetch data dari API dan memformat response
+### Business Value:
+Otomatisasi proses newsletter signup tanpa perlu copy-paste manual
 
 ---
 
-## Step 1: Setup Trigger
+## Step 1: Setup Customer Form
 
-![Step 1](day-1/images/exercise-step1.png)
-<!-- Placeholder: Screenshot menambah manual trigger -->
+![Step 1](day-1/images/exercise-step1-form.png)
+<!-- Placeholder: Screenshot form trigger setup -->
 
 1. Buat workflow baru
-2. Tambahkan **Manual Trigger**
-3. Konfigurasi trigger settings
-4. Test trigger functionality
+2. Tambahkan **Form Trigger**
+3. Setup form fields: Nama, Email, Perusahaan
+4. Test dengan data sample
 
 ---
 
-## Step 2: Add HTTP Request
+## Step 2: Kirim Welcome Email
 
-![Step 2](day-1/images/exercise-step2.png)
-<!-- Placeholder: Screenshot HTTP Request node configuration -->
+![Step 2](day-1/images/exercise-step2-email.png)
+<!-- Placeholder: Screenshot Gmail node configuration -->
 
-1. Tambahkan **HTTP Request** node
-2. Set URL: `https://jsonplaceholder.typicode.com/posts/1`
-3. Method: **GET**
-4. Connect dari Manual Trigger
-
----
-
-## Step 3: Format Data
-
-![Step 3](day-1/images/exercise-step3.png)
-<!-- Placeholder: Screenshot Set node configuration -->
-
-1. Tambahkan **Set** node
-2. Format response data
-3. Keep only: `title`, `body`, `userId`
-4. Rename fields sesuai kebutuhan
+1. Tambahkan **Gmail** node
+2. Setup email template welcome
+3. Gunakan data dari form (nama, email)
+4. Test kirim email
 
 ---
 
-## Step 4: Test Workflow
+## Step 3: Simpan ke Database
 
-![Step 4](day-1/images/exercise-step4.png)
-<!-- Placeholder: Screenshot hasil test workflow -->
+![Step 3](day-1/images/exercise-step3-sheets.png)
+<!-- Placeholder: Screenshot Google Sheets node -->
 
-1. **Execute** workflow
-2. Check **execution results**
-3. Verify **data flow**
-4. Debug jika ada error
+1. Tambahkan **Google Sheets** node
+2. Pilih spreadsheet "Newsletter Subscribers"
+3. Map data: Nama → Kolom A, Email → Kolom B
+4. Test simpan data
 
 ---
 
-## Congratulations! 🎉
+## Step 4: Notifikasi Tim
 
-![Success](day-1/images/exercise-success.png)
-<!-- Placeholder: Success celebration image -->
+![Step 4](day-1/images/exercise-step4-slack.png)
+<!-- Placeholder: Screenshot Slack notification -->
+
+1. Tambahkan **Slack** node
+2. Pilih channel #marketing
+3. Buat pesan: "New subscriber: [Nama] from [Perusahaan]"
+4. Test dan lihat notifikasi
+
+---
+
+## Selamat! Anda Sudah Jadi Automation Expert! 🎉
+
+![Business Success](day-1/images/business-success.png)
+<!-- Placeholder: Business success celebration -->
 
 ### Anda telah berhasil:
-✅ Membuat workflow pertama
-✅ Menggunakan multiple nodes
-✅ Memahami data flow
-✅ Testing dan debugging
+✅ Mengotomatisasi proses bisnis pertama
+✅ Menghemat waktu tim dengan automation
+✅ Menghubungkan beberapa aplikasi sekaligus
+✅ Membuat sistem yang bekerja 24/7 untuk bisnis Anda
+
+**Bayangkan berapa jam per minggu yang bisa dihemat dengan automation ini!**
 
 ---
 
@@ -496,13 +424,12 @@ Membuat workflow yang fetch data dari API dan memformat response
 
 ## Apa yang Sudah Dipelajari
 
-### 📚 **Day 1 Recap:**
-- ✅ Introduction to N8N platform
-- ✅ User interface navigation
-- ✅ Workflow and node concepts
-- ✅ Various trigger types
-- ✅ Credentials management
-- ✅ Execution history monitoring
+### 📚 **Apa yang Sudah Dikuasai:**
+- ✅ Memahami kekuatan automation untuk bisnis
+- ✅ Mengenal cara kerja N8N untuk efisiensi
+- ✅ Membuat automation pertama yang real
+- ✅ Menghubungkan aplikasi favorit bisnis
+- ✅ Monitoring automation berjalan dengan baik
 
 ![Day 1 Summary](day-1/images/day1-summary.png)
 <!-- Placeholder: Visual summary of topics covered -->
@@ -511,16 +438,16 @@ Membuat workflow yang fetch data dari API dan memformat response
 
 ## Next Steps
 
-### 🚀 **Coming Up:**
-- **Day 2**: Advanced node operations
-- **Day 3**: Error handling & debugging
-- **Day 4**: API integrations
-- **Day 5**: Production deployment
+### 🚀 **Selanjutnya:**
+- **Day 2**: Automation yang lebih kompleks untuk proses bisnis
+- **Day 3**: Mengatasi masalah dan optimasi automation
+- **Day 4**: Integrasi dengan lebih banyak aplikasi bisnis
+- **Day 5**: Deploy automation untuk operasional harian
 
-### 📖 **Homework:**
-- Explore different trigger types
-- Create 2-3 simple workflows
-- Practice using credentials
+### 📝 **Tugas Rumah:**
+- Pikirkan 3 proses manual di bisnis Anda yang bisa diotomatisasi
+- Coba buat 1-2 automation sederhana untuk kebutuhan pribadi
+- Diskusikan dengan tim tentang potensi automation
 
 ---
 
