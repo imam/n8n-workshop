@@ -186,70 +186,50 @@ Melakukan aksi atau transformasi data
 
 ---
 
-## Manual Trigger
+## Google Sheets Trigger
 
-![Manual Trigger](day-1/images/trigger-manual.png)
-<!-- Placeholder: Screenshot manual trigger node -->
+![Google Sheets Trigger](day-1/images/trigger-googlesheets.png)
+<!-- Placeholder: Screenshot Google Sheets trigger node -->
 
-- **Triggered manually** oleh user
-- Bagus untuk testing dan development
-- Eksekusi on-demand
-- Default trigger untuk workflow baru
-
-```
-Use case: Boss mau demo workflow ke client, atau tes workflow sebelum di-publish
-```
-
----
-
-## Webhook Trigger
-
-![Webhook Trigger](day-1/images/trigger-webhook.png)
-<!-- Placeholder: Screenshot webhook trigger configuration -->
-
-- Menerima **HTTP requests** dari aplikasi lain
-- Real-time execution
-- Mendukung GET, POST, PUT, DELETE
-- Dapat menerima data dari request
+- **Otomatis jalan** saat ada baris baru di spreadsheet
+- Monitor perubahan data secara real-time
+- Langsung proses data yang baru masuk
+- Cocok untuk input data tim
 
 ```
-Use case: Customer isi form di website, langsung masuk ke CRM dan kirim email welcome
+Use case: Tim sales input lead baru di Google Sheets, langsung kirim welcome email dan masuk ke CRM
 ```
 
 ---
 
-## Schedule Trigger (Cron)
+## Telegram Trigger
 
-![Schedule Trigger](day-1/images/trigger-schedule.png)
-<!-- Placeholder: Screenshot cron trigger dengan schedule -->
+![Telegram Trigger](day-1/images/trigger-telegram.png)
+<!-- Placeholder: Screenshot Telegram trigger configuration -->
 
-- Eksekusi berdasarkan **jadwal waktu**
-- Menggunakan cron expression
-- Interval atau waktu spesifik
-- Otomatis dan recurring
+- **Otomatis jalan** saat ada pesan baru di grup/channel
+- Monitor chat grup atau channel tertentu
+- Bisa filter berdasarkan keyword atau mention
+- Langsung respon pesan masuk
 
 ```
-Examples:
-- Setiap hari jam 9 pagi: kirim laporan penjualan harian
-- Setiap Senin jam 8 pagi: reminder meeting mingguan
-- Setiap 30 menit: backup data penting
+Use case: Customer service terima komplain di grup Telegram, langsung buat ticket dan notify manager
 ```
 
 ---
 
-## Polling Trigger
+## Google Calendar Trigger
 
-![Polling Trigger](day-1/images/trigger-polling.png)
-<!-- Placeholder: Screenshot polling trigger dari aplikasi -->
+![Google Calendar Trigger](day-1/images/trigger-calendar.png)
+<!-- Placeholder: Screenshot Google Calendar trigger configuration -->
 
-- **Cek perubahan** secara berkala
-- Monitoring API endpoints
-- Deteksi data baru
-- Configurable interval
+- **Otomatis jalan** saat ada event baru atau dimulai
+- Monitor calendar pribadi atau tim
+- Bisa diatur berapa menit sebelum event
+- Integrase dengan jadwal meeting
 
 ```
-Use case: Cek email customer support baru, monitor file invoice di folder,
-atau cek pesanan baru di e-commerce
+Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan Zoom link
 ```
 
 ---
@@ -258,10 +238,9 @@ atau cek pesanan baru di e-commerce
 
 | Trigger Type | Execution | Use Case | Real-time |
 |--------------|-----------|----------|-----------|
-| Manual | On-demand | Testing | ❌ |
-| Webhook | HTTP request | API integration | ✅ |
-| Schedule | Time-based | Recurring tasks | ❌ |
-| Polling | Interval check | Monitor changes | ⚠️ |
+| Google Sheets | Data baru | Input tim ke spreadsheet | ✅ |
+| Telegram | Pesan baru | Customer service & support | ✅ |
+| Google Calendar | Event dimulai | Meeting reminder & prep | ⚠️ |
 
 ![Trigger Comparison](day-1/images/trigger-comparison.png)
 <!-- Placeholder: Visual comparison chart -->
