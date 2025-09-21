@@ -9,19 +9,6 @@
 
 ---
 
-## Recap Day 1
-
-![Day 1 Recap](day-2/images/day1-recap.png)
-<!-- Placeholder: Visual summary day 1 -->
-
-### Yang Sudah Kita Kuasai:
-✅ **Dasar N8N** - Tool automation tanpa coding
-✅ **Trigger sederhana** - Google Sheets, Telegram, Calendar
-✅ **Koneksi aplikasi** - Menghubungkan tools favorit
-✅ **Automation pertama** - Newsletter signup otomatis
-
----
-
 ## Target Day 2
 
 ![Day 2 Goals](day-2/images/day2-goals.png)
@@ -51,8 +38,10 @@
 **Data Flow** = Bagaimana informasi berpindah dari satu langkah ke langkah berikutnya
 
 ### Analogi Sederhana:
-🏭 **Seperti pabrik** - Bahan mentah masuk, diproses, jadi produk jadi
-📧 **Contoh**: Email masuk → Ekstrak info penting → Simpan ke database → Kirim notifikasi
+🚛 **Seperti sistem logistik** - Paket masuk → Cek alamat → Pilih jalur delivery → Kirim ke tujuan
+📧 **Contoh**: Email masuk → AI analisa prioritas → Route berdasarkan urgensi → Aksi yang tepat
+
+**Kunci Penting**: Data yang sama bisa menghasilkan jalur berbeda tergantung isinya!
 
 ---
 
@@ -72,141 +61,22 @@
 
 ---
 
-## Melihat Data di N8N
+## Konsep Branching dalam Data Flow
 
-![View Data N8N](day-2/images/view-data-n8n.png)
-<!-- Placeholder: Screenshot data view dalam N8N -->
+![Branching in Data Flow](day-2/images/branching-in-dataflow.png)
+<!-- Placeholder: Visual branching concept dalam konteks data flow -->
 
-### Cara Mudah Lihat Data:
-1. **Klik node** yang sudah dijalankan
-2. **Tab "Data"** - Lihat input dan output
-3. **Format JSON** - Struktur data yang rapi
-4. **Preview** - Data dalam bentuk tabel
+### Mengapa Branching Penting?
+📊 **Data yang sama** bisa memerlukan **aksi yang berbeda**
+🔀 **Contoh**: Email urgent vs email biasa membutuhkan response time berbeda
 
-### Tips untuk Non-Technical:
-- Fokus pada **nilai** bukan struktur
-- Cari **field yang Anda butuhkan** (nama, email, dll)
-- **Copy data** untuk testing node selanjutnya
+### Skenario Bisnis:
+- **Customer VIP** → Fast track processing
+- **Customer biasa** → Standard processing
+- **High value order** → Manager approval
+- **Small order** → Auto approval
 
----
-
-## Data Transformation
-
-![Data Transformation](day-2/images/data-transformation.png)
-<!-- Placeholder: Before/after data transformation -->
-
-### Mengapa Perlu Transform Data?
-
-**Masalah Umum:**
-- Aplikasi A pakai format "John Doe", aplikasi B butuh "Doe, John"
-- Tanggal dari form: "01/15/2024", CRM butuh: "2024-01-15"
-- Nomor telepon: "+62-21-1234567", WhatsApp butuh: "6221234567"
-
-**Solusi N8N:**
-🔧 Node khusus untuk mengubah format data
-✂️ Ambil sebagian data yang dibutuhkan saja
-➕ Gabungkan data dari beberapa sumber
-
----
-
-## Praktik Langsung: Trace Data Flow
-
-![Trace Data Exercise](day-2/images/trace-data-exercise.png)
-<!-- Placeholder: Step-by-step data tracing -->
-
-### Latihan Sederhana:
-1. **Buat workflow baru**
-2. **Google Sheets trigger** - Baris baru di spreadsheet "Customers"
-3. **Lihat data** - Klik node, cek tab Data
-4. **Transform data** - Gabungkan nama depan + belakang
-5. **Gmail node** - Kirim email dengan data yang sudah diformat
-
-**Target**: Memahami bagaimana data berubah di setiap langkah
-
----
-
-<!-- SECTION 3: AI Sneak Peek -->
-# Sneak Peek: AI untuk Automation Pintar
-
----
-
-## Automation + AI = Magic ✨
-
-![AI Magic](day-2/images/ai-magic.png)
-<!-- Placeholder: AI magic concept -->
-
-### Sebelumnya:
-❌ **Manual** - Cek email satu-satu
-❌ **Rule-based** - "Jika kata 'urgent' maka..."
-
-### Dengan AI:
-✅ **Otomatis baca email** - AI pahami maksud customer
-✅ **Smart categorization** - AI tentukan kategori dan prioritas
-✅ **Natural response** - AI tulis reply yang tepat
-
----
-
-## Contoh: AI Email Validation
-
-![AI Email Validation](day-2/images/ai-email-validation.png)
-<!-- Placeholder: AI email validation example -->
-
-### Daripada IF Node Rumit:
-```
-IF email contains "@gmail.com" OR "@yahoo.com"
-THEN personal email
-ELSE business email
-```
-
-### Pakai AI Node:
-```
-Prompt: "Analisa email ini apakah business atau personal email: {email_address}"
-Response: "Business email dari perusahaan teknologi"
-```
-
-**Lebih akurat, lebih fleksibel!**
-
----
-
-## AI dalam Customer Support
-
-![AI Support](day-2/images/ai-support-example.png)
-<!-- Placeholder: AI customer support workflow -->
-
-### Workflow w/ LLM yang Seru:
-1. **Customer kirim email** ke support@company.com
-2. **AI Node** - Analisa email:
-   - Kategori (billing/teknis/umum)
-   - Urgensi (tinggi/sedang/rendah)
-   - Sentimen (senang/kesal/netral)
-3. **Smart routing** berdasarkan AI analysis
-4. **AI generate reply** - Draft response otomatis
-
-**Result**: Support 10x lebih pintar dan cepat!
-
----
-
-<!-- SECTION 4: Branching -->
-# Branching: Satu Input, Banyak Aksi
-
----
-
-## Apa itu Branching?
-
-![Branching Concept](day-2/images/branching-concept.png)
-<!-- Placeholder: Visual branching diagram -->
-
-**Branching** = Membuat keputusan otomatis berdasarkan data
-
-### Analogi Bisnis:
-🚦 **Seperti traffic light** - Berdasarkan kondisi, ambil jalur yang berbeda
-📋 **Seperti SOP** - "Jika customer VIP, lakukan A. Jika customer biasa, lakukan B"
-
-### Contoh Nyata:
-- **Lead score tinggi** → Langsung assign ke senior sales
-- **Lead score rendah** → Masuk ke nurturing campaign
-- **Komplain urgent** → Langsung ke manager
-- **Komplain biasa** → Ke customer service
+**Branching = Smart decision making berdasarkan data content!**
 
 ---
 
@@ -254,49 +124,88 @@ Response: "Business email dari perusahaan teknologi"
 
 ---
 
-## Contoh Nyata: Customer Support Routing w/ AI
+## Contoh Nyata: Customer Support Routing
 
-![Support Routing](day-2/images/support-routing-ai.png)
-<!-- Placeholder: AI-powered support routing workflow -->
+![Support Routing](day-2/images/support-routing.png)
+<!-- Placeholder: Rule-based support routing workflow -->
 
-### Workflow: Tiket Support Otomatis dengan AI
+### Workflow: Tiket Support Otomatis
 
 1. **Customer kirim email** ke support@company.com
-2. **AI Node** - Analisa subject & content secara smart
-3. **Switch Node** berdasarkan AI result:
-   - "billing" → Finance team
-   - "technical" → Tech team
-   - "urgent" → Escalate ke manager
-4. **AI generate auto-reply** yang personal
-5. **Create ticket** dengan AI insights
-6. **Notify team** dengan summary AI
+2. **Text Parser** - Extract keywords dari subject & content
+3. **Switch Node** berdasarkan keywords:
+   - Contains "billing/invoice" → Finance team
+   - Contains "technical/bug" → Tech team
+   - Contains "urgent/asap" → Escalate ke manager
+   - Default → General support
+4. **Gmail Node** - Generate auto-reply template
+5. **Airtable** - Create ticket dengan kategori
+6. **Slack** - Notify team dengan ticket summary
 
-**Hasil**: Support ticket terorganisir pintar tanpa manual sorting!
+**Hasil**: Support ticket terorganisir otomatis tanpa manual sorting!
 
 ---
 
-## Praktik Langsung: Build Smart Workflow
+## Praktik Langsung: Build Branching Workflow
 
-![Smart Exercise](day-2/images/smart-branching-exercise.png)
-<!-- Placeholder: AI-enhanced exercise workflow -->
+![Branching Exercise](day-2/images/branching-exercise.png)
+<!-- Placeholder: Rule-based branching exercise workflow -->
 
-### Latihan: Lead Qualification dengan AI
+### Latihan: Lead Qualification dengan Rules
 
 **Skenario**: Otomatisasi proses kualifikasi lead dari website
 
 **Langkah demi langkah**:
 1. **Form Trigger** - Lead dari contact form
-2. **AI Node** - Analisa lead quality dari data yang diberikan
-3. **Switch Node** berdasarkan AI score:
-   - Score tinggi → Senior sales + prioritas
-   - Score sedang → Junior sales
-   - Score rendah → Email nurturing
+2. **Function Node** - Calculate lead score berdasarkan:
+   - Company size (1-3 points)
+   - Budget range (1-3 points)
+   - Timeline urgency (1-3 points)
+3. **Switch Node** berdasarkan total score:
+   - Score 7-9 → Senior sales + prioritas tinggi
+   - Score 4-6 → Junior sales
+   - Score 1-3 → Email nurturing campaign
 
-**Nilai Bisnis**: AI yang tentukan kualitas lead, sales fokus ke yang terbaik!
+**Nilai Bisnis**: Logic scoring yang konsisten, sales fokus ke lead terbaik!
 
 ---
 
-<!-- SECTION 5: Popular Nodes -->
+## Data Transformation
+
+![Data Transformation](day-2/images/data-transformation.png)
+<!-- Placeholder: Before/after data transformation -->
+
+### Mengapa Perlu Transform Data?
+
+**Masalah Umum:**
+- Aplikasi A pakai format "John Doe", aplikasi B butuh "Doe, John"
+- Tanggal dari form: "01/15/2024", CRM butuh: "2024-01-15"
+- Nomor telepon: "+62-21-1234567", WhatsApp butuh: "6221234567"
+
+**Solusi N8N:**
+🔧 Node khusus untuk mengubah format data
+✂️ Ambil sebagian data yang dibutuhkan saja
+➕ Gabungkan data dari beberapa sumber
+
+---
+
+## Praktik Langsung: Trace Data Flow
+
+![Trace Data Exercise](day-2/images/trace-data-exercise.png)
+<!-- Placeholder: Step-by-step data tracing -->
+
+### Latihan Sederhana:
+1. **Buat workflow baru**
+2. **Google Sheets trigger** - Baris baru di spreadsheet "Customers"
+3. **Lihat data** - Klik node, cek tab Data
+4. **Transform data** - Gabungkan nama depan + belakang
+5. **Gmail node** - Kirim email dengan data yang sudah diformat
+
+**Target**: Memahami bagaimana data berubah di setiap langkah
+
+---
+
+<!-- SECTION 3: Popular Nodes -->
 # Node Populer untuk Automation Bisnis
 
 ---
@@ -449,7 +358,7 @@ Cron, IF, Switch, Wait, Merge
 - Join data dari departemen berbeda
 - Buat comprehensive report
 
-**Tips Penting**: Merge node sangat berguna untuk integrase data dari berbagai sistem menjadi satu workflow yang powerful!
+**Tips Penting**: Merge node sangat berguna untuk integrasi data dari berbagai sistem menjadi satu workflow yang powerful!
 
 ---
 
@@ -458,25 +367,94 @@ Cron, IF, Switch, Wait, Merge
 ![Node Exercise](day-2/images/node-exploration-exercise.png)
 <!-- Placeholder: Node exploration workflow -->
 
-### Latihan: Multi-Node Customer Onboarding dengan AI
+### Latihan: Multi-Node Customer Onboarding
 
 **Skenario Bisnis**: Comprehensive new customer automation
 
 **Langkah Workflow**:
 1. **Google Sheets Trigger** - Customer baru di spreadsheet
 2. **Set Node** - Format data customer (nama, email, phone)
-3. **AI Node** - Validasi email dan profiling customer
-4. **Gmail Node** - Kirim personalized welcome email
+3. **IF Node** - Cek apakah field "Company" ada isinya
+   - **True**: Customer dari perusahaan → Route ke B2B sales
+   - **False**: Customer individual → Route ke B2C sales
+4. **Gmail Node** - Kirim welcome email sesuai tipe customer
 5. **Wait Node** - Tunggu 1 hari
-6. **Slack Node** - Notifikasi sales tim tentang customer baru
-7. **Airtable Node** - Tambah ke CRM dengan enriched data
+6. **Slack Node** - Notifikasi sales tim dengan kategori yang tepat
+7. **Airtable Node** - Tambah ke CRM dengan tag B2B/B2C
 8. **Merge Node** - Gabungkan dengan data historis lainnya
 
-**Dampak Bisnis**: Onboarding seamless dengan AI insights, tidak ada customer yang terlewat!
+**Nilai Bisnis**: Onboarding otomatis dengan smart routing, setiap customer dapat treatment yang tepat!
+
+### Mengapa IF Condition Ini Lebih Baik?
+✅ **Sederhana** - Cek field kosong atau ada isi
+✅ **Business-relevant** - B2B vs B2C adalah kategorisasi yang penting untuk bisnis
+✅ **Actionable** - Hasil langsung menentukan sales flow yang berbeda
+✅ **No regex needed** - Beginner-friendly logic
 
 ---
 
-<!-- SECTION 6: Hands-on Practice -->
+<!-- SECTION 4: AI Sneak Peek -->
+# Sneak Peek: AI untuk Automation Pintar
+
+---
+
+## Automation + AI = Magic ✨
+
+![AI Magic](day-2/images/ai-magic.png)
+<!-- Placeholder: AI magic concept -->
+
+### Sebelumnya:
+❌ **Manual** - Cek email satu-satu
+❌ **Rule-based** - "Jika kata 'urgent' maka..."
+
+### Dengan AI:
+✅ **Otomatis baca email** - AI pahami maksud customer
+✅ **Smart categorization** - AI tentukan kategori dan prioritas
+✅ **Natural response** - AI tulis reply yang tepat
+
+---
+
+## Contoh: AI Email Validation
+
+![AI Email Validation](day-2/images/ai-email-validation.png)
+<!-- Placeholder: AI email validation example -->
+
+### Daripada IF Node Rumit:
+```
+IF email contains "@gmail.com" OR "@yahoo.com"
+THEN personal email
+ELSE business email
+```
+
+### Pakai AI Node:
+```
+Prompt: "Analisa email ini apakah business atau personal email: {email_address}"
+Response: "Business email dari perusahaan teknologi"
+```
+
+**Lebih akurat, lebih fleksibel!**
+
+---
+
+## AI dalam Customer Support
+
+![AI Support](day-2/images/ai-support-example.png)
+<!-- Placeholder: AI customer support workflow -->
+
+### Workflow w/ LLM yang Seru:
+1. **Customer kirim email** ke support@company.com
+2. **AI Node** - Analisa email:
+   - Kategori (billing/teknis/umum)
+   - Urgensi (tinggi/sedang/rendah)
+   - Sentimen (senang/kesal/netral)
+3. **Smart routing** berdasarkan AI analysis
+4. **AI generate reply** - Draft response otomatis
+
+**Result**: Support 10x lebih pintar dan cepat!
+
+---
+
+<!-- SECTION 5: Hands-on Practice -->
 # Latihan Comprehensive: E-commerce Order Processing
 
 ---
@@ -517,128 +495,5 @@ Cron, IF, Switch, Wait, Merge
 8. **Tracking Setup** - Buat tracking record
 
 **Dampak Bisnis**: 95% lebih cepat processing, AI-powered, zero manual error!
-
----
-
-<!-- SECTION 7: Summary -->
-# Ringkasan & Langkah Selanjutnya
-
----
-
-## Apa yang Sudah Dikuasai Hari Ini
-
-![Day 2 Achievements](day-2/images/day2-achievements.png)
-<!-- Placeholder: Visual summary of achievements -->
-
-### 🎯 **Core Skill yang Diperoleh:**
-✅ **Data Flow Mastery** - Memahami bagaimana data mengalir dan bertransformasi
-✅ **Branching Logic** - Membuat keputusan otomatis berdasarkan kondisi bisnis
-✅ **Node Expertise** - Menguasai node populer untuk automation sehari-hari
-✅ **AI Sneak Peek** - Mengenal potensi AI untuk automation pintar
-✅ **Complex Workflow** - Membangun automation end-to-end untuk proses bisnis nyata
-
-### 💼 **Dampak Bisnis:**
-- Automation lebih sophisticated dan fleksibel
-- Proses bisnis yang kompleks bisa diotomatisasi
-- AI memberikan sneak peek automation "pintar" dan adaptif
-- ROI automation meningkat significantly
-
----
-
-## Aplikasi Dunia Nyata
-
-![Real World Apps](day-2/images/real-world-applications.png)
-<!-- Placeholder: Various business applications -->
-
-### Yang Bisa Anda Terapkan Sekarang:
-
-🏢 **Sales & Marketing**:
-- Lead qualification otomatis dengan AI scoring
-- Personalized email campaign berdasarkan behavior
-- Social media content generation dan scheduling
-- Customer journey automation dengan branching logic
-
-📊 **Operations**:
-- Inventory management dengan predictive alert
-- Order processing end-to-end automation
-- Customer support dengan AI-powered routing
-- Report generation dan distribution otomatis
-
-💰 **Finance**:
-- Invoice processing dengan data extraction
-- Expense categorization menggunakan AI
-- Payment reconciliation automation
-- Financial reporting dengan insight generation
-
----
-
-## Langkah Selanjutnya & Tugas Rumah
-
-![Homework](day-2/images/homework-assignments.png)
-<!-- Placeholder: Homework visual -->
-
-### 📝 **Tugas Rumah:**
-
-**Level 1 - Praktik Core Skill:**
-- Buat 1 workflow dengan minimal 3 node berbeda
-- Implementasi 1 branching logic untuk use case bisnis Anda
-- Test data flow dengan tracing dari input ke output
-
-**Level 2 - Terapkan ke Bisnis:**
-- Identifikasi 1 proses bisnis yang bisa pakai branching
-- Design workflow dengan merge node untuk gabungkan data
-- Hitung potential time saving dari automation yang dibuat
-
-**Level 3 - Explore AI:**
-- Coba 1 simple AI integration (email classification)
-- Bandingkan result AI vs manual rule
-- Think of 3 use case AI untuk bisnis Anda
-
----
-
-## Persiapan Day 3
-
-![Day 3 Preview](day-2/images/day3-preview.png)
-<!-- Placeholder: Day 3 preview topics -->
-
-### 🚀 **Yang Akan Dipelajari di Day 3:**
-
-**Error Handling & Debugging**:
-- Mengatasi automation yang "stuck" atau error
-- Best practice untuk reliability dan monitoring
-- Notification system untuk automation failure
-
-**Performance Optimization**:
-- Membuat automation yang cepat dan efficient
-- Rate limiting dan resource management
-- Scaling automation untuk volume tinggi
-
-**AI Deep Dive**:
-- Implementasi lengkap AI dalam workflow
-- Advanced prompt engineering untuk bisnis
-- AI monitoring dan quality control
-
----
-
-# Terima Kasih!
-
-## Sesi Q&A
-
-![QA Session](day-2/images/qa-session-day2.png)
-<!-- Placeholder: Q&A session image -->
-
-### Topik Diskusi:
-- Challenge dengan complex data flow
-- Pertanyaan tentang AI integration untuk bisnis
-- Ide automation spesifik untuk industri Anda
-- Technical troubleshooting dan best practice
-
-### Kontak & Dukungan:
-- **Email**: [instructor-email@domain.com]
-- **Slack**: #n8n-tutorial-day2
-- **Office Hour**: [Schedule untuk individual help]
-- **Homework Submission**: [Platform/method]
-
-**Ingat**: Mulai sederhana, kemudian tambah kompleksitas. AI adalah tool untuk enhance automation, bukan replace understanding!
 
 ---
