@@ -78,7 +78,13 @@ Setelah sesi ini, peserta dapat:
 
 **Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer. Input yang kita masukkan akan diproses, dan dapat menghasilkan output.
 
-<!-- Todo: Tambah studi kasus sederhana >
+### Contoh Sederhana: Proses Order Kopi Online
+1. **Input**: Customer pesan kopi via WhatsApp
+2. **Proses**: Catat pesanan → Cek stok → Hitung total
+3. **Output**: Konfirmasi ke customer + notifikasi ke barista
+
+**Tanpa N8N**: Manual copy-paste, buka tutup aplikasi berkali-kali
+**Dengan N8N**: Sekali setup, semua otomatis 24/7!
 
 ---
 
@@ -95,7 +101,45 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
-<!-- Todo: Penjelasan bahwa setiap node akan mengambil data yag diberikan oleh node sebelumnya dan diproses sesuai dengan tipe node yang sekarang -->
+## Cara Kerja Antar Node
+
+![Data Flow Between Nodes](day-1/images/data-flow-nodes.png)
+<!-- Placeholder: Diagram aliran data antar node -->
+
+### Prinsip Dasar:
+📨 **Node 1** → Kirim data → **Node 2** → Proses → **Node 3**
+
+### Contoh Nyata:
+1. **Google Sheets** (ambil data customer baru)
+2. **Gmail** (terima data nama & email, kirim welcome email)
+3. **Slack** (terima data dari Gmail, kirim notifikasi ke tim)
+
+**Setiap node = Seperti orang di assembly line. Terima hasil kerja sebelumnya, lakukan tugasnya, teruskan ke yang berikutnya.**
+
+---
+
+## Menggunakan Data dari Node Sebelumnya
+
+![Field Drag Drop](day-1/images/field-drag-drop.png)
+<!-- Placeholder: Screenshot drag and drop field di N8N -->
+
+### Cara Mudah Ambil Data:
+1. **Lihat panel kiri** - Daftar field dari node sebelumnya
+2. **Drag & drop** field yang dibutuhkan ke field yang mau diisi
+3. **Auto-complete** - N8N otomatis isi dengan format yang benar
+
+### Shortcut Pinning:
+- **Pin data**: Klik ikon pin di samping node
+- **Unpin data**: Klik kembali ikon pin
+- **Keyboard**: `Ctrl+P` (Pin), `Ctrl+U` (Unpin)
+
+### Contoh Praktis:
+- **Google Sheets** punya field: `nama`, `email`, `perusahaan`
+- **Gmail node** butuh email → Drag `email` dari Sheets
+- **Slack node** butuh nama → Drag `nama` dari Sheets
+
+### Kalau Butuh Data dari Beberapa Node Sebelumnya:
+💡 **Tips**: Gunakan node **Merge** untuk gabungkan data dari multiple sources!
 
 ---
 
@@ -186,7 +230,23 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-<!-- Todo: Halaman berisi manajemen dari kredensial>
+## Mengelola Kredensial dengan Aman
+
+![Credential Management](day-1/images/credential-management.png)
+<!-- Placeholder: Screenshot credential management interface -->
+
+**Kredensial** = "Kunci akses" untuk menghubungkan N8N dengan aplikasi Anda
+
+### Jenis Kredensial:
+🔑 **OAuth** - Login sekali, akses selamanya (Google, Slack)
+🔐 **API Key** - Kode rahasia dari aplikasi (seperti password)
+📧 **Email/Password** - Login biasa seperti di browser
+
+### Best Practices Keamanan:
+✅ **Jangan share kredensial** dengan tim lain
+✅ **Gunakan akun khusus** untuk automation (bukan personal)
+✅ **Review akses berkala** - Cabut yang tidak perlu
+✅ **Backup credential penting** ke tempat aman
 
 ---
 
@@ -237,11 +297,72 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-<!-- Todo: Mengenalkan apa itu pinned data -->
+## Apa itu Pinned Data?
+
+![Pinned Data Concept](day-1/images/pinned-data-concept.png)
+<!-- Placeholder: Screenshot pinned data di N8N -->
+
+**Pinned Data** = Data sample yang "disematkan" ke node untuk testing
+
+### Mengapa Penting?
+- 🧪 **Test workflow** tanpa trigger real
+- 🔍 **Debug masalah** dengan data yang sama
+- ⚡ **Kembangkan lebih cepat** tanpa tunggu data asli
+- 📝 **Dokumentasi** - contoh data untuk tim lain
 
 ---
 
-<!-- Todo: Cara menggunakan past execution untuk dijadikan pinned data -->
+## Contoh Real: Pin Data dari AI Node
+
+![AI Node Pinning](day-1/images/ai-node-pinning.png)
+<!-- Placeholder: Screenshot AI node dengan pinned data -->
+
+### Skenario Bisnis:
+Workflow Anda pakai **OpenAI node** untuk analisa customer feedback → **$0.01 per request** 💸
+
+### Masalah Tanpa Pinned Data:
+❌ Test workflow = Bayar AI berkali-kali
+❌ Debug error = Buang-buang budget AI
+❌ Demo ke boss = Mahal!
+
+### Solusi dengan Pinned Data:
+✅ **Run AI sekali** → Pin hasilnya
+✅ **Test node lain** pakai data yang di-pin
+✅ **Save money** + develop lebih cepat!
+
+### Contoh Workflow:
+1. **Form** (customer feedback) → 2. **OpenAI** (analisa sentiment) → 3. **Pin hasil AI** → 4. **Gmail/Slack** (test gratis!)
+
+---
+
+## Membuat Pinned Data dari Past Execution
+
+![Past Execution to Pinned](day-1/images/past-execution-pinned.png)
+<!-- Placeholder: Screenshot langkah-langkah membuat pinned data -->
+
+### Langkah Mudah:
+1. **Buka Execution History** - Pilih eksekusi yang berhasil
+2. **Klik node** yang datanya mau di-pin
+3. **Klik "Pin Data"** - Button di panel samping
+4. **Konfirmasi** - Data otomatis tersimpan sebagai sample
+
+### Kapan Gunakan?
+✅ **Workflow sudah jalan sekali** - Ada data real yang bisa dipin
+✅ **Mau modifikasi workflow** - Test perubahan dengan data sama
+✅ **Demo ke tim** - Pakai data asli tanpa trigger ulang
+✅ **Training** - Belajar dengan data real yang sudah proven
+
+### Use Case: Debug Bug yang Terjadi
+🐛 **Masalah**: Workflow error di production dengan data customer tertentu
+
+**Langkah Debug**:
+1. **Cari execution yang error** di history
+2. **Pin data dari node yang bermasalah**
+3. **Modify workflow** untuk fix bug
+4. **Test dengan pinned data** - reproduksi exact same error
+5. **Verify fix** tanpa tunggu data real lagi
+
+**Pro Tip**: Pin data di beberapa node untuk test skenario berbeda!
 
 ---
 
