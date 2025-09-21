@@ -118,6 +118,27 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
+## Menggunakan Data dari Node Sebelumnya
+
+![Field Drag Drop](day-1/images/field-drag-drop.png)
+<!-- Placeholder: Screenshot drag and drop field di N8N -->
+
+### Cara Mudah Ambil Data:
+1. **Klik field** yang mau diisi (contoh: email di Gmail node)
+2. **Lihat panel kanan** - Daftar field dari node sebelumnya
+3. **Drag & drop** field yang dibutuhkan
+4. **Auto-complete** - N8N otomatis isi dengan format yang benar
+
+### Contoh Praktis:
+- **Google Sheets** punya field: `nama`, `email`, `perusahaan`
+- **Gmail node** butuh email → Drag `email` dari Sheets
+- **Slack node** butuh nama → Drag `nama` dari Sheets
+
+### Kalau Butuh Data dari Beberapa Node Sebelumnya:
+💡 **Tips**: Gunakan node **Merge** untuk gabungkan data dari multiple sources!
+
+---
+
 ## Jenis-jenis Node
 
 ### 🚀 **Trigger Nodes**
@@ -285,8 +306,28 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 - ⚡ **Kembangkan lebih cepat** tanpa tunggu data asli
 - 📝 **Dokumentasi** - contoh data untuk tim lain
 
-### Contoh Penggunaan:
-Anda buat workflow untuk process order, tapi belum ada order asli. Pin data sample order untuk test semua node dulu!
+---
+
+## Contoh Real: Pin Data dari AI Node
+
+![AI Node Pinning](day-1/images/ai-node-pinning.png)
+<!-- Placeholder: Screenshot AI node dengan pinned data -->
+
+### Skenario Bisnis:
+Workflow Anda pakai **OpenAI node** untuk analisa customer feedback → **$0.01 per request** 💸
+
+### Masalah Tanpa Pinned Data:
+❌ Test workflow = Bayar AI berkali-kali
+❌ Debug error = Buang-buang budget AI
+❌ Demo ke boss = Mahal!
+
+### Solusi dengan Pinned Data:
+✅ **Run AI sekali** → Pin hasilnya
+✅ **Test node lain** pakai data yang di-pin
+✅ **Save money** + develop lebih cepat!
+
+### Contoh Workflow:
+1. **Form** (customer feedback) → 2. **OpenAI** (analisa sentiment) → 3. **Pin hasil AI** → 4. **Gmail/Slack** (test gratis!)
 
 ---
 
@@ -306,6 +347,16 @@ Anda buat workflow untuk process order, tapi belum ada order asli. Pin data samp
 ✅ **Mau modifikasi workflow** - Test perubahan dengan data sama
 ✅ **Demo ke tim** - Pakai data asli tanpa trigger ulang
 ✅ **Training** - Belajar dengan data real yang sudah proven
+
+### Use Case: Debug Bug yang Terjadi
+🐛 **Masalah**: Workflow error di production dengan data customer tertentu
+
+**Langkah Debug**:
+1. **Cari execution yang error** di history
+2. **Pin data dari node yang bermasalah**
+3. **Modify workflow** untuk fix bug
+4. **Test dengan pinned data** - reproduksi exact same error
+5. **Verify fix** tanpa tunggu data real lagi
 
 **Pro Tip**: Pin data di beberapa node untuk test skenario berbeda!
 
