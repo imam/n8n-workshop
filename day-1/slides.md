@@ -78,7 +78,13 @@ Setelah sesi ini, peserta dapat:
 
 **Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer. Input yang kita masukkan akan diproses, dan dapat menghasilkan output.
 
-<!-- Todo: Tambah studi kasus sederhana >
+### Contoh Sederhana: Proses Order Kopi Online
+1. **Input**: Customer pesan kopi via WhatsApp
+2. **Proses**: Catat pesanan → Cek stok → Hitung total
+3. **Output**: Konfirmasi ke customer + notifikasi ke barista
+
+**Tanpa N8N**: Manual copy-paste, buka tutup aplikasi berkali-kali
+**Dengan N8N**: Sekali setup, semua otomatis 24/7!
 
 ---
 
@@ -95,7 +101,20 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
-<!-- Todo: Penjelasan bahwa setiap node akan mengambil data yag diberikan oleh node sebelumnya dan diproses sesuai dengan tipe node yang sekarang -->
+## Cara Kerja Antar Node
+
+![Data Flow Between Nodes](day-1/images/data-flow-nodes.png)
+<!-- Placeholder: Diagram aliran data antar node -->
+
+### Prinsip Dasar:
+📨 **Node 1** → Kirim data → **Node 2** → Proses → **Node 3**
+
+### Contoh Nyata:
+1. **Google Sheets** (ambil data customer baru)
+2. **Gmail** (terima data nama & email, kirim welcome email)
+3. **Slack** (terima data dari Gmail, kirim notifikasi ke tim)
+
+**Setiap node = Seperti orang di assembly line. Terima hasil kerja sebelumnya, lakukan tugasnya, teruskan ke yang berikutnya.**
 
 ---
 
@@ -186,7 +205,23 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-<!-- Todo: Halaman berisi manajemen dari kredensial>
+## Mengelola Kredensial dengan Aman
+
+![Credential Management](day-1/images/credential-management.png)
+<!-- Placeholder: Screenshot credential management interface -->
+
+**Kredensial** = "Kunci akses" untuk menghubungkan N8N dengan aplikasi Anda
+
+### Jenis Kredensial:
+🔑 **OAuth** - Login sekali, akses selamanya (Google, Slack)
+🔐 **API Key** - Kode rahasia dari aplikasi (seperti password)
+📧 **Email/Password** - Login biasa seperti di browser
+
+### Best Practices Keamanan:
+✅ **Jangan share kredensial** dengan tim lain
+✅ **Gunakan akun khusus** untuk automation (bukan personal)
+✅ **Review akses berkala** - Cabut yang tidak perlu
+✅ **Backup credential penting** ke tempat aman
 
 ---
 
@@ -237,11 +272,42 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-<!-- Todo: Mengenalkan apa itu pinned data -->
+## Apa itu Pinned Data?
+
+![Pinned Data Concept](day-1/images/pinned-data-concept.png)
+<!-- Placeholder: Screenshot pinned data di N8N -->
+
+**Pinned Data** = Data sample yang "disematkan" ke node untuk testing
+
+### Mengapa Penting?
+- 🧪 **Test workflow** tanpa trigger real
+- 🔍 **Debug masalah** dengan data yang sama
+- ⚡ **Kembangkan lebih cepat** tanpa tunggu data asli
+- 📝 **Dokumentasi** - contoh data untuk tim lain
+
+### Contoh Penggunaan:
+Anda buat workflow untuk process order, tapi belum ada order asli. Pin data sample order untuk test semua node dulu!
 
 ---
 
-<!-- Todo: Cara menggunakan past execution untuk dijadikan pinned data -->
+## Membuat Pinned Data dari Past Execution
+
+![Past Execution to Pinned](day-1/images/past-execution-pinned.png)
+<!-- Placeholder: Screenshot langkah-langkah membuat pinned data -->
+
+### Langkah Mudah:
+1. **Buka Execution History** - Pilih eksekusi yang berhasil
+2. **Klik node** yang datanya mau di-pin
+3. **Klik "Pin Data"** - Button di panel samping
+4. **Konfirmasi** - Data otomatis tersimpan sebagai sample
+
+### Kapan Gunakan?
+✅ **Workflow sudah jalan sekali** - Ada data real yang bisa dipin
+✅ **Mau modifikasi workflow** - Test perubahan dengan data sama
+✅ **Demo ke tim** - Pakai data asli tanpa trigger ulang
+✅ **Training** - Belajar dengan data real yang sudah proven
+
+**Pro Tip**: Pin data di beberapa node untuk test skenario berbeda!
 
 ---
 
