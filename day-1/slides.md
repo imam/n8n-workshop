@@ -15,25 +15,12 @@
 <!-- Placeholder: Logo N8N -->
 
 - **N8N** adalah tool untuk otomatisasi pekerjaan bisnis Anda
-- Menghubungkan aplikasi-aplikasi favorit Anda tanpa perlu coding
+- Menghubungkan 300+ aplikasi favorit Anda tanpa perlu coding
 - Seperti main puzzle - drag & drop aja!
 - Bisa dijalankan sendiri, data tetap aman di tangan Anda
 
 Note:
 Bayangkan tidak perlu lagi copy-paste data manual, atau mengecek email satu-satu. N8N bisa bantu otomatisasi semua itu!
-
----
-
-## Mengapa N8N?
-
-- 🔧 **Tanpa coding** - siapa saja bisa pakai!
-- 🔗 **300+ aplikasi** siap dikoneksi (Gmail, Slack, Excel, dll)
-- 🏠 **Data aman** - semuanya di kontrol Anda sendiri
-- 💰 **Gratis** - hemat budget IT perusahaan
-- 🎨 **Mudah dipahami** - seperti flowchart bisnis pada umumnya
-
-![Use Cases](day-1/images/use-cases.png)
-<!-- Placeholder: Diagram use cases N8N -->
 
 ---
 
@@ -77,22 +64,6 @@ Setelah sesi ini, peserta dapat:
 3. **Data tersimpan** di Google Sheets untuk follow-up
 4. **Tim sales dapat notifikasi** di Slack ada lead baru
 
-**Mari lihat magic-nya terjadi!**
-
----
-
-## Yang Akan Kita Pelajari
-
-![Learning Path](day-1/images/learning-path.png)
-<!-- Placeholder: Visual learning path -->
-
-### Setelah demo ini, kita akan explore:
-- Cara membuat workflow dari nol
-- Berbagai jenis trigger dan kapan menggunakannya
-- Setup kredensial untuk integrasi
-- Monitor dan debug workflow
-- Best practices untuk production
-
 ---
 
 <!-- SECTION 3: Workflow Concepts -->
@@ -105,11 +76,9 @@ Setelah sesi ini, peserta dapat:
 ![Workflow Concept](day-1/images/workflow-concept.png)
 <!-- Placeholder: Diagram konsep workflow dengan panah -->
 
-**Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer
+**Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer. Input yang kita masukkan akan diproses, dan dapat menghasilkan output.
 
-- **Input** → **Process** → **Output**
-- Setiap langkah adalah **Node**
-- Data mengalir dari satu node ke node lainnya
+<!-- Todo: Tambah studi kasus sederhana >
 
 ---
 
@@ -126,30 +95,21 @@ Setelah sesi ini, peserta dapat:
 
 ---
 
+<!-- Todo: Penjelasan bahwa setiap node akan mengambil data yag diberikan oleh node sebelumnya dan diproses sesuai dengan tipe node yang sekarang -->
+
+---
+
 ## Jenis-jenis Node
 
 ### 🚀 **Trigger Nodes**
-Memulai workflow secara otomatis
+Node paling awal yang mentrigger seluruh workflow
 ![Trigger Examples](day-1/images/trigger-examples.png)
 <!-- Placeholder: Icon-icon trigger node -->
 
 ### ⚙️ **Regular Nodes**
-Melakukan aksi atau transformasi data
+Node yang memproses data
 ![Regular Node Examples](day-1/images/regular-examples.png)
 <!-- Placeholder: Icon-icon regular node -->
-
----
-
-## Data Flow
-
-![Data Flow](day-1/images/data-flow.png)
-<!-- Placeholder: Diagram aliran data antar node -->
-
-- Data berupa informasi bisnis (nama customer, email, nomor invoice, dll)
-- Setiap node dapat:
-  - Menerima informasi dari langkah sebelumnya
-  - Memproses/mengubah informasi (contoh: format tanggal, hitung total)
-  - Meneruskan hasil ke langkah berikutnya
 
 ---
 
@@ -170,19 +130,6 @@ Melakukan aksi atau transformasi data
 
 <!-- SECTION 4: Triggers -->
 # Memahami Berbagai Trigger pada N8N
-
----
-
-## Apa itu Trigger?
-
-![Trigger Concept](day-1/images/trigger-concept.png)
-<!-- Placeholder: Diagram trigger sebagai starting point -->
-
-**Trigger** = Node yang memulai eksekusi workflow
-
-- Workflow **HARUS** dimulai dengan trigger
-- Trigger menentukan **kapan** workflow dijalankan
-- Berbagai jenis trigger untuk berbagai kebutuhan
 
 ---
 
@@ -234,35 +181,12 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-## Trigger Comparison
-
-| Trigger Type | Execution | Use Case | Real-time |
-|--------------|-----------|----------|-----------|
-| Google Sheets | Data baru | Input tim ke spreadsheet | ✅ |
-| Telegram | Pesan baru | Customer service & support | ✅ |
-| Google Calendar | Event dimulai | Meeting reminder & prep | ⚠️ |
-
-![Trigger Comparison](day-1/images/trigger-comparison.png)
-<!-- Placeholder: Visual comparison chart -->
-
----
-
 <!-- SECTION 5: Credentials -->
 # Menghubungkan Aplikasi Favorit Anda
 
 ---
 
-## Mengapa Perlu Koneksi?
-
-![App Connections](day-1/images/app-connections.png)
-<!-- Placeholder: Icon aplikasi-aplikasi populer -->
-
-- **Gmail** untuk kirim/terima email otomatis
-- **Google Sheets** untuk simpan data
-- **Slack** untuk notifikasi tim
-- **Telegram** untuk komunikasi customer
-
-*Seperti login ke aplikasi, tapi untuk automation*
+<!-- Todo: Halaman berisi manajemen dari kredensial>
 
 ---
 
@@ -278,11 +202,6 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 4. **Izinkan akses** untuk N8N
 5. **Selesai!** Aplikasi sudah terhubung
 
-### 🔒 **Keamanan Terjamin:**
-- Login seperti biasa, tidak ada password khusus
-- Bisa dicabut kapan saja kalau tidak perlu
-- Data tetap aman di aplikasi masing-masing
-
 ---
 
 <!-- SECTION 6: Execution History -->
@@ -295,7 +214,7 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 ![Execution History](day-1/images/execution-history.png)
 <!-- Placeholder: Screenshot halaman execution history -->
 
-**Execution History** = Log dari semua workflow yang pernah dijalankan
+**Execution History** = Sejarah dari semua workflow yang pernah dijalankan
 
 - **Status** eksekusi (Success/Failed/Running)
 - **Timestamp** kapan dijalankan
@@ -318,21 +237,11 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-## Apa yang Harus Dilakukan Kalau Ada Masalah?
+<!-- Todo: Mengenalkan apa itu pinned data -->
 
-![Simple Troubleshooting](day-1/images/simple-troubleshooting.png)
-<!-- Placeholder: Simple troubleshooting steps -->
+---
 
-### Langkah Mudah Troubleshooting:
-1. **Cek status** - Apakah berwarna merah (error)?
-2. **Cek koneksi** - Apakah semua aplikasi masih terkoneksi?
-3. **Coba jalankan ulang** - Klik execute sekali lagi
-4. **Minta bantuan** - Hubungi tim IT atau instruktur
-
-### 💡 **Tips Monitoring Sederhana:**
-- Cek hasil automation setiap pagi
-- Pastikan data masuk ke tempat yang benar
-- Kalau ada yang aneh, langsung tanya
+<!-- Todo: Cara menggunakan past execution untuk dijadikan pinned data -->
 
 ---
 
