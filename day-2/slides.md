@@ -234,6 +234,14 @@ Cron, IF, Switch, Wait, Merge
 
 ## Node Komunikasi
 
+**Node komunikasi** adalah jantung automation bisnis modern. Node-node ini menghubungkan sistem internal Anda dengan platform komunikasi yang digunakan setiap hari oleh tim dan customer.
+
+### Mengapa Penting untuk Bisnis?
+✅ **Respon otomatis** - Tidak ada customer yang menunggu lama
+✅ **Koordinasi tim** - Semua orang dapat info yang sama
+✅ **Scaling communication** - Handle 100x lebih banyak interaksi
+✅ **Consistency** - Pesan yang seragam dan professional
+
 ![Communication Nodes](day-2/images/communication-nodes.png)
 <!-- Placeholder: Screenshots of communication nodes -->
 
@@ -279,6 +287,16 @@ Cron, IF, Switch, Wait, Merge
 
 ## Node Data & Storage
 
+**Node data & storage** adalah fondasi dari automation yang powerful. Node-node ini mengelola, menyimpan, dan mengorganisir informasi bisnis Anda secara otomatis.
+
+### Peran Krusial dalam Bisnis:
+📊 **Central data hub** - Satu tempat untuk semua informasi bisnis
+🔄 **Real-time sync** - Data selalu update di semua sistem
+📈 **Business intelligence** - Data tersruktur untuk decision making
+🔒 **Data security** - Backup otomatis dan access control
+
+**Pilihan Platform**: Dari yang sederhana (Sheets) hingga enterprise (Database)
+
 ![Data Storage Nodes](day-2/images/data-storage-nodes.png)
 <!-- Placeholder: Screenshots of data nodes -->
 
@@ -321,42 +339,98 @@ Cron, IF, Switch, Wait, Merge
 
 ## Node Processing & Logic
 
+**Node processing & logic** adalah "otak" dari automation Anda. Node-node ini memproses, menganalisa, dan membuat keputusan berdasarkan data bisnis yang mengalir.
+
+### Fungsi Vital untuk Automation:
+🧠 **Smart decision making** - Automation yang bisa "berpikir"
+⚡ **Data transformation** - Ubah format data sesuai kebutuhan
+⏱️ **Timing control** - Atur kapan aksi harus dilakukan
+🔗 **Data integration** - Gabungkan info dari berbagai sumber
+
+**Kunci Sukses**: Node ini yang membuat automation Anda flexibel dan intelligent!
+
 ![Processing Nodes](day-2/images/processing-nodes.png)
 <!-- Placeholder: Screenshots of processing nodes -->
 
 ### Set Node
 **Tujuan**: Transform dan clean data
-**Contoh Penggunaan**:
-- Rename field untuk konsistensi
-- Calculate nilai baru (total, persentase)
-- Format tanggal dan nomor telepon
-- Hapus field data yang tidak perlu
+
+**Real Use Case 1 - E-commerce Order Processing**:
+- Input: Order dari toko online dengan format "Rp 150,000"
+- Transform: Ubah ke angka 150000 untuk calculation
+- Output: Data siap untuk inventory dan accounting system
+
+**Real Use Case 2 - Customer Data Cleanup**:
+- Input: Form dengan "Ph: +62-21-1234567" dan "Email: JOHN@GMAIL.COM"
+- Transform: Format jadi "6221234567" dan "john@gmail.com"
+- Output: Data konsisten untuk CRM dan WhatsApp automation
+
+**Kasus Nyata 3 - Metrik Media Sosial**:
+- Input: Data engagement dari berbagai platform
+- Transform: Hitung ROI, tingkat pertumbuhan, dan rata-rata engagement
+- Output: Metrik siap dashboard untuk laporan bulanan
 
 ### Function Node
-**Tujuan**: Custom data processing dengan JavaScript
-**Contoh Bisnis**:
-- Hitung komisi berdasarkan sales tier
-- Generate nomor order unik
-- Parse dan clean imported data
-- Implementasi custom business logic
+**Tujuan**: Pemrosesan data kustom dengan JavaScript
+
+**Kasus Nyata 1 - Kalkulator Komisi Sales**:
+- Input: Jumlah penjualan = 10,000,000, Tier sales = "Senior"
+- Proses: JIKA tier Senior MAKA komisi 8% KALAU TIDAK 5%
+- Output: Komisi = 800,000 + perhitungan bonus
+
+**Kasus Nyata 2 - Generator Nomor Invoice Pintar**:
+- Input: Tanggal + tipe customer + urutan
+- Proses: "INV-" + "2024" + "B2B" + nomor otomatis naik
+- Output: "INV-2024B2B-00127" untuk pelacakan dan akuntansi
+
+**Kasus Nyata 3 - Penilaian Risiko Customer**:
+- Input: Riwayat pembayaran, frekuensi order, jumlah komplain
+- Proses: Algoritma berbobot untuk penilaian risiko
+- Output: Skor risiko 1-10 untuk limit kredit dan syarat pembayaran
 
 ---
 
 ### Wait Node
-**Tujuan**: Tambah delay antar aksi
-**Contoh Penggunaan**:
-- Tunggu 24 jam sebelum kirim follow-up email
-- Delay antar API call untuk hindari rate limit
-- Pause workflow untuk manual approval
-- Schedule aksi hanya untuk jam kerja
+**Tujuan**: Tambah jeda antar aksi
+
+**Kasus Nyata 1 - Campaign Nurturing Customer**:
+- Pemicu: Lead baru mendaftar
+- Tunggu: 24 jam setelah email selamat datang
+- Aksi: Kirim konten edukasi + penawaran khusus
+- Dampak Bisnis: Tingkat konversi lebih tinggi dengan timing yang tepat
+
+**Kasus Nyata 2 - Automation Follow-up Pembayaran**:
+- Pemicu: Invoice dikirim
+- Tunggu: 7 hari jika belum ada pembayaran
+- Aksi: Kirim pengingat sopan dengan link pembayaran
+- Dampak Bisnis: Pengumpulan lebih cepat tanpa pelacakan manual
+
+**Kasus Nyata 3 - Urutan Permintaan Review**:
+- Pemicu: Pesanan diterima (dari sistem pelacakan)
+- Tunggu: 3 hari untuk pengalaman customer
+- Aksi: Kirim permintaan review dengan insentif
+- Dampak Bisnis: Review lebih autentik dengan timing yang tepat
 
 ### Merge Node
-**Tujuan**: Gabungkan data dari multiple source
-**Contoh Penggunaan**:
-- Merge data customer dengan order history
-- Combine social media metrics
-- Join data dari departemen berbeda
-- Buat comprehensive report
+**Tujuan**: Gabungkan data dari berbagai sumber
+
+**Kasus Nyata 1 - Profil Customer 360°**:
+- Input A: Data customer dari CRM (info kontak, preferensi)
+- Input B: Riwayat pembelian dari platform e-commerce
+- Input C: Tiket support dari sistem help desk
+- Output: Profil customer lengkap untuk layanan personal
+
+**Kasus Nyata 2 - Performa Campaign Marketing**:
+- Input A: Metrik email (buka, tingkat klik)
+- Input B: Engagement media sosial
+- Input C: Data konversi website
+- Output: Dashboard marketing terpadu dengan perhitungan ROI
+
+**Kasus Nyata 3 - Automation Laporan Keuangan**:
+- Input A: Data penjualan dari berbagai toko
+- Input B: Data pengeluaran dari sistem akuntansi
+- Input C: Biaya inventory dari manajemen gudang
+- Output: Laporan P&L bulanan otomatis dengan analisis trend
 
 **Tips Penting**: Merge node sangat berguna untuk integrasi data dari berbagai sistem menjadi satu workflow yang powerful!
 
