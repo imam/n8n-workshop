@@ -124,10 +124,14 @@ Setelah sesi ini, peserta dapat:
 <!-- Placeholder: Screenshot drag and drop field di N8N -->
 
 ### Cara Mudah Ambil Data:
-1. **Klik field** yang mau diisi (contoh: email di Gmail node)
-2. **Lihat panel kanan** - Daftar field dari node sebelumnya
-3. **Drag & drop** field yang dibutuhkan
-4. **Auto-complete** - N8N otomatis isi dengan format yang benar
+1. **Lihat panel kiri** - Daftar field dari node sebelumnya
+2. **Drag & drop** field yang dibutuhkan ke field yang mau diisi
+3. **Auto-complete** - N8N otomatis isi dengan format yang benar
+
+### Shortcut Pinning:
+- **Pin data**: Klik ikon pin di samping node
+- **Unpin data**: Klik kembali ikon pin
+- **Keyboard**: `Ctrl+P` (Pin), `Ctrl+U` (Unpin)
 
 ### Contoh Praktis:
 - **Google Sheets** punya field: `nama`, `email`, `perusahaan`
