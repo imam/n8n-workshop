@@ -14,23 +14,23 @@
 ![N8N Logo](day-1/images/n8n-logo.png)
 <!-- Placeholder: Logo N8N -->
 
-- **N8N** adalah platform automation workflow yang open-source
-- Memungkinkan integrasi antar aplikasi tanpa coding
-- Visual workflow builder
-- Self-hosted solution
+- **N8N** adalah tool untuk otomatisasi pekerjaan bisnis Anda
+- Menghubungkan aplikasi-aplikasi favorit Anda tanpa perlu coding
+- Seperti main puzzle - drag & drop aja!
+- Bisa dijalankan sendiri, data tetap aman di tangan Anda
 
 Note:
-N8N memungkinkan kita untuk mengotomatisasi tugas-tugas repetitif dengan cara yang visual dan mudah dipahami.
+Bayangkan tidak perlu lagi copy-paste data manual, atau mengecek email satu-satu. N8N bisa bantu otomatisasi semua itu!
 
 ---
 
 ## Mengapa N8N?
 
-- 🔧 **No-code/Low-code** approach
-- 🔗 **300+ integrations** tersedia
-- 🏠 **Self-hosted** - kontrol penuh atas data
-- 💰 **Open source** - gratis untuk digunakan
-- 🎨 **Visual interface** - mudah dipahami
+- 🔧 **Tanpa coding** - siapa saja bisa pakai!
+- 🔗 **300+ aplikasi** siap dikoneksi (Gmail, Slack, Excel, dll)
+- 🏠 **Data aman** - semuanya di kontrol Anda sendiri
+- 💰 **Gratis** - hemat budget IT perusahaan
+- 🎨 **Mudah dipahami** - seperti flowchart bisnis pada umumnya
 
 ![Use Cases](day-1/images/use-cases.png)
 <!-- Placeholder: Diagram use cases N8N -->
@@ -41,14 +41,11 @@ N8N memungkinkan kita untuk mengotomatisasi tugas-tugas repetitif dengan cara ya
 
 Setelah sesi ini, peserta dapat:
 
-- ✅ Memahami interface N8N
-- ✅ Membuat workflow sederhana
-
-- ✅ Menggunakan berbagai trigger
-
-- ✅ Mengelola kredensial
-
-- ✅ Memonitor eksekusi workflow
+- ✅ Mengenal cara kerja N8N untuk bisnis
+- ✅ Membuat otomatisasi pertama Anda
+- ✅ Menggunakan berbagai cara memulai otomatisasi
+- ✅ Mengelola koneksi ke aplikasi favorit
+- ✅ Memantau dan mengecek hasil otomatisasi
 
 ---
 
@@ -63,7 +60,7 @@ Setelah sesi ini, peserta dapat:
 <!-- Placeholder: Screenshot workflow sederhana yang sudah jadi -->
 
 ### Contoh Real Application:
-**Webhook** → **Slack** → **Google Sheets** → **Email Notification**
+**Form Submission** → **Slack** → **Google Sheets** → **Email Notification**
 
 *Kredensial sudah disetup oleh pengajar*
 
@@ -75,7 +72,7 @@ Setelah sesi ini, peserta dapat:
 <!-- Placeholder: Screenshot live demo execution -->
 
 ### Flow yang akan kita lihat:
-1. **Webhook** menerima data dari form
+1. **Form Submission** menerima data dari website
 2. **Slack** mengirim notifikasi ke channel
 3. **Google Sheets** menyimpan data
 4. **Email** konfirmasi ke user
@@ -108,7 +105,7 @@ Setelah sesi ini, peserta dapat:
 ![Workflow Concept](day-1/images/workflow-concept.png)
 <!-- Placeholder: Diagram konsep workflow dengan panah -->
 
-**Workflow** = Serangkaian langkah otomatis yang saling terhubung
+**Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer
 
 - **Input** → **Process** → **Output**
 - Setiap langkah adalah **Node**
@@ -148,26 +145,26 @@ Melakukan aksi atau transformasi data
 ![Data Flow](day-1/images/data-flow.png)
 <!-- Placeholder: Diagram aliran data antar node -->
 
-- Data berupa **JSON objects**
+- Data berupa informasi bisnis (nama customer, email, nomor invoice, dll)
 - Setiap node dapat:
-  - Menerima data dari node sebelumnya
-  - Memproses/mentransformasi data
-  - Meneruskan hasil ke node berikutnya
+  - Menerima informasi dari langkah sebelumnya
+  - Memproses/mengubah informasi (contoh: format tanggal, hitung total)
+  - Meneruskan hasil ke langkah berikutnya
 
 ---
 
 ## Best Practices
 
 ### ✅ Do's:
-- Beri nama workflow yang deskriptif
-- Gunakan komentar untuk dokumentasi
-- Test workflow secara bertahap
-- Kelompokkan node yang serupa
+- Beri nama workflow yang jelas (contoh: "Customer Onboarding Process")
+- Tambahkan catatan untuk tim lain yang akan menggunakan
+- Test dengan data sampel sebelum go-live
+- Kelompokkan workflow berdasarkan departemen
 
 ### ❌ Don'ts:
-- Jangan buat workflow terlalu kompleks
-- Hindari loop tak terbatas
-- Jangan hardcode sensitive data
+- Jangan buat workflow terlalu rumit - bagi jadi beberapa workflow kecil
+- Hindari workflow yang berjalan terus-menerus tanpa henti
+- Jangan masukkan password atau API key langsung di workflow
 
 ---
 
@@ -200,7 +197,7 @@ Melakukan aksi atau transformasi data
 - Default trigger untuk workflow baru
 
 ```
-Use case: Testing workflow baru
+Use case: Boss mau demo workflow ke client, atau tes workflow sebelum di-publish
 ```
 
 ---
@@ -216,7 +213,7 @@ Use case: Testing workflow baru
 - Dapat menerima data dari request
 
 ```
-Use case: Integrasi dengan aplikasi external
+Use case: Customer isi form di website, langsung masuk ke CRM dan kirim email welcome
 ```
 
 ---
@@ -233,9 +230,9 @@ Use case: Integrasi dengan aplikasi external
 
 ```
 Examples:
-- Setiap hari jam 9 pagi
-- Setiap Senin jam 8 pagi
-- Setiap 30 menit
+- Setiap hari jam 9 pagi: kirim laporan penjualan harian
+- Setiap Senin jam 8 pagi: reminder meeting mingguan
+- Setiap 30 menit: backup data penting
 ```
 
 ---
@@ -251,7 +248,8 @@ Examples:
 - Configurable interval
 
 ```
-Use case: Monitor new emails, files, database records
+Use case: Cek email customer support baru, monitor file invoice di folder,
+atau cek pesanan baru di e-commerce
 ```
 
 ---
