@@ -8,40 +8,41 @@ Panduan ini berisi 3 workflow demo yang dirancang untuk target audience business
 ## Workflow 1: Minor Complexity - "Customer Support Automation" [DRAFT]
 
 ### Business Scenario
-**Problem**: Customer service team kewalahan dengan pertanyaan yang masuk via berbagai channel
-**Solution**: Otomatisasi capture dan routing pertanyaan customer
+**Problem**: Customer service team kewalahan dengan pertanyaan yang masuk via website contact form
+**Solution**: Otomatisasi capture dan routing pertanyaan customer dari form submission
 
 ### Workflow Design (4 nodes)
 ```
-Telegram Trigger → Google Sheets (Log) → Gmail (Auto Reply) → Slack (Notify Team)
+Google Forms (New Submission) → Google Sheets (Log) → Gmail (Auto Reply) → Slack (Notify Team)
 ```
 
 ### **[DRAFT]** Wow Factor Elements:
-- **Multiple outputs** dari satu input
+- **Multiple outputs** dari satu input terstruktur
 - **Real-time notifications** ke berbagai platform
 - **Automatic logging** untuk reporting
-- **Instant auto-reply** ke customer
+- **Instant auto-reply** ke customer dengan data personal
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Setup Telegram bot untuk demo
-- [ ] Prepare sample customer messages
-- [ ] Test Gmail, Slack, Google Sheets connections
-- [ ] Create auto-reply email template
+- [ ] Create Google Form dengan fields: Nama, Email, Pertanyaan, Kategori
+- [ ] Setup Google Sheets untuk log customer inquiries
+- [ ] Test Gmail auto-reply dengan merge fields dari form
+- [ ] Configure Slack notification dengan customer details
+- [ ] Prepare sample form submissions untuk demo
 
 ### **[DRAFT]** Expected Demo Flow:
-1. Show incoming customer message di Telegram
-2. Demonstrate data tersimpan di Google Sheets
-3. Show auto-reply email terkirim ke customer
-4. Show notifikasi tim di Slack
-5. Highlight business value: "Tim support jadi lebih efisien"
+1. Show customer mengisi Google Form (live demo atau prepared)
+2. Demonstrate data otomatis tersimpan di Google Sheets dengan struktur
+3. Show personalized auto-reply email terkirim ke customer
+4. Show notifikasi tim di Slack dengan customer details
+5. Highlight business value: "Tidak ada inquiry yang terlewat, respon instan ke customer"
 
 ---
 
 ## Workflow 2: Basic Notification - "New Lead Alert" [DRAFT]
 
 ### Business Scenario
-**Problem**: Sales team kesulitan tracking lead baru
-**Solution**: Otomatisasi notifikasi lead pertama
+**Problem**: Sales team kesulitan tracking perubahan status lead secara real-time
+**Solution**: Otomatisasi notifikasi untuk lead baru DAN update status existing lead
 
 ### Workflow Design (2 nodes)
 ```
@@ -49,48 +50,61 @@ Google Sheets Trigger → Slack (Notify Sales Team)
 ```
 
 ### **[DRAFT]** Learning Objectives:
-- Memahami trigger sederhana
+- Memahami trigger yang responsif terhadap berbagai perubahan data
 - Menghubungkan dua aplikasi berbeda
-- Melihat data flow dasar
+- Melihat data flow dinamis dari multiple scenarios
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Create shared Google Sheet "Lead Database"
-- [ ] Test Slack channel notification
-- [ ] Prepare sample lead data for demo
+- [ ] Create shared Google Sheet "Lead Database" dengan kolom: Nama, Email, Status, Source
+- [ ] Test Slack channel notification dengan dynamic content
+- [ ] Prepare sample lead data dengan berbagai status
+- [ ] Setup demo untuk 2 trigger scenarios
 
-### **[DRAFT]** Hands-on Exploration:
-Instruktur bisa demonstrasikan:
-1. Input data manual di Google Sheets
-2. Lihat notifikasi otomatis di Slack
-3. Diskusikan potensi business value
+### **[DRAFT]** Enhanced Demo Flow:
+Instruktur demonstrasikan **2 skenario trigger**:
+
+**Skenario 1: New Lead**
+1. Tambahkan baris baru di Google Sheets (Lead baru)
+2. Lihat notifikasi "New Lead Added" di Slack
+
+**Skenario 2: Status Update**
+1. Update kolom "Status" dari "Cold" ke "Hot" pada existing lead
+2. Lihat notifikasi "Lead Status Changed" di Slack
+
+**Key Learning**: Satu workflow bisa handle multiple types of changes!
 
 ---
 
-## Workflow 3: Simple Automation - "Calendar Reminder" [DRAFT]
+## Workflow 3: Advanced - "Otomatisasi Follow-Up Pasca-Meeting" [DRAFT]
 
 ### Business Scenario
-**Problem**: Sering lupa kirim reminder meeting
-**Solution**: Otomatisasi pengingat sederhana
+**Problem**: Sales team lupa follow-up setelah meeting dengan prospek, dan status di database tidak ter-update
+**Solution**: Otomatisasi follow-up email dan update database status setelah meeting selesai
 
-### Workflow Design (2 nodes)
+### Workflow Design (4 nodes)
 ```
-Google Calendar Trigger → Gmail (Send Reminder)
+Google Calendar Trigger → Google Sheets (Search Row) → Gmail (Send Follow-up) → Google Sheets (Update Row)
 ```
 
-### **[DRAFT]** Basic Automation Concept:
-- Trigger otomatis dari kalender
-- Kirim email reminder tanpa manual
-- Hemat waktu admin meeting
+### **[DRAFT]** Advanced Learning Concepts:
+- **Data Search**: Mencari row berdasarkan meeting attendee
+- **Conditional Processing**: Kirim follow-up hanya untuk meeting tertentu
+- **Data Update**: Update status database setelah action completed
+- **Full Automation Cycle**: Dari trigger sampai database update
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Setup test Google Calendar dengan sample events
-- [ ] Buat template email reminder
-- [ ] Test trigger timing
-- [ ] Siapkan contoh skenario praktis
+- [ ] Setup Google Calendar dengan meeting yang include email attendee
+- [ ] Create Google Sheets "Prospek Database" dengan kolom: Email, Nama, Status, Last Contact
+- [ ] Configure Gmail follow-up template dengan personal touch
+- [ ] Test pencarian row berdasarkan attendee email
+- [ ] Test update status menjadi "Followed Up" after email sent
 
-### **[DRAFT]** Simple Learning Path:
-1. **Base**: Trigger dari kalender ke email
-2. **Diskusi**: Potensi otomatisasi meeting
+### **[DRAFT]** "Aha! Moment" Demo Flow:
+1. **Show Meeting End**: Tunjukkan meeting di Google Calendar yang baru selesai
+2. **Data Search in Action**: Lihat N8N mencari attendee di Google Sheets database
+3. **Personalized Follow-up**: Email follow-up otomatis terkirim dengan data dari sheets
+4. **Database Update**: **MOMENT PUNCAK** - Status di Google Sheets berubah otomatis menjadi "Followed Up"
+5. **Business Impact**: "Sales tidak pernah lupa follow-up, database selalu update"
 
 ---
 
@@ -98,15 +112,16 @@ Google Calendar Trigger → Gmail (Send Reminder)
 
 ### Credentials & Permissions:
 - [ ] Gmail account dengan app password
-- [ ] Telegram bot token
+- [ ] Google Forms access (same Google account)
 - [ ] Slack workspace dan bot permissions
 - [ ] Google Sheets API access
 - [ ] Google Calendar API access
 
 ### Test Data Preparation:
-- [ ] Sample customer messages (5-10 variations)
-- [ ] Lead database dengan realistic business data
-- [ ] Test calendar events dengan different timing
+- [ ] Google Form dengan sample customer inquiries (5-10 variations)
+- [ ] Lead database dengan realistic business data dan status variety
+- [ ] Calendar events dengan attendee emails yang match database
+- [ ] Prospek database dengan email yang match calendar attendees
 - [ ] Backup sample data kalau live demo gagal
 
 ### Technical Setup:
@@ -124,20 +139,20 @@ Google Calendar Trigger → Gmail (Send Reminder)
 - "Before N8N vs After N8N" comparison
 - Set expectation: "Anda akan lihat automation bekerja live"
 
-### Workflow Demo 1 (10 mins):
-- Show complex customer support automation
-- Highlight multiple integrations
-- Emphasis pada business value dan time savings
+### Workflow Demo 1 (8 mins):
+- Show Google Forms to multi-platform automation
+- Highlight structured data flow dan multiple integrations
+- Emphasis pada immediate customer response value
 
-### Workflow Demo 2 (5 mins):
-- Simple lead capture demonstration
-- Show expansion possibilities
-- Connect ke hands-on session
+### Workflow Demo 2 (7 mins):
+- Demonstrate dynamic trigger concepts (new vs update)
+- Show real-time notification scenarios
+- Connect konsep ke business operations
 
-### Transition to Hands-on (5 mins):
-- Introduce student base workflow
-- Set learning objectives
-- Distribute exercise materials
+### Workflow Demo 3 (10 mins):
+- Advanced data search and update demonstration
+- Build ke "Aha! moment" dengan database update
+- Showcase full automation cycle untuk business impact
 
 ---
 
