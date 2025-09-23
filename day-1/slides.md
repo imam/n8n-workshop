@@ -98,7 +98,6 @@ Setelah sesi ini, peserta dapat:
 - **Node Icon & Name** - Identifikasi node
 - **Output Connection** - Mengirim data
 - **Status Indicator** - Status eksekusi
-
 ---
 
 ## Cara Kerja Antar Node
@@ -128,11 +127,6 @@ Setelah sesi ini, peserta dapat:
 2. **Drag & drop** field yang dibutuhkan ke field yang mau diisi
 3. **Auto-complete** - N8N otomatis isi dengan format yang benar
 
-### Shortcut Pinning:
-- **Pin data**: Klik ikon pin di samping node
-- **Unpin data**: Klik kembali ikon pin
-- **Keyboard**: `Ctrl+P` (Pin), `Ctrl+U` (Unpin)
-
 ### Contoh Praktis:
 - **Google Sheets** punya field: `nama`, `email`, `perusahaan`
 - **Gmail node** butuh email → Drag `email` dari Sheets
@@ -140,35 +134,6 @@ Setelah sesi ini, peserta dapat:
 
 ### Kalau Butuh Data dari Beberapa Node Sebelumnya:
 💡 **Tips**: Gunakan node **Merge** untuk gabungkan data dari multiple sources!
-
----
-
-## Jenis-jenis Node
-
-### 🚀 **Trigger Nodes**
-Node paling awal yang mentrigger seluruh workflow
-![Trigger Examples](day-1/images/trigger-examples.png)
-<!-- Placeholder: Icon-icon trigger node -->
-
-### ⚙️ **Regular Nodes**
-Node yang memproses data
-![Regular Node Examples](day-1/images/regular-examples.png)
-<!-- Placeholder: Icon-icon regular node -->
-
----
-
-## Best Practices
-
-### ✅ Do's:
-- Beri nama workflow yang jelas (contoh: "Customer Onboarding Process")
-- Tambahkan catatan untuk tim lain yang akan menggunakan
-- Test dengan data sampel sebelum go-live
-- Kelompokkan workflow berdasarkan departemen
-
-### ❌ Don'ts:
-- Jangan buat workflow terlalu rumit - bagi jadi beberapa workflow kecil
-- Hindari workflow yang berjalan terus-menerus tanpa henti
-- Jangan masukkan password atau API key langsung di workflow
 
 ---
 
@@ -237,17 +202,6 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 **Kredensial** = "Kunci akses" untuk menghubungkan N8N dengan aplikasi Anda
 
-### Jenis Kredensial:
-🔑 **OAuth** - Login sekali, akses selamanya (Google, Slack)
-🔐 **API Key** - Kode rahasia dari aplikasi (seperti password)
-📧 **Email/Password** - Login biasa seperti di browser
-
-### Best Practices Keamanan:
-✅ **Jangan share kredensial** dengan tim lain
-✅ **Gunakan akun khusus** untuk automation (bukan personal)
-✅ **Review akses berkala** - Cabut yang tidak perlu
-✅ **Backup credential penting** ke tempat aman
-
 ---
 
 ## Cara Menghubungkan Aplikasi
@@ -297,6 +251,26 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
+## Waktunya Praktik! 🚀
+
+![Practice Time](day-1/images/practice-time.png)
+<!-- Placeholder: Gambar orang menggunakan laptop dengan semangat -->
+
+### Sekarang Giliran Anda!
+Setelah memahami konsep dasar N8N, saatnya **hands-on experience**:
+
+- 💼 **Build automation nyata** untuk bisnis Anda
+- 🔗 **Connect aplikasi favorit** yang sudah Anda pakai
+- ⚡ **Rasakan langsung** efisiensi automation
+- 🎯 **Lihat hasil** dalam hitungan menit
+
+**Tips**: Jangan takut eksperimen - N8N aman untuk dicoba!
+
+Note:
+Pastikan semua peserta siap dengan laptop dan akses internet. Berikan motivasi bahwa mereka akan membuat sesuatu yang berguna untuk pekerjaan mereka.
+
+---
+
 ## Apa itu Pinned Data?
 
 ![Pinned Data Concept](day-1/images/pinned-data-concept.png)
@@ -312,26 +286,26 @@ Use case: 15 menit sebelum meeting, kirim reminder ke semua peserta dan siapkan 
 
 ---
 
-## Contoh Real: Pin Data dari AI Node
+## Contoh Real: Pin Data dari API External
 
-![AI Node Pinning](day-1/images/ai-node-pinning.png)
-<!-- Placeholder: Screenshot AI node dengan pinned data -->
+![API Node Pinning](day-1/images/api-node-pinning.png)
+<!-- Placeholder: Screenshot HTTP Request node dengan pinned data -->
 
 ### Skenario Bisnis:
-Workflow Anda pakai **OpenAI node** untuk analisa customer feedback → **$0.01 per request** 💸
+Workflow Anda pakai **HTTP Request** untuk cek stok produk dari supplier → **Rate limit 100 requests/hour** 🚫
 
 ### Masalah Tanpa Pinned Data:
-❌ Test workflow = Bayar AI berkali-kali
-❌ Debug error = Buang-buang budget AI
-❌ Demo ke boss = Mahal!
+❌ Test workflow = Habis rate limit cepat
+❌ Debug error = Tunggu 1 jam untuk test lagi
+❌ Demo ke klien = Error quota exceeded!
 
 ### Solusi dengan Pinned Data:
-✅ **Run AI sekali** → Pin hasilnya
+✅ **Call API sekali** → Pin responsnya
 ✅ **Test node lain** pakai data yang di-pin
-✅ **Save money** + develop lebih cepat!
+✅ **Save API quota** + develop lebih cepat!
 
 ### Contoh Workflow:
-1. **Form** (customer feedback) → 2. **OpenAI** (analisa sentiment) → 3. **Pin hasil AI** → 4. **Gmail/Slack** (test gratis!)
+1. **Google Sheets** (list produk) → 2. **HTTP Request** (cek stok supplier) → 3. **Pin hasil API** → 4. **Gmail/Slack** (test gratis!)
 
 ---
 
