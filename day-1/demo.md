@@ -9,96 +9,88 @@ Panduan ini berisi 3 workflow demo yang dirancang untuk target audience business
 
 ### Business Scenario
 **Problem**: Customer service team kewalahan dengan pertanyaan yang masuk via berbagai channel
-**Solution**: Otomatisasi kategorisasi dan routing pertanyaan customer
+**Solution**: Otomatisasi capture dan routing pertanyaan customer
 
-### Workflow Design (5-6 nodes)
+### Workflow Design (4 nodes)
 ```
-Telegram Trigger → IF Node (Categorize) → Split into:
-├── Gmail (Urgent Issues → Manager)
-├── Slack (General → Support Team)
-└── Google Sheets (Log All Issues)
+Telegram Trigger → Google Sheets (Log) → Gmail (Auto Reply) → Slack (Notify Team)
 ```
 
 ### **[DRAFT]** Wow Factor Elements:
-- **Smart categorization** berdasarkan keyword
 - **Multiple outputs** dari satu input
 - **Real-time notifications** ke berbagai platform
 - **Automatic logging** untuk reporting
+- **Instant auto-reply** ke customer
 
 ### **[DRAFT]** Instructor Setup TODO:
 - [ ] Setup Telegram bot untuk demo
-- [ ] Prepare sample customer messages (urgent vs general)
+- [ ] Prepare sample customer messages
 - [ ] Test Gmail, Slack, Google Sheets connections
-- [ ] Create simple keyword categorization rules
+- [ ] Create auto-reply email template
 
 ### **[DRAFT]** Expected Demo Flow:
 1. Show incoming customer message di Telegram
-2. Demonstrate automatic categorization
-3. Show different routing based on urgency
-4. Highlight business value: "Tim support jadi lebih efisien"
+2. Demonstrate data tersimpan di Google Sheets
+3. Show auto-reply email terkirim ke customer
+4. Show notifikasi tim di Slack
+5. Highlight business value: "Tim support jadi lebih efisien"
 
 ---
 
-## Workflow 2: Minimum Complexity - "Lead Capture" [DRAFT]
+## Workflow 2: Basic Notification - "New Lead Alert" [DRAFT]
 
 ### Business Scenario
-**Problem**: Sales team manual copy-paste lead dari berbagai sumber
-**Solution**: Otomatisasi capture dan notification lead baru
+**Problem**: Sales team kesulitan tracking lead baru
+**Solution**: Otomatisasi notifikasi lead pertama
 
-### Workflow Design (3 nodes)
+### Workflow Design (2 nodes)
 ```
-Google Sheets Trigger → Gmail (Welcome Email) → Slack (Notify Sales Team)
+Google Sheets Trigger → Slack (Notify Sales Team)
 ```
 
-### **[DRAFT]** Instructor Expansion Ideas:
-- Add more notification channels (WhatsApp, Discord)
-- Add data validation (email format check)
-- Add lead scoring based on company size
-- Add CRM integration (HubSpot, Salesforce)
+### **[DRAFT]** Learning Objectives:
+- Memahami trigger sederhana
+- Menghubungkan dua aplikasi berbeda
+- Melihat data flow dasar
 
 ### **[DRAFT]** Instructor Setup TODO:
 - [ ] Create shared Google Sheet "Lead Database"
-- [ ] Setup Gmail template untuk welcome email
 - [ ] Test Slack channel notification
-- [ ] Prepare sample lead data for live demo
+- [ ] Prepare sample lead data for demo
 
-### **[DRAFT]** Hands-on Expansion Session:
-Instruktur bisa live expand workflow ini dengan:
-1. **Add SMS node** untuk urgent leads
-2. **Add conditional logic** berdasarkan lead source
-3. **Add data enrichment** via API
+### **[DRAFT]** Hands-on Exploration:
+Instruktur bisa demonstrasikan:
+1. Input data manual di Google Sheets
+2. Lihat notifikasi otomatis di Slack
+3. Diskusikan potensi business value
 
 ---
 
-## Workflow 3: Student Base - "Event Reminder" [DRAFT]
+## Workflow 3: Simple Automation - "Calendar Reminder" [DRAFT]
 
 ### Business Scenario
-**Problem**: Meeting organizer lupa kirim reminder
-**Solution**: Otomatisasi reminder sebelum meeting
+**Problem**: Sering lupa kirim reminder meeting
+**Solution**: Otomatisasi pengingat sederhana
 
 ### Workflow Design (2 nodes)
 ```
 Google Calendar Trigger → Gmail (Send Reminder)
 ```
 
-### **[DRAFT]** Student Expansion Ideas:
-- Add SMS reminder untuk VIP attendees
-- Add Slack notification ke team channel
-- Add Zoom link preparation
-- Add attendee RSVP tracking
-- Add post-meeting follow-up survey
+### **[DRAFT]** Basic Automation Concept:
+- Trigger otomatis dari kalender
+- Kirim email reminder tanpa manual
+- Hemat waktu admin meeting
 
 ### **[DRAFT]** Instructor Setup TODO:
 - [ ] Setup test Google Calendar dengan sample events
-- [ ] Create email reminder template
-- [ ] Test calendar trigger timing (15 mins before)
-- [ ] Prepare expansion challenges untuk students
+- [ ] Buat template email reminder
+- [ ] Test trigger timing
+- [ ] Siapkan contoh skenario praktis
 
-### **[DRAFT]** Student Exercise Structure:
-1. **Base**: Students implement basic calendar → email
-2. **Challenge 1**: Add second notification channel
-3. **Challenge 2**: Add conditional logic (VIP vs regular)
-4. **Challenge 3**: Add pre/post meeting automation
+### **[DRAFT]** Simple Learning Path:
+1. **Base**: Trigger dari kalender ke email
+2. **Diskusi**: Potensi otomatisasi meeting
 
 ---
 
