@@ -221,9 +221,6 @@ Gmail, Slack, Telegram, WhatsApp Business
 ### 📊 **Node Data & Storage**
 Google Sheets, Airtable, MySQL, Notion
 
-### 🔗 **Node Integrasi**
-Zapier, Webhook, HTTP Request, API calls
-
 ### 🤖 **Node AI & Processing**
 OpenAI, Claude, Text processing, Image analysis
 
@@ -351,42 +348,6 @@ Cron, IF, Switch, Wait, Merge
 
 ![Processing Nodes](day-2/images/processing-nodes.png)
 <!-- Placeholder: Screenshots of processing nodes -->
-
-### Set Node
-**Tujuan**: Transform dan clean data
-
-**Real Use Case 1 - E-commerce Order Processing**:
-- Input: Order dari toko online dengan format "Rp 150,000"
-- Transform: Ubah ke angka 150000 untuk calculation
-- Output: Data siap untuk inventory dan accounting system
-
-**Real Use Case 2 - Customer Data Cleanup**:
-- Input: Form dengan "Ph: +62-21-1234567" dan "Email: JOHN@GMAIL.COM"
-- Transform: Format jadi "6221234567" dan "john@gmail.com"
-- Output: Data konsisten untuk CRM dan WhatsApp automation
-
-**Kasus Nyata 3 - Metrik Media Sosial**:
-- Input: Data engagement dari berbagai platform
-- Transform: Hitung ROI, tingkat pertumbuhan, dan rata-rata engagement
-- Output: Metrik siap dashboard untuk laporan bulanan
-
-### Function Node
-**Tujuan**: Pemrosesan data kustom dengan JavaScript
-
-**Kasus Nyata 1 - Kalkulator Komisi Sales**:
-- Input: Jumlah penjualan = 10,000,000, Tier sales = "Senior"
-- Proses: JIKA tier Senior MAKA komisi 8% KALAU TIDAK 5%
-- Output: Komisi = 800,000 + perhitungan bonus
-
-**Kasus Nyata 2 - Generator Nomor Invoice Pintar**:
-- Input: Tanggal + tipe customer + urutan
-- Proses: "INV-" + "2024" + "B2B" + nomor otomatis naik
-- Output: "INV-2024B2B-00127" untuk pelacakan dan akuntansi
-
-**Kasus Nyata 3 - Penilaian Risiko Customer**:
-- Input: Riwayat pembayaran, frekuensi order, jumlah komplain
-- Proses: Algoritma berbobot untuk penilaian risiko
-- Output: Skor risiko 1-10 untuk limit kredit dan syarat pembayaran
 
 ---
 
