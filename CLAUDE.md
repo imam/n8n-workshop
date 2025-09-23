@@ -17,9 +17,11 @@ This file provides essential context for Claude Code instances working in this r
 ```
 ├── day-1/
 │   ├── slides.md          # Day 1 tutorial content (business-focused basics)
+│   ├── demo.md            # Day 1 demo instructor guide
 │   └── images/            # Day 1 specific images
 ├── day-2/
 │   ├── slides.md          # Day 2 tutorial content (advanced workflows & LLM)
+│   ├── demo.md            # Day 2 demo instructor guide
 │   └── images/            # Day 2 specific images
 ├── assets/
 │   ├── css/
@@ -120,6 +122,12 @@ refactor: reorganize slide sections for better flow
 - Add speaker notes for additional context
 - Keep sections focused and concise
 
+### demo.md Files
+- **Always create** comprehensive instructor guides for each day
+- Follow **progressive complexity** principle: simple → advanced
+- **Structure**: Overview → Multiple Demos → Setup → Troubleshooting
+- **Mark all sections as [DRAFT]** for easy review tracking
+
 ### Image Management
 - Add descriptive filenames
 - Optimize for web (< 2MB per image)
@@ -179,4 +187,77 @@ Recent major refactor moved content from developer-focused to business-focused b
 - Manual refresh option with http-server
 - Cross-platform compatibility
 
-This context should provide sufficient information for effective collaboration on the N8N tutorial slides project.
+## Demo Development Standards
+
+### Demo Structure Requirements
+When creating demo.md files, follow this mandatory structure:
+
+#### **1. Overview Section**
+- Brief description of demo strategy
+- Target learning objectives
+- Progressive complexity approach
+
+#### **2. Individual Demo Sections**
+Each demo must include:
+- **Learning Objective**: Clear educational goal
+- **Business Scenario**: Real-world problem/solution
+- **Workflow Design**: Visual flow with node count
+- **Key Teaching Points**: Main concepts to convey
+- **Instructor Setup TODO**: Detailed setup checklist
+- **Demo Flow**: Step-by-step execution with timing
+
+#### **3. Support Sections**
+- **Pre-Demo Setup Checklist**: Credentials, technical prep, data prep
+- **Demo Presentation Flow**: Overall timing and transitions
+- **Troubleshooting & Backup Plans**: Technical issues, audience engagement
+- **Learning Assessment**: Success indicators
+- **Business Impact Messaging**: Key takeaways for each demo
+
+### Demo Design Principles
+
+#### **Progressive Complexity**
+- Start with simple concepts (basic triggers/actions)
+- Build to intermediate (multiple nodes, branching)
+- Advance to complex (AI integration, multi-system workflows)
+
+#### **Business Value Focus**
+- Every demo must solve a real business problem
+- Clear ROI demonstration
+- Practical application scenarios
+- Avoid purely technical demonstrations
+
+#### **Beginner-Friendly Approach**
+- No complex logic for basic demos
+- Use familiar business applications (Google Sheets, Gmail, Slack)
+- Avoid paid services unless clearly marked
+- Step-by-step explanation with business context
+
+#### **Instructor Support**
+- Comprehensive setup instructions with TODO checklists
+- Timing guidelines for each section
+- Backup plans for technical failures
+- Assessment criteria for learning validation
+
+### Demo Content Standards
+
+#### **Allowed Business Applications**
+- ✅ Google Workspace (Sheets, Forms, Calendar, Gmail)
+- ✅ Slack (free tier sufficient)
+- ✅ Telegram (free bot creation)
+- ✅ Basic HTTP requests (free APIs)
+- ✅ OpenAI/Claude (for AI demos, mark costs clearly)
+
+#### **Avoided Complexities**
+- ❌ SMS services (payment required)
+- ❌ Complex regex patterns
+- ❌ Advanced database operations
+- ❌ Manual webhook configurations
+- ❌ Developer-focused node types
+
+#### **Required Annotations**
+- Mark all sections as **[DRAFT]** during creation
+- Include **timing estimates** for each demo section
+- Provide **business value statements** for each workflow
+- Add **troubleshooting guidance** for common issues
+
+This context should provide sufficient information for effective collaboration on the N8N tutorial slides and demo development project.
