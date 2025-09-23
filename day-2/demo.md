@@ -16,10 +16,12 @@ Mengenalkan konsep **data flow** dan **branching** dengan IF Node sederhana
 
 ### Workflow Design (5 nodes)
 ```
-Google Forms (Customer Inquiry) → IF Node (Check "urgent") → Branch:
+Google Forms Trigger (New Submission) → IF Node (Check "urgent") → Branch:
 ├── TRUE: Gmail (Urgent Template) → Slack (Immediate Alert)
 └── FALSE: Gmail (Standard Template) → Google Sheets (Log Only)
 ```
+
+**Note**: Menggunakan **Google Forms Trigger** (bukan manual) untuk otomatisasi real-time saat customer submit form.
 
 ### **[DRAFT]** Key Teaching Points:
 - **Data flow concept**: Information mengalir dan berubah di setiap step
@@ -54,17 +56,35 @@ Demonstrasi **multiple node categories** bekerja bersama dalam satu workflow
 
 ### Workflow Design (7 nodes)
 ```
-Google Sheets (New Lead) → Set Node (Format Data) → Wait Node (1 min) →
+Google Forms Trigger (New Lead Submission) → Set Node (Format Data) → Wait Node (1 min) →
 Gmail (Welcome Email) → Slack (Sales Alert) →
 Merge Node (Combine with Historical Data) → Airtable (Update CRM)
 ```
 
 ### **[DRAFT]** Node Categories Showcase:
-- **Trigger**: Google Sheets (Data source)
+- **Trigger**: Google Forms (Lead submission)
 - **Processing**: Set Node (Data transformation) + Wait Node (Timing)
 - **Communication**: Gmail (Email) + Slack (Team notification)
 - **Logic**: Merge Node (Data combination)
 - **Storage**: Airtable (CRM update)
+
+### **[DRAFT]** Merge Node Deep Dive:
+**Concept**: Merge Node menggabungkan data dari multiple sources dalam satu workflow
+
+**Business Use Case**:
+- **Problem**: Lead baru masuk, tapi tidak ada context tentang interaction history
+- **Solution**: Merge new lead data dengan historical customer data
+
+**How it Works**:
+1. **Input A (New Lead)**: Nama, Email, Company, Source dari Google Sheets
+2. **Input B (Historical Data)**: Previous interactions, last contact, preferences dari Airtable
+3. **Merge Key**: Email address untuk match records
+4. **Output**: Enriched lead profile dengan complete context
+
+**Business Value**:
+- **Personalized communication**: Email tidak generic, tapi contextual
+- **Better conversion**: Sales team tahu approach yang tepat
+- **Avoid duplication**: Tidak treat returning customer sebagai cold lead
 
 ### **[DRAFT]** Instructor Setup TODO:
 - [ ] Setup Google Sheets "Lead Database" dengan sample data
@@ -73,7 +93,11 @@ Merge Node (Combine with Historical Data) → Airtable (Update CRM)
 - [ ] Create welcome email template dengan merge fields
 - [ ] Setup Slack channel untuk sales notifications
 - [ ] Prepare Airtable base dengan lead fields
-- [ ] Create sample historical data untuk Merge node
+- [ ] **Setup Merge Node data sources:**
+  - [ ] Create historical lead data di Airtable dengan previous interactions (nama, email, last_contact_date, interaction_type, notes)
+  - [ ] Test merge functionality: new lead + historical data
+  - [ ] Configure merge key (email field) untuk match records
+  - [ ] Prepare demo scenario: lead yang sudah pernah contact vs lead baru pertama kali
 
 ### **[DRAFT]** Demo Flow (10 mins):
 1. **Node category overview** (2 mins): Jelaskan 5 kategori node yang akan terlihat
@@ -81,7 +105,13 @@ Merge Node (Combine with Historical Data) → Airtable (Update CRM)
 3. **Data transformation** (2 mins): Tunjukkan Set Node memformat data
 4. **Wait demonstration** (1 min): Jelaskan Wait Node dan lihat countdown
 5. **Multi-output execution** (3 mins): Gmail + Slack berjalan parallel
-6. **Data merging** (1 min): Tunjukkan Merge Node menggabungkan data
+6. **Merge Node demonstration** (1 min):
+   - **Show 2 input sources**:
+     * Input A: New lead dari Google Sheets (nama: "John Doe", email: "john@company.com")
+     * Input B: Historical data dari Airtable (same email, previous interaction: "Demo request 2 months ago")
+   - **Live merge process**: Tunjukkan N8N matching records by email
+   - **Combined output**: Complete profile dengan interaction history
+   - **Business impact**: "Welcome email jadi personal: 'Great to hear from you again, John!'"
 
 ---
 
