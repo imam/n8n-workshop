@@ -9,19 +9,6 @@
 
 ---
 
-## Recap Day 1
-
-![Day 1 Recap](day-2/images/day1-recap.png)
-<!-- Placeholder: Visual summary day 1 -->
-
-### Yang Sudah Kita Kuasai:
-✅ **Dasar N8N** - Tool automation tanpa coding
-✅ **Trigger sederhana** - Google Sheets, Telegram, Calendar
-✅ **Koneksi aplikasi** - Menghubungkan tools favorit
-✅ **Automation pertama** - Newsletter signup otomatis
-
----
-
 ## Target Day 2
 
 ![Day 2 Goals](day-2/images/day2-goals.png)
@@ -51,8 +38,10 @@
 **Data Flow** = Bagaimana informasi berpindah dari satu langkah ke langkah berikutnya
 
 ### Analogi Sederhana:
-🏭 **Seperti pabrik** - Bahan mentah masuk, diproses, jadi produk jadi
-📧 **Contoh**: Email masuk → Ekstrak info penting → Simpan ke database → Kirim notifikasi
+🚛 **Seperti sistem logistik** - Paket masuk → Cek alamat → Pilih jalur delivery → Kirim ke tujuan
+📧 **Contoh**: Email masuk → AI analisa prioritas → Route berdasarkan urgensi → Aksi yang tepat
+
+**Kunci Penting**: Data yang sama bisa menghasilkan jalur berbeda tergantung isinya!
 
 ---
 
@@ -72,21 +61,112 @@
 
 ---
 
-## Melihat Data di N8N
+## Konsep Branching dalam Data Flow
 
-![View Data N8N](day-2/images/view-data-n8n.png)
-<!-- Placeholder: Screenshot data view dalam N8N -->
+![Branching in Data Flow](day-2/images/branching-in-dataflow.png)
+<!-- Placeholder: Visual branching concept dalam konteks data flow -->
 
-### Cara Mudah Lihat Data:
-1. **Klik node** yang sudah dijalankan
-2. **Tab "Data"** - Lihat input dan output
-3. **Format JSON** - Struktur data yang rapi
-4. **Preview** - Data dalam bentuk tabel
+### Mengapa Branching Penting?
+📊 **Data yang sama** bisa memerlukan **aksi yang berbeda**
+🔀 **Contoh**: Email urgent vs email biasa membutuhkan response time berbeda
 
-### Tips untuk Non-Technical:
-- Fokus pada **nilai** bukan struktur
-- Cari **field yang Anda butuhkan** (nama, email, dll)
-- **Copy data** untuk testing node selanjutnya
+### Skenario Bisnis:
+- **Customer VIP** → Fast track processing
+- **Customer biasa** → Standard processing
+- **High value order** → Manager approval
+- **Small order** → Auto approval
+
+**Branching = Smart decision making berdasarkan data content!**
+
+---
+
+## IF Node: Decision Maker
+
+![IF Node](day-2/images/if-node.png)
+<!-- Placeholder: Screenshot IF node configuration -->
+
+### Cara Kerja IF Node:
+1. **Input data** masuk
+2. **Cek kondisi** - Apakah sesuai kriteria?
+3. **True path** - Jika ya, lakukan ini
+4. **False path** - Jika tidak, lakukan itu
+
+### Contoh Kondisi Bisnis:
+✅ **Email berisi kata "urgent"** → True
+✅ **Order value > 1,000,000** → True
+✅ **Customer dari Jakarta** → True
+✅ **Jam kerja (9-17)** → True
+
+---
+
+## Switch Node: Multiple Paths
+
+![Switch Node](day-2/images/switch-node.png)
+<!-- Placeholder: Screenshot Switch node dengan multiple output -->
+
+### Kapan Pakai Switch Node?
+
+**IF Node** = 2 pilihan (Ya/Tidak)
+**Switch Node** = 3+ pilihan (A/B/C/D)
+
+### Contoh Kasus Bisnis:
+📊 **Lead Scoring**:
+- Score 80-100 → Hot Lead (assign senior sales)
+- Score 60-79 → Warm Lead (assign junior sales)
+- Score 40-59 → Cold Lead (email nurturing)
+- Score <40 → Archive
+
+🌍 **Geographic Routing**:
+- Jakarta → Tim Jakarta
+- Surabaya → Tim Surabaya
+- Bali → Tim Bali
+- Others → Tim Pusat
+
+---
+
+## Contoh Nyata: Customer Support Routing
+
+![Support Routing](day-2/images/support-routing.png)
+<!-- Placeholder: Rule-based support routing workflow -->
+
+### Workflow: Tiket Support Otomatis
+
+1. **Customer kirim email** ke support@company.com
+2. **Text Parser** - Extract keywords dari subject & content
+3. **Switch Node** berdasarkan keywords:
+   - Contains "billing/invoice" → Finance team
+   - Contains "technical/bug" → Tech team
+   - Contains "urgent/asap" → Escalate ke manager
+   - Default → General support
+4. **Gmail Node** - Generate auto-reply template
+5. **Airtable** - Create ticket dengan kategori
+6. **Slack** - Notify team dengan ticket summary
+
+**Hasil**: Support ticket terorganisir otomatis tanpa manual sorting!
+
+---
+
+## Praktik Langsung: Build Branching Workflow
+
+![Branching Exercise](day-2/images/branching-exercise.png)
+<!-- Placeholder: Rule-based branching exercise workflow -->
+
+### Latihan: Lead Qualification dengan Rules
+
+**Skenario**: Otomatisasi proses kualifikasi lead dari website
+
+**Langkah demi langkah**:
+1. **Form Trigger** - Lead dari contact form
+2. **Function Node** - Calculate lead score berdasarkan:
+   - Company size (1-3 points)
+   - Budget range (1-3 points)
+   - Timeline urgency (1-3 points)
+3. **Switch Node** berdasarkan total score:
+   - Score 7-9 → Senior sales + prioritas tinggi
+   - Score 4-6 → Junior sales
+   - Score 1-3 → Email nurturing campaign
+
+**Nilai Bisnis**: Logic scoring yang konsisten, sales fokus ke lead terbaik!
 
 ---
 
@@ -125,7 +205,230 @@
 
 ---
 
-<!-- SECTION 3: AI Sneak Peek -->
+<!-- SECTION 3: Popular Nodes -->
+# Node Populer untuk Automation Bisnis
+
+---
+
+## Kategori Node untuk Bisnis
+
+![Node Categories](day-2/images/node-categories-business.png)
+<!-- Placeholder: Kategorisasi node untuk business use case -->
+
+### 📧 **Node Komunikasi**
+Gmail, Slack, Telegram, WhatsApp Business
+
+### 📊 **Node Data & Storage**
+Google Sheets, Airtable, MySQL, Notion
+
+### 🤖 **Node AI & Processing**
+OpenAI, Claude, Text processing, Image analysis
+
+### ⏰ **Node Scheduling & Logic**
+Cron, IF, Switch, Wait, Merge
+
+---
+
+## Node Komunikasi
+
+**Node komunikasi** adalah jantung automation bisnis modern. Node-node ini menghubungkan sistem internal Anda dengan platform komunikasi yang digunakan setiap hari oleh tim dan customer.
+
+### Mengapa Penting untuk Bisnis?
+✅ **Respon otomatis** - Tidak ada customer yang menunggu lama
+✅ **Koordinasi tim** - Semua orang dapat info yang sama
+✅ **Scaling communication** - Handle 100x lebih banyak interaksi
+✅ **Consistency** - Pesan yang seragam dan professional
+
+![Communication Nodes](day-2/images/communication-nodes.png)
+<!-- Placeholder: Screenshots of communication nodes -->
+
+### Gmail Node
+**Contoh Penggunaan**:
+- Kirim welcome email ke customer baru
+- Auto-reply untuk pertanyaan umum
+- Forward email urgent ke management
+- Campaign email massal
+
+**Nilai Bisnis**: Email automation 24/7, response time lebih cepat
+
+### Slack Node
+**Contoh Penggunaan**:
+- Notifikasi tim tentang order/lead baru
+- Alert untuk masalah sistem atau deadline
+- Share laporan harian otomatis
+- Buat channel untuk project baru
+
+**Nilai Bisnis**: Koordinasi tim real-time, tidak ada yang terlewat
+
+---
+
+### Telegram Node
+**Contoh Penggunaan**:
+- Bot customer service untuk pertanyaan dasar
+- Update status order ke customer
+- Alert internal untuk masalah urgent
+- Broadcast pengumuman ke subscriber
+
+**Nilai Bisnis**: Komunikasi instan, mengurangi manual customer service
+
+### WhatsApp Business Node
+**Contoh Penggunaan**:
+- Kirim konfirmasi order
+- Reminder appointment
+- Survey feedback customer
+- Update produk & promosi
+
+**Nilai Bisnis**: High open rate, engagement customer langsung
+
+---
+
+## Node Data & Storage
+
+**Node data & storage** adalah fondasi dari automation yang powerful. Node-node ini mengelola, menyimpan, dan mengorganisir informasi bisnis Anda secara otomatis.
+
+### Peran Krusial dalam Bisnis:
+📊 **Central data hub** - Satu tempat untuk semua informasi bisnis
+🔄 **Real-time sync** - Data selalu update di semua sistem
+📈 **Business intelligence** - Data tersruktur untuk decision making
+🔒 **Data security** - Backup otomatis dan access control
+
+**Pilihan Platform**: Dari yang sederhana (Sheets) hingga enterprise (Database)
+
+![Data Storage Nodes](day-2/images/data-storage-nodes.png)
+<!-- Placeholder: Screenshots of data nodes -->
+
+### Google Sheets Node
+**Contoh Penggunaan**:
+- Manajemen database customer
+- Tracking sales pipeline
+- Monitor inventory
+- Generate laporan
+
+**Tips Konfigurasi**:
+- Gunakan header kolom yang jelas
+- Setup data validation
+- Buat sheet terpisah untuk keperluan berbeda
+- Backup rutin untuk hindari kehilangan data
+
+---
+
+### Airtable Node
+**Contoh Penggunaan**:
+- CRM dengan custom field
+- Project management dengan attachment
+- Event planning dengan linked record
+- Katalog produk dengan gambar
+
+**Mengapa Pilih Airtable**:
+- Lebih powerful dari Sheets
+- Database relationship
+- Multiple view (calendar, kanban, gallery)
+- Lebih baik untuk struktur data kompleks
+
+### Notion Node
+**Contoh Penggunaan**:
+- Automation knowledge base
+- Integrasi task management
+- Update dokumentasi
+- Maintenance team wiki
+
+---
+
+## Node Processing & Logic
+
+**Node processing & logic** adalah "otak" dari automation Anda. Node-node ini memproses, menganalisa, dan membuat keputusan berdasarkan data bisnis yang mengalir.
+
+### Fungsi Vital untuk Automation:
+🧠 **Smart decision making** - Automation yang bisa "berpikir"
+⚡ **Data transformation** - Ubah format data sesuai kebutuhan
+⏱️ **Timing control** - Atur kapan aksi harus dilakukan
+🔗 **Data integration** - Gabungkan info dari berbagai sumber
+
+**Kunci Sukses**: Node ini yang membuat automation Anda flexibel dan intelligent!
+
+![Processing Nodes](day-2/images/processing-nodes.png)
+<!-- Placeholder: Screenshots of processing nodes -->
+
+---
+
+### Wait Node
+**Tujuan**: Tambah jeda antar aksi
+
+**Kasus Nyata 1 - Campaign Nurturing Customer**:
+- Pemicu: Lead baru mendaftar
+- Tunggu: 24 jam setelah email selamat datang
+- Aksi: Kirim konten edukasi + penawaran khusus
+- Dampak Bisnis: Tingkat konversi lebih tinggi dengan timing yang tepat
+
+**Kasus Nyata 2 - Automation Follow-up Pembayaran**:
+- Pemicu: Invoice dikirim
+- Tunggu: 7 hari jika belum ada pembayaran
+- Aksi: Kirim pengingat sopan dengan link pembayaran
+- Dampak Bisnis: Pengumpulan lebih cepat tanpa pelacakan manual
+
+**Kasus Nyata 3 - Urutan Permintaan Review**:
+- Pemicu: Pesanan diterima (dari sistem pelacakan)
+- Tunggu: 3 hari untuk pengalaman customer
+- Aksi: Kirim permintaan review dengan insentif
+- Dampak Bisnis: Review lebih autentik dengan timing yang tepat
+
+### Merge Node
+**Tujuan**: Gabungkan data dari berbagai sumber
+
+**Kasus Nyata 1 - Profil Customer 360°**:
+- Input A: Data customer dari CRM (info kontak, preferensi)
+- Input B: Riwayat pembelian dari platform e-commerce
+- Input C: Tiket support dari sistem help desk
+- Output: Profil customer lengkap untuk layanan personal
+
+**Kasus Nyata 2 - Performa Campaign Marketing**:
+- Input A: Metrik email (buka, tingkat klik)
+- Input B: Engagement media sosial
+- Input C: Data konversi website
+- Output: Dashboard marketing terpadu dengan perhitungan ROI
+
+**Kasus Nyata 3 - Automation Laporan Keuangan**:
+- Input A: Data penjualan dari berbagai toko
+- Input B: Data pengeluaran dari sistem akuntansi
+- Input C: Biaya inventory dari manajemen gudang
+- Output: Laporan P&L bulanan otomatis dengan analisis trend
+
+**Tips Penting**: Merge node sangat berguna untuk integrasi data dari berbagai sistem menjadi satu workflow yang powerful!
+
+---
+
+## Praktik Langsung: Eksplorasi Node
+
+![Node Exercise](day-2/images/node-exploration-exercise.png)
+<!-- Placeholder: Node exploration workflow -->
+
+### Latihan: Multi-Node Customer Onboarding
+
+**Skenario Bisnis**: Comprehensive new customer automation
+
+**Langkah Workflow**:
+1. **Google Sheets Trigger** - Customer baru di spreadsheet
+2. **Set Node** - Format data customer (nama, email, phone)
+3. **IF Node** - Cek apakah field "Company" ada isinya
+   - **True**: Customer dari perusahaan → Route ke B2B sales
+   - **False**: Customer individual → Route ke B2C sales
+4. **Gmail Node** - Kirim welcome email sesuai tipe customer
+5. **Wait Node** - Tunggu 1 hari
+6. **Slack Node** - Notifikasi sales tim dengan kategori yang tepat
+7. **Airtable Node** - Tambah ke CRM dengan tag B2B/B2C
+8. **Merge Node** - Gabungkan dengan data historis lainnya
+
+**Nilai Bisnis**: Onboarding otomatis dengan smart routing, setiap customer dapat treatment yang tepat!
+
+### Mengapa IF Condition Ini Lebih Baik?
+✅ **Sederhana** - Cek field kosong atau ada isi
+✅ **Business-relevant** - B2B vs B2C adalah kategorisasi yang penting untuk bisnis
+✅ **Actionable** - Hasil langsung menentukan sales flow yang berbeda
+✅ **No regex needed** - Beginner-friendly logic
+
+---
+
+<!-- SECTION 4: AI Sneak Peek -->
 # Sneak Peek: AI untuk Automation Pintar
 
 ---
@@ -186,297 +489,7 @@ Response: "Business email dari perusahaan teknologi"
 
 ---
 
-<!-- SECTION 4: Branching -->
-# Branching: Satu Input, Banyak Aksi
-
----
-
-## Apa itu Branching?
-
-![Branching Concept](day-2/images/branching-concept.png)
-<!-- Placeholder: Visual branching diagram -->
-
-**Branching** = Membuat keputusan otomatis berdasarkan data
-
-### Analogi Bisnis:
-🚦 **Seperti traffic light** - Berdasarkan kondisi, ambil jalur yang berbeda
-📋 **Seperti SOP** - "Jika customer VIP, lakukan A. Jika customer biasa, lakukan B"
-
-### Contoh Nyata:
-- **Lead score tinggi** → Langsung assign ke senior sales
-- **Lead score rendah** → Masuk ke nurturing campaign
-- **Komplain urgent** → Langsung ke manager
-- **Komplain biasa** → Ke customer service
-
----
-
-## IF Node: Decision Maker
-
-![IF Node](day-2/images/if-node.png)
-<!-- Placeholder: Screenshot IF node configuration -->
-
-### Cara Kerja IF Node:
-1. **Input data** masuk
-2. **Cek kondisi** - Apakah sesuai kriteria?
-3. **True path** - Jika ya, lakukan ini
-4. **False path** - Jika tidak, lakukan itu
-
-### Contoh Kondisi Bisnis:
-✅ **Email berisi kata "urgent"** → True
-✅ **Order value > 1,000,000** → True
-✅ **Customer dari Jakarta** → True
-✅ **Jam kerja (9-17)** → True
-
----
-
-## Switch Node: Multiple Paths
-
-![Switch Node](day-2/images/switch-node.png)
-<!-- Placeholder: Screenshot Switch node dengan multiple output -->
-
-### Kapan Pakai Switch Node?
-
-**IF Node** = 2 pilihan (Ya/Tidak)
-**Switch Node** = 3+ pilihan (A/B/C/D)
-
-### Contoh Kasus Bisnis:
-📊 **Lead Scoring**:
-- Score 80-100 → Hot Lead (assign senior sales)
-- Score 60-79 → Warm Lead (assign junior sales)
-- Score 40-59 → Cold Lead (email nurturing)
-- Score <40 → Archive
-
-🌍 **Geographic Routing**:
-- Jakarta → Tim Jakarta
-- Surabaya → Tim Surabaya
-- Bali → Tim Bali
-- Others → Tim Pusat
-
----
-
-## Contoh Nyata: Customer Support Routing w/ AI
-
-![Support Routing](day-2/images/support-routing-ai.png)
-<!-- Placeholder: AI-powered support routing workflow -->
-
-### Workflow: Tiket Support Otomatis dengan AI
-
-1. **Customer kirim email** ke support@company.com
-2. **AI Node** - Analisa subject & content secara smart
-3. **Switch Node** berdasarkan AI result:
-   - "billing" → Finance team
-   - "technical" → Tech team
-   - "urgent" → Escalate ke manager
-4. **AI generate auto-reply** yang personal
-5. **Create ticket** dengan AI insights
-6. **Notify team** dengan summary AI
-
-**Hasil**: Support ticket terorganisir pintar tanpa manual sorting!
-
----
-
-## Praktik Langsung: Build Smart Workflow
-
-![Smart Exercise](day-2/images/smart-branching-exercise.png)
-<!-- Placeholder: AI-enhanced exercise workflow -->
-
-### Latihan: Lead Qualification dengan AI
-
-**Skenario**: Otomatisasi proses kualifikasi lead dari website
-
-**Langkah demi langkah**:
-1. **Form Trigger** - Lead dari contact form
-2. **AI Node** - Analisa lead quality dari data yang diberikan
-3. **Switch Node** berdasarkan AI score:
-   - Score tinggi → Senior sales + prioritas
-   - Score sedang → Junior sales
-   - Score rendah → Email nurturing
-
-**Nilai Bisnis**: AI yang tentukan kualitas lead, sales fokus ke yang terbaik!
-
----
-
-<!-- SECTION 5: Popular Nodes -->
-# Node Populer untuk Automation Bisnis
-
----
-
-## Kategori Node untuk Bisnis
-
-![Node Categories](day-2/images/node-categories-business.png)
-<!-- Placeholder: Kategorisasi node untuk business use case -->
-
-### 📧 **Node Komunikasi**
-Gmail, Slack, Telegram, WhatsApp Business
-
-### 📊 **Node Data & Storage**
-Google Sheets, Airtable, MySQL, Notion
-
-### 🔗 **Node Integrasi**
-Zapier, Webhook, HTTP Request, API calls
-
-### 🤖 **Node AI & Processing**
-OpenAI, Claude, Text processing, Image analysis
-
-### ⏰ **Node Scheduling & Logic**
-Cron, IF, Switch, Wait, Merge
-
----
-
-## Node Komunikasi
-
-![Communication Nodes](day-2/images/communication-nodes.png)
-<!-- Placeholder: Screenshots of communication nodes -->
-
-### Gmail Node
-**Contoh Penggunaan**:
-- Kirim welcome email ke customer baru
-- Auto-reply untuk pertanyaan umum
-- Forward email urgent ke management
-- Campaign email massal
-
-**Nilai Bisnis**: Email automation 24/7, response time lebih cepat
-
-### Slack Node
-**Contoh Penggunaan**:
-- Notifikasi tim tentang order/lead baru
-- Alert untuk masalah sistem atau deadline
-- Share laporan harian otomatis
-- Buat channel untuk project baru
-
-**Nilai Bisnis**: Koordinasi tim real-time, tidak ada yang terlewat
-
----
-
-### Telegram Node
-**Contoh Penggunaan**:
-- Bot customer service untuk pertanyaan dasar
-- Update status order ke customer
-- Alert internal untuk masalah urgent
-- Broadcast pengumuman ke subscriber
-
-**Nilai Bisnis**: Komunikasi instan, mengurangi manual customer service
-
-### WhatsApp Business Node
-**Contoh Penggunaan**:
-- Kirim konfirmasi order
-- Reminder appointment
-- Survey feedback customer
-- Update produk & promosi
-
-**Nilai Bisnis**: High open rate, engagement customer langsung
-
----
-
-## Node Data & Storage
-
-![Data Storage Nodes](day-2/images/data-storage-nodes.png)
-<!-- Placeholder: Screenshots of data nodes -->
-
-### Google Sheets Node
-**Contoh Penggunaan**:
-- Manajemen database customer
-- Tracking sales pipeline
-- Monitor inventory
-- Generate laporan
-
-**Tips Konfigurasi**:
-- Gunakan header kolom yang jelas
-- Setup data validation
-- Buat sheet terpisah untuk keperluan berbeda
-- Backup rutin untuk hindari kehilangan data
-
----
-
-### Airtable Node
-**Contoh Penggunaan**:
-- CRM dengan custom field
-- Project management dengan attachment
-- Event planning dengan linked record
-- Katalog produk dengan gambar
-
-**Mengapa Pilih Airtable**:
-- Lebih powerful dari Sheets
-- Database relationship
-- Multiple view (calendar, kanban, gallery)
-- Lebih baik untuk struktur data kompleks
-
-### Notion Node
-**Contoh Penggunaan**:
-- Automation knowledge base
-- Integrasi task management
-- Update dokumentasi
-- Maintenance team wiki
-
----
-
-## Node Processing & Logic
-
-![Processing Nodes](day-2/images/processing-nodes.png)
-<!-- Placeholder: Screenshots of processing nodes -->
-
-### Set Node
-**Tujuan**: Transform dan clean data
-**Contoh Penggunaan**:
-- Rename field untuk konsistensi
-- Calculate nilai baru (total, persentase)
-- Format tanggal dan nomor telepon
-- Hapus field data yang tidak perlu
-
-### Function Node
-**Tujuan**: Custom data processing dengan JavaScript
-**Contoh Bisnis**:
-- Hitung komisi berdasarkan sales tier
-- Generate nomor order unik
-- Parse dan clean imported data
-- Implementasi custom business logic
-
----
-
-### Wait Node
-**Tujuan**: Tambah delay antar aksi
-**Contoh Penggunaan**:
-- Tunggu 24 jam sebelum kirim follow-up email
-- Delay antar API call untuk hindari rate limit
-- Pause workflow untuk manual approval
-- Schedule aksi hanya untuk jam kerja
-
-### Merge Node
-**Tujuan**: Gabungkan data dari multiple source
-**Contoh Penggunaan**:
-- Merge data customer dengan order history
-- Combine social media metrics
-- Join data dari departemen berbeda
-- Buat comprehensive report
-
-**Tips Penting**: Merge node sangat berguna untuk integrase data dari berbagai sistem menjadi satu workflow yang powerful!
-
----
-
-## Praktik Langsung: Eksplorasi Node
-
-![Node Exercise](day-2/images/node-exploration-exercise.png)
-<!-- Placeholder: Node exploration workflow -->
-
-### Latihan: Multi-Node Customer Onboarding dengan AI
-
-**Skenario Bisnis**: Comprehensive new customer automation
-
-**Langkah Workflow**:
-1. **Google Sheets Trigger** - Customer baru di spreadsheet
-2. **Set Node** - Format data customer (nama, email, phone)
-3. **AI Node** - Validasi email dan profiling customer
-4. **Gmail Node** - Kirim personalized welcome email
-5. **Wait Node** - Tunggu 1 hari
-6. **Slack Node** - Notifikasi sales tim tentang customer baru
-7. **Airtable Node** - Tambah ke CRM dengan enriched data
-8. **Merge Node** - Gabungkan dengan data historis lainnya
-
-**Dampak Bisnis**: Onboarding seamless dengan AI insights, tidak ada customer yang terlewat!
-
----
-
-<!-- SECTION 6: Hands-on Practice -->
+<!-- SECTION 5: Hands-on Practice -->
 # Latihan Comprehensive: E-commerce Order Processing
 
 ---
@@ -517,128 +530,5 @@ Cron, IF, Switch, Wait, Merge
 8. **Tracking Setup** - Buat tracking record
 
 **Dampak Bisnis**: 95% lebih cepat processing, AI-powered, zero manual error!
-
----
-
-<!-- SECTION 7: Summary -->
-# Ringkasan & Langkah Selanjutnya
-
----
-
-## Apa yang Sudah Dikuasai Hari Ini
-
-![Day 2 Achievements](day-2/images/day2-achievements.png)
-<!-- Placeholder: Visual summary of achievements -->
-
-### 🎯 **Core Skill yang Diperoleh:**
-✅ **Data Flow Mastery** - Memahami bagaimana data mengalir dan bertransformasi
-✅ **Branching Logic** - Membuat keputusan otomatis berdasarkan kondisi bisnis
-✅ **Node Expertise** - Menguasai node populer untuk automation sehari-hari
-✅ **AI Sneak Peek** - Mengenal potensi AI untuk automation pintar
-✅ **Complex Workflow** - Membangun automation end-to-end untuk proses bisnis nyata
-
-### 💼 **Dampak Bisnis:**
-- Automation lebih sophisticated dan fleksibel
-- Proses bisnis yang kompleks bisa diotomatisasi
-- AI memberikan sneak peek automation "pintar" dan adaptif
-- ROI automation meningkat significantly
-
----
-
-## Aplikasi Dunia Nyata
-
-![Real World Apps](day-2/images/real-world-applications.png)
-<!-- Placeholder: Various business applications -->
-
-### Yang Bisa Anda Terapkan Sekarang:
-
-🏢 **Sales & Marketing**:
-- Lead qualification otomatis dengan AI scoring
-- Personalized email campaign berdasarkan behavior
-- Social media content generation dan scheduling
-- Customer journey automation dengan branching logic
-
-📊 **Operations**:
-- Inventory management dengan predictive alert
-- Order processing end-to-end automation
-- Customer support dengan AI-powered routing
-- Report generation dan distribution otomatis
-
-💰 **Finance**:
-- Invoice processing dengan data extraction
-- Expense categorization menggunakan AI
-- Payment reconciliation automation
-- Financial reporting dengan insight generation
-
----
-
-## Langkah Selanjutnya & Tugas Rumah
-
-![Homework](day-2/images/homework-assignments.png)
-<!-- Placeholder: Homework visual -->
-
-### 📝 **Tugas Rumah:**
-
-**Level 1 - Praktik Core Skill:**
-- Buat 1 workflow dengan minimal 3 node berbeda
-- Implementasi 1 branching logic untuk use case bisnis Anda
-- Test data flow dengan tracing dari input ke output
-
-**Level 2 - Terapkan ke Bisnis:**
-- Identifikasi 1 proses bisnis yang bisa pakai branching
-- Design workflow dengan merge node untuk gabungkan data
-- Hitung potential time saving dari automation yang dibuat
-
-**Level 3 - Explore AI:**
-- Coba 1 simple AI integration (email classification)
-- Bandingkan result AI vs manual rule
-- Think of 3 use case AI untuk bisnis Anda
-
----
-
-## Persiapan Day 3
-
-![Day 3 Preview](day-2/images/day3-preview.png)
-<!-- Placeholder: Day 3 preview topics -->
-
-### 🚀 **Yang Akan Dipelajari di Day 3:**
-
-**Error Handling & Debugging**:
-- Mengatasi automation yang "stuck" atau error
-- Best practice untuk reliability dan monitoring
-- Notification system untuk automation failure
-
-**Performance Optimization**:
-- Membuat automation yang cepat dan efficient
-- Rate limiting dan resource management
-- Scaling automation untuk volume tinggi
-
-**AI Deep Dive**:
-- Implementasi lengkap AI dalam workflow
-- Advanced prompt engineering untuk bisnis
-- AI monitoring dan quality control
-
----
-
-# Terima Kasih!
-
-## Sesi Q&A
-
-![QA Session](day-2/images/qa-session-day2.png)
-<!-- Placeholder: Q&A session image -->
-
-### Topik Diskusi:
-- Challenge dengan complex data flow
-- Pertanyaan tentang AI integration untuk bisnis
-- Ide automation spesifik untuk industri Anda
-- Technical troubleshooting dan best practice
-
-### Kontak & Dukungan:
-- **Email**: [instructor-email@domain.com]
-- **Slack**: #n8n-tutorial-day2
-- **Office Hour**: [Schedule untuk individual help]
-- **Homework Submission**: [Platform/method]
-
-**Ingat**: Mulai sederhana, kemudian tambah kompleksitas. AI adalah tool untuk enhance automation, bukan replace understanding!
 
 ---
