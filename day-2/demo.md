@@ -7,41 +7,73 @@ Panduan demo untuk Day 2 dengan fokus progressive complexity: Basic Data Flow �
 
 ## Demo 1: Basic Data Flow - "Customer Inquiry with Simple Branching" [DRAFT]
 
+### **Available N8N Workflow:**
+**"Customer Inquiry Branching - Day 2 Demo 1"** (ID: YHpBDgcGfc6HSSlo)
+
 ### Learning Objective
 Mengenalkan konsep **data flow** dan **branching** dengan IF Node sederhana
 
 ### Business Scenario
 **Problem**: Customer inquiry via form perlu response yang berbeda based on urgency level
-**Solution**: Otomatisasi branching berdasarkan keyword "urgent" untuk prioritas handling
+**Solution**: Otomatisasi branching berdasarkan priority selection untuk handling yang tepat
 
 ### Workflow Design (5 nodes)
 ```
-Google Forms Trigger (New Submission) → IF Node (Check "urgent") → Branch:
-├── TRUE: Gmail (Urgent Template) → Slack (Immediate Alert)
+N8N Form Trigger (Priority Inquiry) → IF Node (Check "urgent") → Branch:
+├── TRUE: Gmail (URGENT Template) → Telegram (Immediate Alert)
 └── FALSE: Gmail (Standard Template) → Google Sheets (Log Only)
 ```
 
-**Note**: Menggunakan **Google Forms Trigger** (bukan manual) untuk otomatisasi real-time saat customer submit form.
+**Key Innovation**: Menggunakan **N8N Form Trigger** dengan built-in priority selector untuk demo yang lebih interactive.
 
 ### **[DRAFT]** Key Teaching Points:
-- **Data flow concept**: Information mengalir dan berubah di setiap step
-- **Simple decision making**: IF node dengan binary choice
-- **Different paths**: Satu input bisa menghasilkan aksi berbeda
-- **Business logic**: Urgent vs normal handling
+- **Conditional Logic**: IF node sebagai decision maker dalam workflow
+- **Branching Paths**: Satu input menghasilkan aksi berbeda berdasarkan kondisi
+- **Priority-based Processing**: Business logic untuk urgent vs standard handling
+- **Visual Flow Design**: Easy untuk understand dan modify business rules
+- **Dual Email Templates**: Different messaging untuk different urgency levels
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Create Google Form dengan fields: Nama, Email, Pertanyaan, Checkbox "Urgent"
-- [ ] Setup Gmail templates: urgent vs standard response
-- [ ] Configure Slack channel untuk urgent alerts
-- [ ] Test IF node condition: form.urgent === true
-- [ ] Prepare 2 sample submissions: urgent dan normal
+- [ ] Setup Gmail credentials untuk automated email responses
+- [ ] Configure Telegram bot untuk urgent alerts: URGENT_TELEGRAM_CHAT_ID
+- [ ] Create Google Sheets untuk standard inquiry logging: STANDARD_INQUIRY_SHEETS_ID
+- [ ] Test both priority paths: urgent dan standard responses
+- [ ] Prepare sample data untuk realistic demo scenarios
 
-### **[DRAFT]** Demo Flow (8 mins):
-1. **Setup context** (2 mins): Jelaskan skenario customer inquiry
-2. **Show workflow** (1 min): Tunjukkan visual flow dengan branching
-3. **Demo normal case** (2 mins): Submit form non-urgent, lihat standard flow
-4. **Demo urgent case** (2 mins): Submit form urgent, lihat escalated flow
-5. **Highlight learning** (1 min): Data yang sama, aksi berbeda based on content
+### **[DRAFT]** Enhanced Demo Flow (8 mins):
+
+**Step 1: Business Context Setup** (2 mins)
+- Explain customer service priority handling challenge
+- Show N8N form interface dengan priority selector
+- Highlight business need untuk different response levels
+
+**Step 2: Standard Priority Demo** (2.5 mins)
+- Submit form dengan "No - Standard priority"
+- Show standard email template execution
+- Demonstrate Google Sheets logging
+- Highlight 24-hour SLA messaging
+
+**Step 3: Urgent Priority Demo** (2.5 mins)
+- Submit form dengan "Yes - Need immediate response"
+- Show URGENT email template dengan red styling
+- Demonstrate immediate Telegram alert dengan escalation
+- Highlight 15-minute SLA dan supervisor notification
+
+**Step 4: Business Value Highlight** (1 min)
+- **Automatic Prioritization**: No manual sorting needed
+- **Appropriate Response**: Customers get right level of attention
+- **Team Efficiency**: Urgent issues get immediate attention
+- **Clear SLA Management**: Different expectations untuk different priorities
+
+**Environment Variables Needed:**
+- `URGENT_TELEGRAM_CHAT_ID`: Urgent escalation chat
+- `STANDARD_INQUIRY_SHEETS_ID`: Standard inquiry tracking spreadsheet
+
+**Demo Features:**
+- **Visual priority differentiation** dengan color-coded emails
+- **Indonesian language templates** untuk local audience
+- **Realistic SLA messaging** (15 min urgent, 24 hour standard)
+- **Supervisor escalation simulation** via Telegram mentions
 
 ---
 

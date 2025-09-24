@@ -260,4 +260,40 @@ Each demo must include:
 - Provide **business value statements** for each workflow
 - Add **troubleshooting guidance** for common issues
 
+## N8N Workflow Creation Guidelines
+
+### Best Practices for N8N MCP Usage
+
+#### **Workflow Creation Strategy**
+- **Always create new workflows** instead of updating existing ones via MCP
+- N8N MCP update operations are error-prone and should be avoided
+- Focus on creating **starting point workflows** that demonstrate concepts
+- Let users manually refine workflows in the N8N interface
+
+#### **When Creating Workflows**
+1. **Create once, demonstrate value** - Build functional starting points
+2. **Avoid complex updates** - MCP partial updates frequently fail
+3. **Confirm before creating** - Always ask user permission before creating workflows
+4. **Document requirements** - Clearly state what credentials/setup is needed
+5. **For revisions** - Create new workflow with different title instead of updating existing ones
+
+#### **Workflow Validation Approach**
+- Create basic functional workflows that pass initial validation
+- Accept minor validation warnings (they don't prevent functionality)
+- Focus on business value over perfect technical implementation
+- Users can manually optimize expressions and configurations
+
+#### **Required Documentation**
+When creating workflows, always provide:
+- **Credential requirements** (Gmail, Google Sheets, Telegram, etc.)
+- **Environment variables needed** (GOOGLE_SHEETS_DOC_ID, TELEGRAM_CHAT_ID)
+- **Setup steps** for each service integration
+- **Business context** explaining the workflow's value
+
+#### **Demo Workflow Standards**
+- Use **business-friendly triggers** (Forms, Sheets, Calendar)
+- Replace Slack with **Telegram** for notifications (easier setup)
+- Include **realistic business scenarios** and data flows
+- Provide **Indonesian language** content for local audience
+
 This context should provide sufficient information for effective collaboration on the N8N tutorial slides and demo development project.
