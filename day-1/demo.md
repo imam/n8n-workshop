@@ -11,30 +11,45 @@ Panduan ini berisi 3 workflow demo yang dirancang untuk target audience business
 **Problem**: Customer service team kewalahan dengan pertanyaan yang masuk via website contact form
 **Solution**: Otomatisasi capture dan routing pertanyaan customer dari form submission
 
+### **Available N8N Workflows:**
+1. **"Customer Support Automation - Day 1 Demo"** (ID: XTwQsELGf3AYijvG) - **Parallel Flow**
+2. **"Customer Support Automation - Serial Flow"** (ID: 4M4G3kul340BcTCT) - **Sequential Flow**
+
 ### Workflow Design (4 nodes)
+**Parallel Version:**
 ```
-Google Forms (New Submission) → Google Sheets (Log) → Gmail (Auto Reply) → Slack (Notify Team)
+N8N Form Trigger → [Google Sheets + Gmail + Telegram] (simultaneous)
+```
+
+**Serial Version:**
+```
+N8N Form Trigger → Google Sheets → Gmail → Telegram (sequential)
 ```
 
 ### **[DRAFT]** Wow Factor Elements:
-- **Multiple outputs** dari satu input terstruktur
-- **Real-time notifications** ke berbagai platform
-- **Automatic logging** untuk reporting
-- **Instant auto-reply** ke customer dengan data personal
+- **Built-in form generation** dengan N8N Form Trigger (no external Google Forms needed)
+- **Parallel vs Serial execution** comparison untuk business understanding
+- **Real-time notifications** ke Telegram (lebih mudah setup dari Slack)
+- **Automatic logging** untuk reporting di Google Sheets
+- **Personalized auto-reply** dengan Indonesian language template
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Create Google Form dengan fields: Nama, Email, Pertanyaan, Kategori
-- [ ] Setup Google Sheets untuk log customer inquiries
-- [ ] Test Gmail auto-reply dengan merge fields dari form
-- [ ] Configure Slack notification dengan customer details
-- [ ] Prepare sample form submissions untuk demo
+- [ ] Setup Google Sheets dengan columns: Timestamp, Nama, Email, Pertanyaan, Kategori
+- [ ] Configure Gmail credential untuk auto-reply
+- [ ] Setup Telegram bot dan get chat ID
+- [ ] Set environment variables: GOOGLE_SHEETS_DOC_ID, TELEGRAM_CHAT_ID
+- [ ] Activate workflow dan test dengan sample submission
 
 ### **[DRAFT]** Expected Demo Flow:
-1. Show customer mengisi Google Form (live demo atau prepared)
-2. Demonstrate data otomatis tersimpan di Google Sheets dengan struktur
-3. Show personalized auto-reply email terkirim ke customer
-4. Show notifikasi tim di Slack dengan customer details
-5. Highlight business value: "Tidak ada inquiry yang terlewat, respon instan ke customer"
+1. **Show N8N Form interface** - demonstrate built-in form generation capability
+2. **Submit test inquiry** - live demo dengan realistic business data
+3. **Demonstrate execution difference**:
+   - Parallel: Show all actions happening simultaneously
+   - Serial: Show step-by-step sequence with status confirmation
+4. **Show Google Sheets logging** dengan structured data
+5. **Show Gmail auto-reply** dengan personalized Indonesian content
+6. **Show Telegram notification** dengan business-friendly formatting
+7. **Highlight business value**: "Zero manual work, instant customer response, full tracking"
 
 ---
 
@@ -44,34 +59,51 @@ Google Forms (New Submission) → Google Sheets (Log) → Gmail (Auto Reply) →
 **Problem**: Sales team kesulitan tracking perubahan status lead secara real-time
 **Solution**: Otomatisasi notifikasi untuk lead baru DAN update status existing lead
 
+### **Available N8N Workflow:**
+**"New Lead Alert - Day 1 Demo 2"** (ID: kFJzY8RvHZd959bi)
+
 ### Workflow Design (2 nodes)
 ```
-Google Sheets Trigger → Slack (Notify Sales Team)
+Google Sheets Trigger → Telegram (Notify Sales Team)
 ```
 
 ### **[DRAFT]** Learning Objectives:
 - Memahami trigger yang responsif terhadap berbagai perubahan data
-- Menghubungkan dua aplikasi berbeda
-- Melihat data flow dinamis dari multiple scenarios
+- Demonstrate simple 2-node automation
+- Show real-time data monitoring capabilities
+- Business value dari instant notification systems
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Create shared Google Sheet "Lead Database" dengan kolom: Nama, Email, Status, Source
-- [ ] Test Slack channel notification dengan dynamic content
-- [ ] Prepare sample lead data dengan berbagai status
-- [ ] Setup demo untuk 2 trigger scenarios
+- [ ] Create shared Google Sheet "Lead Database" dengan kolom: Timestamp, Nama, Email, Status, Source
+- [ ] Configure Google Sheets trigger untuk detect changes
+- [ ] Setup Telegram notification dengan dynamic content dari sheet data
+- [ ] Prepare sample lead data dengan berbagai status values
+- [ ] Test both scenarios: new lead addition dan status updates
 
 ### **[DRAFT]** Enhanced Demo Flow:
 Instruktur demonstrasikan **2 skenario trigger**:
 
-**Skenario 1: New Lead**
-1. Tambahkan baris baru di Google Sheets (Lead baru)
-2. Lihat notifikasi "New Lead Added" di Slack
+**Skenario 1: New Lead Addition**
+1. **Buka Google Sheets "Lead Database"** - show existing data structure
+2. **Add new row** dengan data: Nama, Email, Status="New", Source="Website"
+3. **Instant Telegram notification** with "🎉 NEW LEAD ADDED!" message
+4. **Show dynamic data** dari sheets muncul di notification
 
-**Skenario 2: Status Update**
-1. Update kolom "Status" dari "Cold" ke "Hot" pada existing lead
-2. Lihat notifikasi "Lead Status Changed" di Slack
+**Skenario 2: Lead Status Update**
+1. **Select existing lead** di Google Sheets
+2. **Change Status** dari "New" ke "Hot Prospect"
+3. **Real-time notification** dengan "🔄 LEAD STATUS UPDATED" message
+4. **Demonstrate immediacy** - no delay between change dan notification
 
-**Key Learning**: Satu workflow bisa handle multiple types of changes!
+**Key Learning Demo Points:**
+- **One workflow handles multiple scenarios** (create, update, delete)
+- **Real-time monitoring** - no polling delays
+- **Dynamic content** based on actual sheet data
+- **Business critical notifications** - sales team never misses updates
+
+**Environment Variables Needed:**
+- `LEAD_SHEETS_DOC_ID`: Google Sheets document ID
+- `SALES_TELEGRAM_CHAT_ID`: Sales team Telegram chat ID
 
 ---
 
@@ -81,30 +113,68 @@ Instruktur demonstrasikan **2 skenario trigger**:
 **Problem**: Sales team lupa follow-up setelah meeting dengan prospek, dan status di database tidak ter-update
 **Solution**: Otomatisasi follow-up email dan update database status setelah meeting selesai
 
-### Workflow Design (4 nodes)
+### **Available N8N Workflow:**
+**"Post-Meeting Follow-Up Automation - Day 1 Demo 3"** (ID: 98WzmS6mMNif2WPl)
+
+### Workflow Design (5 nodes)
 ```
-Google Calendar Trigger → Google Sheets (Search Row) → Gmail (Send Follow-up) → Google Sheets (Update Row)
+Google Calendar Trigger → Google Sheets (Read Database) → Code (Process & Match) → Gmail (Follow-up) → Google Sheets (Update Status)
 ```
 
 ### **[DRAFT]** Advanced Learning Concepts:
-- **Data Search**: Mencari row berdasarkan meeting attendee
-- **Conditional Processing**: Kirim follow-up hanya untuk meeting tertentu
-- **Data Update**: Update status database setelah action completed
-- **Full Automation Cycle**: Dari trigger sampai database update
+- **Calendar Event Monitoring**: Automatic trigger when meetings end
+- **Data Matching Logic**: Code node untuk match attendee dengan prospect database
+- **Conditional Processing**: Only send follow-up for meetings with known prospects
+- **Personalized Email Templates**: Dynamic content dengan meeting dan prospect details
+- **Database State Management**: Update status tracking dengan timestamp
+- **Full Business Process Automation**: End-to-end sales workflow
 
 ### **[DRAFT]** Instructor Setup TODO:
-- [ ] Setup Google Calendar dengan meeting yang include email attendee
-- [ ] Create Google Sheets "Prospek Database" dengan kolom: Email, Nama, Status, Last Contact
-- [ ] Configure Gmail follow-up template dengan personal touch
-- [ ] Test pencarian row berdasarkan attendee email
-- [ ] Test update status menjadi "Followed Up" after email sent
+- [ ] Setup Google Calendar dengan meeting events yang include attendee emails
+- [ ] Create Google Sheets "Prospect Database" dengan columns: Nama, Email, Status, Last Contact, Updated
+- [ ] Configure Gmail credentials untuk automated follow-up emails
+- [ ] Populate sample prospect data dengan email addresses
+- [ ] Set environment variable: PROSPECT_SHEETS_DOC_ID
+- [ ] Test meeting creation dan completion untuk trigger workflow
 
 ### **[DRAFT]** "Aha! Moment" Demo Flow:
-1. **Show Meeting End**: Tunjukkan meeting di Google Calendar yang baru selesai
-2. **Data Search in Action**: Lihat N8N mencari attendee di Google Sheets database
-3. **Personalized Follow-up**: Email follow-up otomatis terkirim dengan data dari sheets
-4. **Database Update**: **MOMENT PUNCAK** - Status di Google Sheets berubah otomatis menjadi "Followed Up"
-5. **Business Impact**: "Sales tidak pernah lupa follow-up, database selalu update"
+
+**Step 1: Setup Demo Context** (2 mins)
+1. **Show Prospect Database** di Google Sheets dengan sample data
+2. **Show scheduled meeting** di Google Calendar dengan prospect sebagai attendee
+3. **Explain business pain point**: "Sales team often forgets follow-up after meetings"
+
+**Step 2: The Magic Happens** (3 mins)
+1. **End the meeting** di Google Calendar (simulate meeting completion)
+2. **Watch workflow execute** di N8N:
+   - Calendar trigger activates automatically
+   - Code node matches attendee email dengan prospect database
+   - Gmail sends personalized follow-up dengan meeting details
+   - Google Sheets updates prospect status to "Followed Up"
+
+**Step 3: Business Impact Demonstration** (3 mins)
+1. **Show personalized follow-up email** dengan meeting summary
+2. **Show updated prospect status** di Google Sheets dengan timestamp
+3. **Highlight business value**:
+   - "Zero manual follow-up needed"
+   - "Complete audit trail in database"
+   - "Personalized touch maintains relationship quality"
+   - "Sales team can focus on selling, not administrative tasks"
+
+**Advanced Demo Features:**
+- **Indonesian language** follow-up email template
+- **Meeting metadata integration** (subject, time, attendees)
+- **Smart prospect matching** via Code node
+- **Automatic status tracking** dengan timestamp
+- **Conditional execution** - only processes meetings with known prospects
+
+**Environment Variables Needed:**
+- `PROSPECT_SHEETS_DOC_ID`: Prospect database Google Sheets ID
+
+**Required Credentials:**
+- Google Calendar (for meeting monitoring)
+- Google Sheets (for prospect database access)
+- Gmail (for automated follow-up emails)
 
 ---
 
