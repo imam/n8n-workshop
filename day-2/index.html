@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Tutorial - Day 2</title>
+
+    <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../node_modules/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Day 2 Slides akan dimuat dari markdown -->
+            <section data-markdown="slides.md"
+                     data-separator="^---$"
+                     data-separator-vertical="^--$"
+                     data-separator-notes="^Note:"
+                     data-charset="utf-8">
+            </section>
+        </div>
+    </div>
+
+    <script src="../node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="../node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script src="../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../node_modules/reveal.js/plugin/zoom/zoom.js"></script>
+
+    <script>
+        // Add cache busting for development
+        const cacheBuster = Date.now();
+        document.querySelector('[data-markdown]').setAttribute('data-markdown',
+            'slides.md?v=' + cacheBuster);
+
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Plugin configuration
+            plugins: [
+                RevealMarkdown,
+                RevealHighlight,
+                RevealNotes,
+                RevealZoom
+            ],
+
+            // Markdown plugin configuration
+            markdown: {
+                smartypants: true
+            },
+
+            // Navigation
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+
+            // PDF export
+            width: 1920,
+            height: 1080,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Add slide numbers
+        Reveal.configure({
+            slideNumber: 'c/t',
+            showSlideNumber: 'all'
+        });
+    </script>
+</body>
+</html>
