@@ -8,6 +8,9 @@ yarn-error.log*
 dist/
 build/
 
+# Exception: Allow lib/reveal.js/dist for GitHub Pages
+!lib/reveal.js/dist/
+
 # Environment variables
 .env
 .env.local
