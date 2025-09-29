@@ -138,12 +138,34 @@ npm run build   # Prepare for production
 
 ## 📦 Deployment
 
-### Static Hosting:
-Repository ini ready untuk deploy ke:
-- GitHub Pages
-- Netlify
-- Vercel
-- Surge.sh
+### GitHub Pages (Recommended):
+Repository ini **ready untuk GitHub Pages** tanpa konfigurasi tambahan!
+
+#### Langkah Deploy:
+1. **Push repository** ke GitHub
+2. **Buka Settings** repository di GitHub
+3. **Pilih Pages** di sidebar kiri
+4. **Source**: Deploy from a branch
+5. **Branch**: main (atau master)
+6. **Folder**: / (root)
+7. **Save** dan tunggu beberapa menit
+
+#### URL Akses:
+```
+https://[username].github.io/[repository-name]/
+```
+
+#### Features yang Sudah Ready:
+✅ Reveal.js assets sudah di-bundle di `lib/`
+✅ Semua path sudah relative dan compatible
+✅ Navigation antar hari berfungsi
+✅ Mobile responsive
+
+### Hosting Alternatif:
+Repository ini juga compatible dengan:
+- Netlify (drag & drop folder)
+- Vercel (import dari GitHub)
+- Surge.sh (`surge .`)
 
 ### Build for Production:
 ```bash
