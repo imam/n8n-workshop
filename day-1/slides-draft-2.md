@@ -41,8 +41,8 @@
 - **Google Sheets**: Tambah row, update data, baca data
 - **Gmail**: Kirim email, baca inbox
 - **Google Calendar**: Buat event, update event
-- **Slack/Telegram**: Kirim message, buat channel
-- **HTTP Request**: Kirim data ke API/webhook
+- **Telegram**: Kirim message ke grup/channel
+- **WhatsApp**: Kirim message ke contact
 - **Dan 300+ action lainnya**
 
 **Slide: Cara Kerja Action**
@@ -52,27 +52,27 @@
 
 **Visual:**
 ```
-[Action 1: Add Row] → [Action 2: Send Email] → [Action 3: Notify Slack]
+[Action 1: Add Row] → [Action 2: Send Email] → [Action 3: Notify Telegram]
 ```
 
 ---
 
-## [TO REVIEW] SECTION 4: Demo & Tugas 1 - Action Pertama
+## [TO REVIEW] SECTION 4: Demo & Tugas 1 - Action Pertama (Single Step)
 
 ### [TO REVIEW] Tugas 1: Jalankan Action Pertama
 
 **Learning Objective:**
 - Memahami cara kerja action di N8N
-- Membuat workflow dengan 1 action
-- Menjalankan action secara manual (klik button)
+- Jalankan single action dengan double-click node
+- Menjalankan action secara manual (tanpa trigger)
 
 **Business Scenario:**
 - Input manual data ke sistem
 - Jalankan action saat kita mau (controlled)
 
-**Workflow Design:**
+**Single Node Execution:**
 ```
-[Execute Workflow Button] → [Google Sheets: Add Row]
+[Double-click Node] → [Google Sheets: Add Row] → Execute!
 ```
 
 **Prerequisites Checklist:**
@@ -84,9 +84,8 @@
 
 **Step-by-Step Tugas 1:**
 1. Buat workflow baru di N8N
-2. Klik tombol "Execute Workflow" di kanan atas (ini untuk jalankan workflow manual)
-3. Tambahkan node "Google Sheets"
-4. Configure Google Sheets:
+2. Tambahkan node "Google Sheets"
+3. Configure Google Sheets:
    - Credential: Pilih Google account yang sudah connected
    - Operation: "Append or Update Row"
    - Document: "Workshop N8N"
@@ -95,21 +94,22 @@
    - Values to Send:
      - Column: "Angka"
      - Value: 975
-5. Save workflow
-6. Klik "Execute Workflow"
-7. Cek spreadsheet - angka 975 muncul di row baru!
+4. Save workflow
+5. **Double-click pada node "Google Sheets"** untuk execute single step
+6. Cek spreadsheet - angka 975 muncul di row baru!
 
 **Demo Live:**
 - Instructor jalankan step-by-step
-- Tunjukkan execution result (success/error)
+- Tunjukkan cara double-click node untuk execute
+- Tunjukkan execution result di node (success/error)
 - Buka spreadsheet untuk verify data masuk
-- Emphasize: Ini action yang jalan pas kita klik button
+- Emphasize: Ini action yang jalan pas kita double-click node (single step)
 
 **Key Takeaways Tugas 1:**
 - Action = Aksi yang dilakukan N8N (contoh: tambah data ke sheets)
-- Execute Workflow button = Cara manual untuk jalankan action
-- Data yang di-input bisa dilihat di execution result
-- **Ini sudah automation, tapi masih manual klik button**
+- Double-click node = Execute single action (tidak perlu trigger)
+- Data yang di-input bisa dilihat di execution result di node
+- **Single step execution - fokus pada action dulu, bukan workflow**
 
 ---
 
@@ -127,8 +127,8 @@
 
 **Success Criteria:**
 - ✅ Angka 975 muncul di row baru di spreadsheet
-- ✅ Execution history menunjukkan "Success"
-- ✅ Peserta paham: "Saya bisa jalankan action dengan klik button"
+- ✅ Node menunjukkan execution success (green checkmark)
+- ✅ Peserta paham: "Saya bisa jalankan single action dengan double-click node"
 
 ---
 
