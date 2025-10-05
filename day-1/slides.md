@@ -8,11 +8,10 @@
 ## Agenda Pelatihan
 
 - **Pengenalan:** Konsep inti otomatisasi, alur kerja (workflow), dan langkah (step)
-- **Demo & Praktik (Tugas 1):** Trigger Manual
-- **Demo & Praktik (Tugas 2):** Trigger Otomatis & Data Dinamis
-- **Demo & Praktik (Tugas 3):** Merangkai Beberapa Aksi
-- **Manajemen Workflow:** Cara mengelola & memonitor alur kerja Anda
-- **Tantangan & Penutup**
+- **Tugas 1:** Workflow pertama dengan Trigger Manually
+- **Tugas 2:** Otomatisasi berbasis event & data dinamis
+- **Tugas 3:** Multi-step workflow
+- **Penutup:** Rekapitulasi & Q&A
 
 ---
 
@@ -54,19 +53,47 @@ Ini memungkinkan tim Anda untuk fokus pada pekerjaan yang lebih strategis.
 
 ---
 
+## Dari Skenario ke Solusi N8N
+
+### Bagaimana Cara Kerjanya?
+
+Ingat skenario tadi: **"Customer isi form → Data masuk spreadsheet → Tim dapat notifikasi"**
+
+Di N8N, kita memecahnya menjadi:
+- 📍 **"Customer isi form"** = **Trigger** (pemicu yang memulai)
+- ⚙️ **"Data masuk spreadsheet + notifikasi"** = **Action** (tindakan yang dijalankan)
+- 🔗 **Trigger + Action** = **Workflow** (alur kerja lengkap)
+
+---
+
 ## Konsep Inti: Trigger & Action
 
-### Setiap Workflow Dimulai dengan Trigger
+### Definisi yang Perlu Dipahami
 
 - **Trigger (Pemicu):**
-  - **Step pertama** yang memulai sebuah workflow
-  - Seperti alarm yang membangunkan sistem
-  - *Contoh: "Setiap kali ada baris baru di Google Sheets"*
+  - Step pertama yang memulai workflow
+  - Menjawab pertanyaan: **"KAPAN workflow berjalan?"**
+  - *Contoh: Setiap kali ada baris baru di Google Sheets*
 
 - **Action (Tindakan):**
-  - **Step-step berikutnya** yang dieksekusi setelah workflow dipicu
-  - Pekerjaan yang dilakukan sistem
-  - *Contoh: "Buat undangan di Google Calendar"*
+  - Step-step berikutnya setelah trigger
+  - Menjawab pertanyaan: **"APA yang dilakukan sistem?"**
+  - *Contoh: Kirim email, buat event calendar, simpan ke database*
+
+---
+
+## Prinsip Utama N8N
+
+### Aturan Emas Otomatisasi
+
+> **"Selama Trigger-nya ada di N8N dan Action-nya ada di N8N, kita bisa mengotomasikannya."**
+
+Artinya:
+- ✅ Jika aplikasi Anda punya trigger di N8N (Google Sheets, Telegram, Calendar)
+- ✅ Dan tindakan yang Anda inginkan ada di N8N (Gmail, Slack, Database)
+- ✅ **Maka Anda bisa menghubungkannya!**
+
+**N8N punya 300+ integrasi aplikasi** - peluang otomasi hampir tak terbatas!
 
 ---
 
@@ -82,22 +109,24 @@ Ini memungkinkan tim Anda untuk fokus pada pekerjaan yang lebih strategis.
 Memahami cara kerja workflow dan step dengan membuat otomatisasi sederhana: **menambahkan data ke Google Sheets dengan satu klik**.
 
 ### Apa yang Akan Dibuat:
-- Trigger: Manual (klik tombol)
+- Trigger: **Trigger Manually** (klik tombol)
 - Action: Tambah baris baru ke Google Sheets
 
 ---
 
-## Konsep Kunci: Eksekusi Workflow & Step
+## Konsep: Trigger Manually
 
-- **Execute Workflow:**
-  - Menjalankan **seluruh rangkaian step** dalam workflow
-  - Dari Trigger hingga Action terakhir
-  - Seperti menjalankan resep masakan dari awal sampai selesai
+### Trigger Paling Sederhana
 
-- **Execute Step (Single Step):**
-  - Menjalankan **hanya satu step** yang kita pilih
-  - Berguna untuk menguji logika di tengah-tengah workflow
-  - Tidak perlu menjalankan semuanya
+**"Trigger Manually"** adalah cara paling dasar untuk menjalankan workflow:
+- 👆 Workflow **hanya berjalan** saat Anda klik tombol **"Test workflow"**
+- 🧪 **Sempurna untuk pengujian** dan belajar
+- 🎯 **Cocok untuk tugas on-demand** yang tidak perlu otomatis
+
+**Kapan menggunakannya:**
+- Saat belajar membuat workflow pertama kali
+- Testing workflow sebelum menggunakan trigger otomatis
+- Proses yang memang butuh konfirmasi manual
 
 ---
 
@@ -144,17 +173,82 @@ Membuat workflow yang berjalan **secara otomatis** setiap kali ada pendaftar bar
 
 ---
 
-## Konsep Kunci: Trigger Otomatis & Data Dinamis
+## Berbagai Jenis Trigger di N8N
 
-- **Trigger Otomatis:**
-  - Workflow "mendengarkan" kejadian di aplikasi lain
-  - Berjalan sendiri tanpa perlu kita suruh
-  - Seperti alarm pintar yang tahu kapan harus berbunyi
+### Trigger Bisa Beragam!
 
-- **Data Dinamis:**
-  - Tidak lagi menggunakan data statis
-  - Menggunakan `Nama` dan `Email` asli dari pendaftar
-  - Data mengalir dari step ke step
+Sekarang kita naik level dari "Trigger Manually". N8N punya banyak jenis trigger:
+
+**📅 Schedule Trigger**
+- Workflow berjalan berdasarkan jadwal (setiap jam, harian, mingguan)
+- *Contoh: Kirim laporan otomatis setiap Senin pagi*
+
+**🌐 Webhook Trigger**
+- Workflow dipicu saat ada request HTTP dari aplikasi lain
+- *Contoh: Ada pembayaran masuk dari Stripe*
+
+**📊 App Event Triggers**
+- Workflow dipicu oleh kejadian di aplikasi tertentu
+- *Contoh: Google Sheets (baris baru), Gmail (email masuk), Telegram (pesan baru)*
+
+---
+
+## Berbagai Jenis Action di N8N
+
+### Action = Yang Bisa Kita Lakukan
+
+Setelah trigger, N8N bisa melakukan banyak action:
+
+**📧 Komunikasi**
+- Kirim email (Gmail, Outlook)
+- Kirim pesan (Slack, Telegram, WhatsApp)
+
+**📝 Data Management**
+- Tambah/update data di Google Sheets, Airtable, Database
+- Buat file di Google Drive, Dropbox
+
+**📅 Scheduling**
+- Buat/update event di Google Calendar
+- Buat task di Asana, Trello
+
+**🔗 Integration**
+- Update CRM (HubSpot, Salesforce)
+- Kirim data ke aplikasi lain via API
+
+---
+
+## Konsep Kunci: Data Dinamis
+
+### Data yang Mengalir Antar Step
+
+Di Tugas 2, kita akan menggunakan **Data Dinamis**:
+- ❌ **Bukan** data statis yang kita ketik manual
+- ✅ **Tapi** data asli dari trigger (nama, email, nomor telepon)
+- 🔄 Data mengalir dari **Trigger** → **Action**
+
+**Contoh:**
+- Trigger dapat: `Nama: "Budi", Email: "budi@email.com"`
+- Action gunakan: "Halo **Budi**, terima kasih sudah mendaftar di **budi@email.com**"
+
+---
+
+## Active vs Inactive Workflow
+
+### Dua Mode Workflow
+
+Setiap workflow di N8N punya 2 mode:
+
+**🔴 Inactive (Mode Edit/Testing):**
+- Workflow **TIDAK mendengarkan** trigger otomatis
+- Hanya berjalan saat Anda klik tombol **"Test workflow"**
+- **Gunakan saat:** Membuat, mengedit, atau testing workflow
+- **Aman** untuk melakukan perubahan
+
+**🟢 Active (Mode Production):**
+- Workflow **terus mendengarkan** triggernya
+- Berjalan **otomatis** saat ada event
+- **Gunakan saat:** Workflow sudah siap dan tested
+- **PENTING:** Workflow Tugas 2 & 3 harus **Active** agar berjalan otomatis!
 
 ---
 
@@ -243,97 +337,18 @@ Mari kita tambahkan step notifikasi email ke workflow yang sudah ada.
 
 ---
 
-<!-- SECTION 5: Manajemen Workflow -->
-
-# Mengelola Workflow Anda
-
----
-
-## Mengelola Workflow Anda
-
-### Membangun itu satu hal, mengelola adalah hal lain.
-
-Mari pelajari beberapa praktik terbaik untuk menjaga workflow kita tetap andal dan terorganisir.
-
----
-
-## Active vs. Inactive
-
-- **Inactive (Mode Edit/Uji Coba):**
-  - Workflow HANYA berjalan jika ditekan "Execute Workflow"
-  - Aman untuk membangun dan melakukan perubahan
-  - Trigger tidak mendengarkan event
-
-- **Active (Mode Produksi):**
-  - Workflow "mendengarkan" triggernya secara terus-menerus
-  - Berjalan otomatis saat ada event
-  - **Penting:** Workflow berbasis event seperti Tugas 2 & 3 **harus Active** agar bisa berjalan otomatis!
-
----
-
-## Memonitor & Debug: Tab Executions
-
-### Di mana kita bisa melihat riwayat?
-
-Tab **Executions** adalah log aktivitas workflow Anda.
-
-- ✅ **Success (Hijau):** Workflow berjalan lancar
-- ❌ **Error (Merah):** Terjadi masalah. Klik untuk melihat detailnya
-- ⏳ **Running (Biru):** Sedang berjalan
-- ⏸️ **Waiting (Kuning):** Menunggu input/event
-
-**Tips:** Selalu cek Executions untuk debugging!
-
----
-
-## Praktik Terbaik: Duplikasi & Download
-
-### Protect Your Work!
-
-- **Duplicate:**
-  - Cara aman untuk mencoba ide baru tanpa merusak workflow yang sudah berfungsi
-  - Seperti "Save As" di Word
-  - Gunakan sebelum melakukan perubahan besar
-
-- **Download:**
-  - Menyimpan workflow sebagai file JSON untuk backup atau berbagi dengan tim
-  - Version control sederhana
-  - Import kembali kapan saja
-
----
-
-<!-- SECTION 6: Penutup & Tantangan -->
-
-# Tantangan Terakhir
-
----
-
-## Tantangan Terakhir: Bereksplorasi!
-
-### Sekarang Giliran Anda!
-
-**Tugas:** Duplikasi workflow Tugas 3 dan tambahkan **satu Step Aksi lagi** setelah node Gmail.
-
-**Tujuan:** Mendorong Anda untuk menjelajahi berbagai node yang tersedia dan berkreasi.
-
-**Saran Node:**
-- Telegram (kirim notif ke grup)
-- Slack (posting ke channel)
-- Airtable (simpan record)
-- HTTP Request (webhook ke sistem lain)
-
----
+<!-- SECTION 5: Penutup -->
 
 ## Rekapitulasi
 
 ### Anda Telah Mempelajari:
 
 - ✅ Konsep fundamental **Workflow, Step, Trigger & Action**
-- ✅ Cara **mengeksekusi** keseluruhan workflow atau satu step
-- ✅ Membuat workflow dengan trigger **Manual** dan **Otomatis**
+- ✅ Prinsip utama: **"Jika Trigger & Action ada di N8N, bisa diotomatisasi"**
+- ✅ Membuat workflow dengan **Trigger Manually** dan **App Event Triggers**
 - ✅ Menggunakan **Data Dinamis** antar nodes
 - ✅ Merangkai **Multi-Step Action** dalam satu workflow
-- ✅ Dasar-dasar **Manajemen Workflow** (Active/Inactive, Executions, Duplicate)
+- ✅ Mengenal berbagai jenis **Trigger** dan **Action** yang tersedia
 
 **Anda sekarang punya skill untuk mengotomatisasi proses bisnis!**
 
