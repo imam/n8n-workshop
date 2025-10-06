@@ -189,22 +189,17 @@ Input Data → [Switch Node] → Jalur A (Perusahaan)
 
 ### Mengapa Branching Penting?
 
-**Scenario Business:**
-
 **Customer Segmentation:**
-- VIP Customer → Fast track, senior sales, special discount
-- Regular Customer → Standard process, junior sales
+- VIP → Fast track + senior sales + special discount
+- Regular → Standard process + junior sales
 
 **Geographic Routing:**
-- Jakarta → Tim Jakarta
-- Surabaya → Tim Surabaya
-- Bali → Tim Bali
+- Jakarta → Tim Jakarta | Surabaya → Tim Surabaya | Bali → Tim Bali
 
 **Priority Handling:**
-- Urgent order → Same-day processing
-- Normal order → 3-day processing
+- Urgent → Same-day processing | Normal → 3-day processing
 
-**Business Value:** Personalisasi otomatis, efisiensi resource allocation!
+**Business Value:** Personalisasi otomatis & efisiensi resource!
 
 ---
 

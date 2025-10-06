@@ -103,16 +103,12 @@ Membuat **chatbot interaktif**, memberinya **tool kalkulator**, lalu memberinya 
 
 ### Berinteraksi Langsung dengan AI
 
-N8N menyediakan **Chat Interface** bawaan yang memungkinkan kita:
+N8N menyediakan **Chat Interface** bawaan:
 - 💬 Berinteraksi langsung dengan workflow
 - 🌐 Public chat URL yang bisa dibagikan
 - 🔄 Real-time conversation dengan AI Agent
 
-**Use Case:**
-- Customer service chatbot
-- Internal support assistant
-- Interactive form filling
-- Data query interface
+**Contoh:** Customer service chatbot, support assistant, form filling
 
 ---
 
@@ -121,20 +117,15 @@ N8N menyediakan **Chat Interface** bawaan yang memungkinkan kita:
 ### AI yang Bisa Mengingat
 
 **Memory:**
-- Kemampuan AI untuk menyimpan dan mengingat percakapan
-- Membuat conversation lebih natural dan kontekstual
-- AI tidak mulai dari nol setiap kali chat
+- AI menyimpan dan mengingat percakapan
+- Conversation lebih natural dan kontekstual
 
 **User ID (Penting!):**
-- 🔑 **Kunci untuk memori persisten**
-- Selama User ID sama, AI ingat percakapan sebelumnya
+- 🔑 Kunci untuk memori persisten
+- Selama User ID sama, AI ingat percakapan
 - Bahkan setelah refresh browser!
 
-**Contoh:**
-- User: "Halo, nama saya Budi"
-- *[Refresh browser]*
-- User: "Siapa nama saya?"
-- AI: "Nama Anda adalah Budi" ✅
+**Contoh:** User bilang "nama saya Budi" → refresh → tanya "siapa nama saya?" → AI jawab "Budi" ✅
 
 ---
 
@@ -142,26 +133,18 @@ N8N menyediakan **Chat Interface** bawaan yang memungkinkan kita:
 
 ### Bagaimana Semuanya Bekerja Bersama
 
-```
-User Message
-    ↓
-AI Agent (LLM)
-    ↓
-[Reasoning] "Apakah ini butuh tool?"
-    ↓
-Ya → Pilih Tool (Calculator/Sheets/etc)
-    ↓
-Execute Tool → Dapatkan Result
-    ↓
-AI Format Response
-    ↓
-Return to User
-```
+**Flow Utama:**
+1. User kirim pesan
+2. AI Agent analyze: "Apakah butuh tool?"
+3. Jika ya → Pilih & execute tool (Calculator/Sheets/etc)
+4. AI dapat hasil dari tool
+5. AI format response
+6. Return jawaban ke user
 
 **Flow dengan Memory:**
-- AI cek memory: Apakah user pernah chat sebelumnya?
+- AI cek memory percakapan sebelumnya
 - Load conversation history
-- Gunakan context untuk response yang lebih baik
+- Gunakan context untuk response lebih baik
 
 ---
 
@@ -259,28 +242,15 @@ Jika user tidak memberikan semua field, tanyakan satu per satu.
 
 ### Bagaimana AI Mengumpulkan Data
 
-```
-User: "Tambah data saya"
-    ↓
-AI: *Check tool requirements*
-    ↓
-AI: "Baik, saya butuh beberapa informasi:"
-    ↓
-AI: "1. Siapa nama Anda?"
-User: "Budi"
-    ↓
-AI: "2. Alamat email Anda?"
-User: "budi@email.com"
-    ↓
-AI: "3. Nomor telepon Anda?"
-User: "08123456789"
-    ↓
-AI: *All data collected* → Execute Tool
-    ↓
-Google Sheets: Data ditambahkan ✅
-    ↓
-AI: "Data Anda sudah berhasil ditambahkan!"
-```
+**Conversation Flow:**
+1. User: "Tambah data saya"
+2. AI cek tool requirements → Data kurang lengkap
+3. AI: "Siapa nama Anda?" → User: "Budi"
+4. AI: "Alamat email?" → User: "budi@email.com"
+5. AI: "Nomor telepon?" → User: "08123456789"
+6. AI: Semua data terkumpul → Execute tool
+7. Google Sheets: Data ditambahkan ✅
+8. AI: "Data berhasil ditambahkan!"
 
 ---
 
@@ -371,25 +341,17 @@ Mengajarkan AI untuk **menjalankan workflow lain yang kompleks** sebagai salah s
 
 ### Hierarchy Workflow yang Powerful
 
-```
-User Request
-    ↓
-AI Agent (Main Workflow)
-    ↓
-[Decision] "Task apa yang dibutuhkan?"
-    ├─→ Subworkflow 1: Customer Onboarding
-    ├─→ Subworkflow 2: Data Processing
-    ├─→ Subworkflow 3: Report Generation
-    └─→ Subworkflow 4: Notification System
-    ↓
-Each Subworkflow:
-- Punya logic sendiri
-- Return result ke AI Agent
-    ↓
-AI Agent compile results
-    ↓
-Return to User
-```
+**Main Flow:**
+1. User kirim request
+2. AI Agent (Main Workflow) analyze task
+3. AI pilih subworkflow yang tepat:
+   - Subworkflow 1: Customer Onboarding
+   - Subworkflow 2: Data Processing
+   - Subworkflow 3: Report Generation
+   - Subworkflow 4: Notification System
+4. Subworkflow eksekusi (punya logic sendiri)
+5. Return result ke AI Agent
+6. AI compile & return ke user
 
 ---
 
@@ -397,22 +359,18 @@ Return to User
 
 ### Contoh Real-World
 
-**Scenario:** Customer support chatbot dengan berbagai tugas
+**Scenario:** Customer support chatbot
 
 **Main Workflow (AI Agent):**
-- Terima request dari customer
-- Pahami intent dan context
-- Pilih action yang tepat
+- Terima request → Pahami intent → Pilih action
 
 **Subworkflows:**
-1. **Check Order Status** - Query database, format info
-2. **Process Refund** - Validate, create ticket, update system
-3. **Update Address** - Validate format, update CRM
-4. **Escalate to Human** - Create ticket, notify team
+1. **Check Order Status** - Query & format info
+2. **Process Refund** - Validate & update system
+3. **Update Address** - Validate & update CRM
+4. **Escalate to Human** - Create ticket & notify
 
-**Flow:**
-- Customer: "Saya mau refund order #12345"
-- AI: *[Call "Process Refund" subworkflow]* → *[Get result]* → "Refund Anda sudah diproses!"
+**Contoh:** Customer bilang "refund order #12345" → AI panggil subworkflow → "Refund sudah diproses!"
 
 ---
 
@@ -470,17 +428,14 @@ Kita akan buat:
 ### From Zero to AI Hero
 
 **Day 1 (Foundation):**
-- Workflow dasar: Trigger → Action
-- Data dinamis dan multi-step
+- Workflow dasar & data dinamis
 
 **Day 2 (Intelligence):**
-- Data transformation & flow control
-- AI Classification
+- Data transformation & AI Classification
 
 **Day 3 (Mastery):**
-- AI Agent dengan Tools & Memory
-- Proactive AI & Subworkflow
-- Full automation autonomy
+- AI Agent + Tools + Memory
+- Proactive AI + Subworkflow
 
 **Evolution: Manual → Automated → Intelligent → AUTONOMOUS** 🎯
 
@@ -490,22 +445,16 @@ Kita akan buat:
 
 ### Kemana Lagi Kita Bisa Pergi?
 
-Jika ada Day 4, konsep yang lebih canggih lagi:
+Jika ada Day 4, konsep yang lebih canggih:
 
 **🔍 AI Research Agent:**
-- AI yang bisa mencari informasi di internet
-- Web scraping dengan AI reasoning
-- Real-time data integration
+- AI mencari info di internet & web scraping
 
 **📚 AI Embedding & Retrieval:**
-- Mengajarkan AI tentang dokumen perusahaan
-- Knowledge base yang cerdas
-- Context-aware responses dari company data
+- Knowledge base dari dokumen perusahaan
 
 **🤖 Multi-Agent Systems:**
-- Beberapa AI Agent bekerja sama
-- Specialized agents untuk berbagai tugas
-- Collaborative automation
+- Beberapa AI Agent bekerja sama untuk tugas kompleks
 
 ---
 

@@ -236,19 +236,15 @@ Di Tugas 2, kita akan menggunakan **Data Dinamis**:
 
 ### Dua Mode Workflow
 
-Setiap workflow di N8N punya 2 mode:
-
 **🔴 Inactive (Mode Edit/Testing):**
-- Workflow **TIDAK mendengarkan** trigger otomatis
-- Hanya berjalan saat Anda klik tombol **"Test workflow"**
-- **Gunakan saat:** Membuat, mengedit, atau testing workflow
-- **Aman** untuk melakukan perubahan
+- Workflow TIDAK mendengarkan trigger otomatis
+- Hanya berjalan saat klik **"Test workflow"**
+- Aman untuk membuat & mengedit workflow
 
 **🟢 Active (Mode Production):**
-- Workflow **terus mendengarkan** triggernya
-- Berjalan **otomatis** saat ada event
-- **Gunakan saat:** Workflow sudah siap dan tested
-- **PENTING:** Workflow Tugas 2 & 3 harus **Active** agar berjalan otomatis!
+- Workflow terus mendengarkan triggernya
+- Berjalan otomatis saat ada event
+- **PENTING:** Tugas 2 & 3 harus Active agar berjalan otomatis!
 
 ---
 
