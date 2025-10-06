@@ -1,281 +1,374 @@
-# N8N Tutorial - Day 1
-
-## Pengenalan N8N untuk Automation
-
----
-
-<!-- SECTION 1: Introduction -->
-# Introduction N8N
+# Otomatisasi Fundamental dengan N8N
+## Membangun Alur Kerja Cerdas untuk Bisnis Anda
 
 ---
 
-## Apa itu N8N?
+<!-- SECTION 1: Pengenalan & Konsep Dasar -->
 
-![alt text](image.png)
-<!-- Placeholder: Logo N8N -->
+## Agenda Pelatihan
 
-- **N8N** adalah tool untuk otomatisasi pekerjaan bisnis Anda
-- Menghubungkan 300+ aplikasi favorit Anda tanpa perlu coding
-- Seperti main puzzle - drag & drop aja!
-- Bisa dijalankan sendiri, data tetap aman di tangan Anda
-
-Note:
-Bayangkan tidak perlu lagi copy-paste data manual, atau mengecek email satu-satu. N8N bisa bantu otomatisasi semua itu!
+- **Pengenalan:** Konsep inti otomatisasi, alur kerja (workflow), dan langkah (step)
+- **Tugas 1:** Workflow pertama dengan Trigger Manually
+- **Tugas 2:** Otomatisasi berbasis event & data dinamis
+- **Tugas 3:** Multi-step workflow
+- **Penutup:** Rekapitulasi & Q&A
 
 ---
 
-## Target Hari Ini
+## Masalah: Tugas Manual yang Melelahkan
 
-Setelah sesi ini, peserta dapat:
+### Pernah Mengalami Ini?
 
-- ✅ Mengenal cara kerja N8N untuk bisnis
-- ✅ Membuat otomatisasi pertama Anda
-- ✅ Menggunakan berbagai cara memulai otomatisasi
-- ✅ Mengelola koneksi ke aplikasi favorit
-- ✅ Memantau dan mengecek hasil otomatisasi
+Setiap hari, tim Anda menghabiskan waktu untuk tugas repetitif:
 
----
-
-<!-- SECTION 2: Demo Workflow -->
-# Demo: Workflow Pertama Anda
+- **Marketing:** Menyalin data lead dari form ke CRM
+- **Sales:** Mengirim email follow-up satu per satu
+- **Finance:** Membuat laporan mingguan dari spreadsheet
+- **Operations:** Memberi notifikasi manual saat ada order baru
 
 ---
 
-## Demo: Otomatisasi Customer Inquiry
+## Solusi: Otomatisasi Alur Kerja (Workflow)
 
-### Skenario Bisnis:
-**Customer Bertanya** → **Respon Otomatis** → **Simpan Lead** → **Notifikasi Tim**
+### Bagaimana Jika Sistem Bisa Melakukannya untuk Anda?
 
-*Seperti punya asisten virtual 24/7 untuk bisnis Anda*
+Dengan otomatisasi, kita merancang sebuah **Workflow**, yaitu serangkaian langkah yang kita "ajarkan" kepada komputer untuk dieksekusi secara otomatis.
 
----
-
-## Live Demo: Dari Pertanyaan ke Penjualan
-
-### Yang Terjadi Otomatis:
-1. **Customer isi form kontak** di website Anda
-2. **Email welcome** langsung terkirim ke customer
-3. **Data tersimpan** di Google Sheets untuk follow-up
-4. **Tim sales dapat notifikasi** di Slack ada lead baru
+Ini memungkinkan tim Anda untuk fokus pada pekerjaan yang lebih strategis.
 
 ---
 
-<!-- SECTION 3: Workflow Concepts -->
-# Memahami Konsep Workflow dan Node
+## Anatomi Sebuah Workflow
+
+### Workflow = Serangkaian Langkah (Step)
+
+- **Workflow:**
+  - Keseluruhan alur kerja dari awal hingga akhir
+  - Seperti resep masakan yang lengkap
+
+- **Step (atau Node):**
+  - Satu blok bangunan tunggal di dalam workflow
+  - Setiap step memiliki satu tugas spesifik
+  - Seperti satu instruksi dalam resep: "potong bawang", "tumis bumbu"
 
 ---
 
-## Apa itu Workflow?
+## Dari Skenario ke Solusi N8N
 
-**Workflow** = Seperti SOP bisnis, tapi dijalankan otomatis oleh komputer. Input yang kita masukkan akan diproses, dan dapat menghasilkan output.
+### Bagaimana Cara Kerjanya?
 
-### Contoh Sederhana: Proses Order Kopi Online
-1. **Input**: Customer pesan kopi via WhatsApp
-2. **Proses**: Catat pesanan → Cek stok → Hitung total
-3. **Output**: Konfirmasi ke customer + notifikasi ke barista
+Ingat skenario tadi: **"Customer isi form → Data masuk spreadsheet → Tim dapat notifikasi"**
 
----
-
-## Anatomik Node
-
-### Komponen Node:
-- **Input Connection** - Menerima data
-- **Node Icon & Name** - Identifikasi node
-- **Output Connection** - Mengirim data
-- **Status Indicator** - Status eksekusi
----
-
-## Cara Kerja Antar Node
-
-### Contoh Nyata:
-1. **Google Sheets** (ambil data customer baru)
-2. **Gmail** (terima data nama & email, kirim welcome email)
-3. **Slack** (terima data dari Gmail, kirim notifikasi ke tim)
-
-**Setiap node = Seperti orang di assembly line. Terima hasil kerja sebelumnya, lakukan tugasnya, teruskan ke yang berikutnya.**
+Di N8N, kita memecahnya menjadi:
+- 📍 **"Customer isi form"** = **Trigger** (pemicu yang memulai)
+- ⚙️ **"Data masuk spreadsheet + notifikasi"** = **Action** (tindakan yang dijalankan)
+- 🔗 **Trigger + Action** = **Workflow** (alur kerja lengkap)
 
 ---
 
-## Menggunakan Data dari Node Sebelumnya
+## Konsep Inti: Trigger & Action
 
-### Contoh Praktis:
-- **Google Sheets** punya field: `nama`, `email`, `perusahaan`
-- **Gmail node** butuh email → Drag `email` dari Sheets
-- **Slack node** butuh nama → Drag `nama` dari Sheets
+### Definisi yang Perlu Dipahami
 
----
+- **Trigger (Pemicu):**
+  - Step pertama yang memulai workflow
+  - Menjawab pertanyaan: **"KAPAN workflow berjalan?"**
+  - *Contoh: Setiap kali ada baris baru di Google Sheets*
 
-<!-- SECTION 4: Triggers -->
-# Memahami Berbagai Trigger pada N8N
-
----
-
-## Google Sheets Trigger
-
-- **Otomatis jalan** saat ada baris baru di spreadsheet
-- Monitor perubahan data secara real-time
-- Langsung proses data yang baru masuk
-- Cocok untuk input data tim
-
-```
-Use case: Tim sales input lead baru di Google Sheets, langsung kirim welcome email dan masuk ke CRM
-```
+- **Action (Tindakan):**
+  - Step-step berikutnya setelah trigger
+  - Menjawab pertanyaan: **"APA yang dilakukan sistem?"**
+  - *Contoh: Kirim email, buat event calendar, simpan ke database*
 
 ---
 
-## Telegram Trigger
+## Prinsip Utama N8N
 
-- **Otomatis jalan** saat ada pesan baru di grup/channel
-- Monitor chat grup atau channel tertentu
-- Langsung respon pesan masuk
+### Aturan Emas Otomatisasi
 
-```
-Use case: Customer service terima komplain di grup Telegram, langsung buat ticket dan notify manager
-```
+> **"Selama Trigger-nya ada di N8N dan Action-nya ada di N8N, kita bisa mengotomasikannya."**
 
----
+Artinya:
+- ✅ Jika aplikasi Anda punya trigger di N8N (Google Sheets, Telegram, Calendar)
+- ✅ Dan tindakan yang Anda inginkan ada di N8N (Gmail, Slack, Database)
+- ✅ **Maka Anda bisa menghubungkannya!**
 
-## Google Calendar Trigger
-
-- **Otomatis jalan** saat ada event baru atau dimulai
-- Monitor calendar pribadi atau tim
-
-```
-Use case: Saat meeting dicancel, kabari seluruh peserta meeting
-```
+**N8N punya 300+ integrasi aplikasi** - peluang otomasi hampir tak terbatas!
 
 ---
 
-<!-- SECTION 5: Credentials -->
-# Menghubungkan Aplikasi Favorit Anda
+<!-- SECTION 2: Tugas 1 - Workflow Pertama -->
+
+# Tugas 1: Kemenangan Pertama Anda
 
 ---
 
-## Mengelola Kredensial dengan Aman
+## Tugas 1: Workflow Pertama Anda
 
-**Kredensial** = "Kunci akses" untuk menghubungkan N8N dengan aplikasi Anda
+### Tujuan:
+Memahami cara kerja workflow dan step dengan membuat otomatisasi sederhana: **menambahkan data ke Google Sheets dengan satu klik**.
 
----
-
-## Cara Menghubungkan Aplikasi
-
-### Langkah Mudah:
-1. Pilih **aplikasi** yang mau dihubungkan
-2. Klik **"Login & Connect"**
-3. Masukkan **username/password** seperti biasa
-4. **Izinkan akses** untuk N8N
-5. **Selesai!** Aplikasi sudah terhubung
+### Apa yang Akan Dibuat:
+- Trigger: **Trigger Manually** (klik tombol)
+- Action: Tambah baris baru ke Google Sheets
 
 ---
 
-<!-- SECTION 6: Execution History -->
-# Melihat Riwayat Eksekusi
+## Konsep: Trigger Manually
+
+### Trigger Paling Sederhana
+
+**"Trigger Manually"** adalah cara paling dasar untuk menjalankan workflow:
+- 👆 Workflow **hanya berjalan** saat Anda klik tombol **"Test workflow"**
+- 🧪 **Sempurna untuk pengujian** dan belajar
+- 🎯 **Cocok untuk tugas on-demand** yang tidak perlu otomatis
+
+**Kapan menggunakannya:**
+- Saat belajar membuat workflow pertama kali
+- Testing workflow sebelum menggunakan trigger otomatis
+- Proses yang memang butuh konfirmasi manual
 
 ---
 
-## Execution History Overview
+## Yuk Kita Coba! (Tugas 1)
 
-**Execution History** = Sejarah dari semua workflow yang pernah dijalankan
+### Saatnya Action!
 
-- **Status** eksekusi (Success/Failed/Running)
-- **Timestamp** kapan dijalankan
-- **Duration** berapa lama eksekusi
-- **Data** yang diproses
+Mari kita buat workflow pertama bersama-sama dari awal hingga akhir.
 
----
-
-## Waktunya Praktik! 🚀
-
-### Sekarang Giliran Anda!
-Setelah memahami konsep dasar N8N, saatnya **hands-on experience**:
-
-- 💼 **Build automation nyata** untuk bisnis Anda
-- 🔗 **Connect aplikasi favorit** yang sudah Anda pakai
-- ⚡ **Rasakan langsung** efisiensi automation
-- 🎯 **Lihat hasil** dalam hitungan menit
-
-**Tips**: Jangan takut eksperimen - N8N aman untuk dicoba!
-
-Note:
-Pastikan semua peserta siap dengan laptop dan akses internet. Berikan motivasi bahwa mereka akan membuat sesuatu yang berguna untuk pekerjaan mereka.
+**Yang akan kita lakukan:**
+- Menambah node baru
+- Menghubungkan antar node
+- Konfigurasi setiap node
+- Menjalankan workflow
 
 ---
 
-## Apa itu Pinned Data?
+## WAKTUNYA PRAKTIK! (Tugas 1)
 
-**Pinned Data** = Data sample yang "disematkan" ke node untuk testing
+### Sekarang Giliran Anda
 
-### Mengapa Penting?
-- 🧪 **Test workflow** tanpa trigger real
-- 🔍 **Debug masalah** dengan data yang sama
-- ⚡ **Kembangkan lebih cepat** tanpa tunggu data asli
-- 📝 **Dokumentasi** - contoh data untuk tim lain
+- Buka dokumen panduan **Tugas 1**
+- Ikuti langkah-langkah yang sama seperti yang didemonstrasikan untuk membangun workflow pertama Anda
+- Jangan ragu bertanya jika ada kendala!
 
----
-
-## Contoh Real: Pin Data dari Order E-commerce
-
-### Skenario Bisnis:
-Customer order produk di online shop → **Auto kirim konfirmasi WhatsApp + Email + Notifikasi tim**
-
-### Masalah Tanpa Pinned Data:
-❌ Test message template = Buat fake order di sistem
-
-❌ Debug format pesan = Ganggu database live
-
-❌ Demo ke stakeholder = Kirim spam ke customer real
+**Target:** Workflow yang bisa menambah data ke Google Sheets dengan satu klik
 
 ---
 
-### Solusi dengan Pinned Data:
+<!-- SECTION 3: Tugas 2 - Workflow Otomatis -->
 
-✅ **Ambil data order real** yang sudah sukses diproses
-
-✅ **Pin order data** (nama, produk, harga, alamat)
-
-✅ **Test message template** berkali-kali dengan data sama
-
-✅ **Perfect messaging** tanpa ganggu customer!
-
-### Contoh Workflow:
-1. **Shopee/Tokopedia** (order masuk) → 2. **Pin data order** → 3. **WhatsApp** (test template) → 4. **Email + Slack** (test messaging)
+# Tugas 2: Workflow yang Berjalan Sendiri
 
 ---
 
-## Membuat Pinned Data dari Past Execution
+## Tugas 2: Otomatisasi Cerdas Berbasis Event
 
-### Langkah Mudah:
-1. **Buka Execution History** - Pilih eksekusi yang berhasil
-2. **Klik node** yang datanya mau di-pin
-3. **Klik "Pin Data"** - Button di panel samping
-4. **Konfirmasi** - Data otomatis tersimpan sebagai sample
----
+### Tujuan:
+Membuat workflow yang berjalan **secara otomatis** setiap kali ada pendaftar baru, dan menggunakan data pendaftar untuk membuat undangan kalender.
 
-<!-- SECTION 7: Hands-on Exercise -->
-# Latihan: Buat Automation Pertama Anda
+### Apa yang Akan Dibuat:
+- Trigger: Google Sheets (otomatis saat ada baris baru)
+- Action: Buat event di Google Calendar dengan data dari pendaftar
 
 ---
 
-## Exercise: Automation Newsletter Signup
+## Berbagai Jenis Trigger di N8N
 
-### Target Automation:
-**Customer Daftar Newsletter** → **Kirim Welcome Email** → **Simpan ke Database** → **Notifikasi Tim**
+### Trigger Bisa Beragam!
 
-### Business Value:
-Otomatisasi proses newsletter signup tanpa perlu copy-paste manual
+Sekarang kita naik level dari "Trigger Manually". N8N punya banyak jenis trigger:
+
+**📅 Schedule Trigger**
+- Workflow berjalan berdasarkan jadwal (setiap jam, harian, mingguan)
+- *Contoh: Kirim laporan otomatis setiap Senin pagi*
+
+**🌐 Webhook Trigger**
+- Workflow dipicu saat ada request HTTP dari aplikasi lain
+- *Contoh: Ada pembayaran masuk dari Stripe*
+
+**📊 App Event Triggers**
+- Workflow dipicu oleh kejadian di aplikasi tertentu
+- *Contoh: Google Sheets (baris baru), Gmail (email masuk), Telegram (pesan baru)*
 
 ---
 
-## Selamat! Anda Sudah Jadi Automation Expert! 🎉
+## Berbagai Jenis Action di N8N
 
-### Anda telah berhasil:
+### Action = Yang Bisa Kita Lakukan
 
-✅ Mengotomatisasi proses bisnis
+Setelah trigger, N8N bisa melakukan banyak action:
 
-✅ Menghemat waktu tim dengan automation
+**📧 Komunikasi**
+- Kirim email (Gmail, Outlook)
+- Kirim pesan (Slack, Telegram, WhatsApp)
 
-✅ Menghubungkan beberapa aplikasi sekaligus
+**📝 Data Management**
+- Tambah/update data di Google Sheets, Airtable, Database
+- Buat file di Google Drive, Dropbox
 
-✅ Membuat sistem yang bekerja 24/7 untuk bisnis Anda
+**📅 Scheduling**
+- Buat/update event di Google Calendar
+- Buat task di Asana, Trello
 
-**Bayangkan berapa jam per minggu yang bisa dihemat dengan automation ini!**
+**🔗 Integration**
+- Update CRM (HubSpot, Salesforce)
+- Kirim data ke aplikasi lain via API
+
+---
+
+## Konsep Kunci: Data Dinamis
+
+### Data yang Mengalir Antar Step
+
+Di Tugas 2, kita akan menggunakan **Data Dinamis**:
+- ❌ **Bukan** data statis yang kita ketik manual
+- ✅ **Tapi** data asli dari trigger (nama, email, nomor telepon)
+- 🔄 Data mengalir dari **Trigger** → **Action**
+
+**Contoh:**
+- Trigger dapat: `Nama: "Budi", Email: "budi@email.com"`
+- Action gunakan: "Halo **Budi**, terima kasih sudah mendaftar di **budi@email.com**"
+
+---
+
+## Active vs Inactive Workflow
+
+### Dua Mode Workflow
+
+Setiap workflow di N8N punya 2 mode:
+
+**🔴 Inactive (Mode Edit/Testing):**
+- Workflow **TIDAK mendengarkan** trigger otomatis
+- Hanya berjalan saat Anda klik tombol **"Test workflow"**
+- **Gunakan saat:** Membuat, mengedit, atau testing workflow
+- **Aman** untuk melakukan perubahan
+
+**🟢 Active (Mode Production):**
+- Workflow **terus mendengarkan** triggernya
+- Berjalan **otomatis** saat ada event
+- **Gunakan saat:** Workflow sudah siap dan tested
+- **PENTING:** Workflow Tugas 2 & 3 harus **Active** agar berjalan otomatis!
+
+---
+
+## Yuk Kita Coba! (Tugas 2)
+
+### Naik Level!
+
+Mari kita buat workflow pendaftaran otomatis bersama-sama.
+
+**Yang akan kita lakukan:**
+- Setup Google Sheets trigger
+- Mengambil data dari trigger
+- Menggunakan data dinamis di Google Calendar
+- Handle jika trigger tidak tersedia
+
+---
+
+## WAKTUNYA PRAKTIK! (Tugas 2)
+
+### Mari Kita Otomatisasi!
+
+- Buka dokumen panduan **Tugas 2**
+- Tiru langkah-langkah demo untuk membangun workflow pendaftaran otomatis Anda
+- Test dengan menambah baris baru di Google Sheets
+
+**Target:** Workflow yang otomatis membuat event calendar saat ada pendaftar baru
+
+---
+
+<!-- SECTION 4: Tugas 3 - Multi-Step Workflow -->
+
+# Tugas 3: Merangkai Beberapa Aksi
+
+---
+
+## Tugas 3: Multi-Step Workflow
+
+### Tujuan:
+Membuat satu trigger memicu **serangkaian tindakan berurutan**.
+
+Setelah membuat undangan kalender, sistem juga akan mengirim notifikasi email internal.
+
+### Apa yang Akan Dibuat:
+- Trigger: Google Sheets (dari Tugas 2)
+- Action 1: Buat event di Google Calendar
+- Action 2: Kirim email notifikasi ke tim
+
+---
+
+## Konsep Kunci: Merangkai Aksi (Chaining Actions)
+
+### `Trigger → Action 1 → Action 2 → ...`
+
+Di N8N, kita bisa merangkai step aksi sebanyak yang kita butuhkan.
+
+Output dari step sebelumnya bisa digunakan sebagai input untuk step berikutnya, menciptakan alur kerja yang kompleks dan powerful.
+
+**Contoh Nyata:**
+- Pendaftar baru → Buat calendar event → Kirim email → Update CRM → Notif Telegram
+
+---
+
+## Yuk Kita Coba! (Tugas 3)
+
+### Rangkai Logikanya!
+
+Mari kita tambahkan step notifikasi email ke workflow yang sudah ada.
+
+**Yang akan kita lakukan:**
+- Menduplikasi workflow (best practice!)
+- Menambah node ke workflow existing
+- Menghubungkan multiple nodes
+- Menggunakan data dari multiple sources
+
+---
+
+## WAKTUNYA PRAKTIK! (Tugas 3)
+
+### Tambahkan Step Baru!
+
+- Buka dokumen panduan **Tugas 3**
+- Ikuti langkah-langkahnya untuk menambahkan aksi notifikasi email pada workflow Anda
+- Test end-to-end: Sheets → Calendar → Email
+
+**Target:** Workflow lengkap dengan 2 actions yang berjalan berurutan
+
+---
+
+<!-- SECTION 5: Penutup -->
+
+## Rekapitulasi
+
+### Anda Telah Mempelajari:
+
+- ✅ Konsep fundamental **Workflow, Step, Trigger & Action**
+- ✅ Prinsip utama: **"Jika Trigger & Action ada di N8N, bisa diotomatisasi"**
+- ✅ Membuat workflow dengan **Trigger Manually** dan **App Event Triggers**
+- ✅ Menggunakan **Data Dinamis** antar nodes
+- ✅ Merangkai **Multi-Step Action** dalam satu workflow
+- ✅ Mengenal berbagai jenis **Trigger** dan **Action** yang tersedia
+
+**Anda sekarang punya skill untuk mengotomatisasi proses bisnis!**
+
+---
+
+## Q & A
+
+### Ada Pertanyaan?
+
+---
+
+## Terima Kasih!
+
+### Selamat Mengotomatisasi!
+
+**Next Steps:**
+- Eksplorasi 300+ nodes yang tersedia
+- Gabung N8N Community untuk inspirasi
+- Mulai otomatisasi proses di pekerjaan Anda
+
+**Contact:**
+[Nama Anda/Perusahaan]
+[Email/Social Media]
